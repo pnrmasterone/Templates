@@ -1,0 +1,78 @@
+/* Seat Map Css
+* Seating System Map
+*/
+
+.Seattab {
+    overflow: hidden;
+    border: 1px dotted #ccc;
+    background-color: #f1f1f1;
+}
+
+    /* Style the buttons inside the tab */
+    .Seattab button {
+        background-color: inherit;
+        float: left;
+        border:none;    
+        border-left: 1px dashed #ccc;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+        /* Change background color of buttons on hover */
+    .Seattab button:hover {
+        background-color: #d63933;
+        color:#fff;
+    }
+
+        /* Create an active/current tablink class */
+    .Seattab button.active {
+        background-color: #0073ae;
+        color: #fff;
+    }
+
+/* Style the tab content */
+.Seattabcontent {
+    display: none;
+    padding: 6px 12px;
+    border:none;
+    border-bottom: 1px dotted #ccc;
+    border-top: none;
+    overflow-x:scroll;
+}
+.selection-conform, .seatprivacy
+{
+    background:#fff;
+    padding: 20px;
+}
+.seating-details {
+    border-top: 1px dashed #ccc;
+}
+.selection-conform a {
+    text-decoration: none;
+}
+    .pax-details td, .pax-details th {
+        padding: 10px;
+        font-weight: normal;
+        text-align: center;
+    }
+
+    .pax-details td {
+        color: #0073ae;
+    }
+.pax-details
+{
+    width:100%;
+}
+
+.pax {
+    color: #000 !important;
+}
+.Seatmap-tabs
+{
+    background-color:#fff;
+    overflow-x:hidden;
+    border: 1px dashed #ccc;
+}

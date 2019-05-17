@@ -1,0 +1,2217 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flight</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700|Rubik:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slimscroll.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
+    <link rel="stylesheet" href="css/style-default.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/ngProgress.css" rel="stylesheet" />
+    <link href="css/style-nz.css" rel="stylesheet" />
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/rzslider.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+    <link href="search.css" rel="stylesheet" />
+    <link href="book.css" rel="stylesheet" />
+    <script src="js/xml2json.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/ngprogress.js"></script>
+    <script src="js/ngprogress.min.js"></script>
+    <script src="js/angucomplete-alt.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="2.2.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.2.0.js"></script>
+    <script src="js/slider-custom.js"></script>
+      <style>
+          .loader {
+              position: fixed;
+              left: 0px;
+              top: 0px;
+              width: 100%;
+              height: 100%;
+              background-color: #797979;
+              z-index: 9999;
+              opacity: .9;
+          }
+          .unload
+          {
+              display:none;
+          }
+          .imgloader {
+              position: relative;
+              vertical-align: middle;
+              -webkit-border-horizontal-spacing: middel;
+              margin: auto;
+              border-style: none;
+              left: 500px;
+              top: 200px;
+          }
+      </style>
+  </head>
+  <body id="pd-theme" ng-app="MyApp">
+      <div class="" style="display:none;">
+          <img class="imgloader" src="images/loader1.gif" />
+      </div>
+      <iframe src="header.html" style="height:70px; width:100%;" frameborder="0" scrolling="no" class="pd-iframe-header-height"></iframe>
+
+
+      <!-- Modal -->
+      <!--<div class="loader">
+          <div class="modal-dialog " style="margin:auto; margin-top:50px;" role="document">
+              <div class="modal-content">
+                  <div class="modal-header" style="background: #0478BE;">
+                      <h5 class="modal-title" id="exampleModalLabel" style="margin:auto;">
+                          <img src="images/globatourlogo.png" style="margin: auto;">
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="row">
+                          <div class="col-12">
+                              <div class="searching-box text-center">
+                                  <h3>Searching for best flights...</h3>
+                                  <div class="progress-bars">
+                                      <span class="progress-bar-fills" style="width: 20%"></span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row" style="margin:10px 0px;">
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-5 pad-right-0" style="padding:10px 0px; border: solid 1px #ccc;">
+                              <div class="popup-dest">
+
+                                  <p class="destination-name" style="text-align:center"><i class="fa fa-map-marker" aria-hidden="true"></i><br />Source</p>
+                              </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-2 col-2 pad-0" style="padding:10px 0px; border: solid 1px #ccc;">
+                              <div class="popup-dest popup-dest-mid" style="text-align:center">
+                                  <i class="fa fa-plane"></i>
+                              </div>
+                          </div>
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-5 pad-left-0" style="padding:10px 0px; border: solid 1px #ccc;">
+                              <div class="popup-dest">
+
+                                  <p class="destination-name" style="text-align:center"><i class="fa fa-map-marker" aria-hidden="true"></i><br />Destination </p>
+                              </div>
+                          </div>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                              <div class="popup-dest popup-flight-date" style="text-align: center; padding: 10px 0px;">
+                                  <p class="flight_dates"> Fri, March 29 to Sun April 18 </p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                              <div class="subscribe-box" style="text-align:center; padding-bottom:20px; background:#def2f1; border-radius:4px;">
+                                  <h2>Cheap Airfare Alerts!</h2>
+                                  <p>Be the first to know when fares drop</p>
+                                  <ul style=" padding: 10px;">
+                                      <li><input type="text" class="form-control" name="" placeholder="Enter Your Email" /></li>
+                                      <li><button type="button" class="btn btn-info" style="position: relative; bottom: 38px; float: right;"> GET ME DEALS </button></li>
+                                  </ul>
+                                  <ul style="display:none;">
+                                      <li style="width:100%; font-size:15px; font-weight:bold; line-height:50px;">Thank you for subscribing with us.</li>
+                                  </ul>
+                              </div>
+                              <p class="intrupt" style=" text-align: center; padding: 20px 10px;">This will not interrupt your search</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <a href="#">Privacy Policy</a>
+                  </div>
+              </div>
+          </div>
+      </div>-->
+
+
+      <section class="search-form">
+          <div class="search-form-strip">
+              <div class="container-fluid">
+                  <div class="search-form-inner">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <ul class="trip-types">
+                                  <li>
+                                      <label class="trip-oneway rdcontainer">
+                                          <input type="radio" name="radio"> One Way
+                                          <span class="rdcheckmark"></span>
+                                      </label>
+                                  </li>
+                                  <li>
+                                      <label class="trip-round rdcontainer">
+                                          <input type="radio" checked="checked" name="radio"> Round Trip
+                                          <span class="rdcheckmark"></span>
+                                      </label>
+                                  </li>
+                                  <li>
+                                      <label class="trip-multi rdcontainer">
+                                          <input type="radio" name="radio"> Multi City
+                                          <span class="rdcheckmark"></span>
+                                      </label>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="col-lg-12">
+                              <ul class="form-field-container">
+                                  <li class="form-field-box field-box-from">
+                                      <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-to">
+                                      <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-depart">
+                                      <i class="fa fa-calendar"></i>
+                                      <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                                  </li>
+                                  <li class="form-field-box field-box-arrival ">
+                                      <i class="fa fa-calendar"></i>
+                                      <input type="text" name="" class="datereturn form-control" placeholder="To Date">
+                                  </li>
+                                  <li class="form-field-box field-box-travelers">
+                                      <div class="dropdown-travler">
+                                          <input type="text" name="" class="form-control btn-opn-trvlrs" placeholder="Travelers">
+                                          <div class="dropdown-menu travelers-d-menu" tabindex="-1">
+                                              <div class="row">
+                                                  <div class="col-lg-8 col-md-8 col-sm-8 col-8 padding-righ-none">
+                                                      <span class="dropdown-item" href="#">
+                                                          <div class="pm-control adults-control">
+                                                              <ul class="psnger-title">
+                                                                  <li>Adults <span class="age-labels">(+12 yrs)</span></li>
+                                                              </ul>
+                                                              <ul class="passenger-numbers">
+                                                                  <li class="psngr-selected">1</li>
+                                                                  <li>2</li>
+                                                                  <li>3</li>
+                                                                  <li>4</li>
+                                                                  <li>5</li>
+                                                                  <li>6</li>
+                                                                  <li>7</li>
+                                                                  <li>8</li>
+                                                                  <li>9</li>
+                                                              </ul>
+                                                          </div>
+                                                          <div class="pm-control childrens-control">
+                                                              <ul class="psnger-title">
+                                                                  <li>Childrens <span class="age-labels">2-12 yrs (On day of travel)</span></li>
+                                                              </ul>
+                                                              <ul class="passenger-numbers">
+                                                                  <li>1</li>
+                                                                  <li>2</li>
+                                                                  <li class="psngr-selected">3</li>
+                                                                  <li>4</li>
+                                                                  <li>5</li>
+                                                                  <li>6</li>
+                                                              </ul>
+                                                          </div>
+                                                          <div class="pm-control infant-control">
+                                                              <ul class="psnger-title">
+                                                                  <li>Infants <span class="age-labels">Under 2 yrs on day of travel</span></li>
+                                                              </ul>
+                                                              <ul class="passenger-numbers">
+                                                                  <li>1</li>
+                                                                  <li class="psngr-selected">2</li>
+                                                                  <li>3</li>
+                                                                  <li>4</li>
+                                                                  <li>5</li>
+                                                                  <li>6</li>
+                                                              </ul>
+                                                          </div>
+                                                      </span>
+                                                  </div>
+                                                  <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                      <div>
+                                                          <div class="btn-group btns-cls-flight btn-group-toggle" data-toggle="buttons">
+                                                              <label class="btn btn-sm btn-secondary active">
+                                                                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Economy
+                                                              </label>
+                                                              <label class="btn btn-sm btn-secondary">
+                                                                  <input type="radio" name="options" id="option2" autocomplete="off"> Premium Economy
+                                                              </label>
+                                                              <label class="btn btn-sm btn-secondary">
+                                                                  <input type="radio" name="options" id="option3" autocomplete="off"> Business
+                                                              </label>
+                                                              <label class="btn btn-sm btn-secondary">
+                                                                  <input type="radio" name="options" id="option3" autocomplete="off"> First Class
+                                                              </label>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li class="form-field-box field-box-button">
+                                      <button type="button" class="btn btn-search-form">Search</button>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="col-lg-12 multi-hide-row-fix d-none">
+                              <ul class="form-field-container">
+                                  <li class="form-field-box field-box-from">
+                                      <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-to">
+                                      <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-depart">
+                                      <i class="fa fa-calendar"></i>
+                                      <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="col-lg-12 multi-hide-row d-none">
+                              <ul class="form-field-container">
+                                  <li class="form-field-box field-box-from">
+                                      <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-to">
+                                      <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-depart">
+                                      <i class="fa fa-calendar"></i>
+                                      <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="col-lg-12 multi-hide-row d-none">
+                              <ul class="form-field-container">
+                                  <li class="form-field-box field-box-from">
+                                      <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-to">
+                                      <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-depart">
+                                      <i class="fa fa-calendar"></i>
+                                      <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="col-lg-12 multi-hide-row d-none">
+                              <ul class="form-field-container">
+                                  <li class="form-field-box field-box-from">
+                                      <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-to">
+                                      <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                                  </li>
+                                  <li class="form-field-box field-box-depart">
+                                      <i class="fa fa-calendar"></i>
+                                      <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="col-lg-12 multi-hide-row-fix d-none">
+                              <button type="button" class="btn btn-sm add-multi-row">+ Add Another Flight</button>
+                              <button type="button" class="btn btn-sm delete-multi-row">- Delete Flight</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <section class="hz-filter">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-lg-2 col-md-2 col-sm-6 col-12 border-rights">
+                      <div class="hz-filter-box">
+                          <p class="hz-fliter-title">Departure from DEL</p>
+                          <div class="wrapper">
+                              <div class="range-slider">
+                                  <input type="text" class="js-range-slider" value="" />
+                              </div>
+                          </div>
+                          <div class="extra-controls form-inline">
+                              <div class="form-group">
+                                  <input type="text" class="js-input-from form-control" value="0" />
+                                  <input type="text" class="js-input-to form-control" value="0" />
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-6 col-12 border-rights">
+                      <div class="hz-filter-box">
+                          <p class="hz-fliter-title">Departure from JFK</p>
+                          <div class="wrapper">
+                              <div class="range-slider">
+                                  <input type="text" class="js-range-slider" value="" />
+                              </div>
+                          </div>
+                          <div class="extra-controls form-inline">
+                              <div class="form-group">
+                                  <input type="text" class="js-input-from form-control" value="0" />
+                                  <input type="text" class="js-input-to form-control" value="0" />
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-6 col-12 border-rights">
+                      <div class="hz-filter-box">
+                          <p class="hz-fliter-title">Stops</p>
+                          <div class="hz-cbox-list">
+                              <label>
+                                  <input type="checkbox" name=""> Non Stop
+                              </label>
+                          </div>
+                          <div class="hz-cbox-list">
+                              <label>
+                                  <input type="checkbox" name=""> 1 Stop
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-6 col-12">
+                      <div class="row">
+                          <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                              <div class="hz-filter-box">
+                                  <p class="hz-fliter-title">Cheapest Fares <a href="#">+18 airlines</a></p>
+                                  <div class="hz-cbox-list">
+                                      <label>
+                                          <input type="checkbox" name=""> Air India (0 stop) Rs 59,202
+                                      </label>
+                                  </div>
+                                  <div class="hz-cbox-list">
+                                      <label>
+                                          <input type="checkbox" name=""> Etihad Airways (1 stop) Rs 65,307
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                              <div class="hz-filter-box">
+                                  <p class="hz-fliter-title">&nbsp;</p>
+                                  <div class="hz-cbox-list">
+                                      <label>
+                                          <input type="checkbox" name=""> Aeroflot (1 stop) Rs 61,884
+                                      </label>
+                                  </div>
+                                  <div class="hz-cbox-list">
+                                      <label>
+                                          <input type="checkbox" name=""> KLM Royal Dutch (1 stop) Rs 66,065
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-1 col-md-1 col-sm-12 col-12">
+                      <div class="hz-filter-box">
+                          <div class="hz-more-fltr-btn">
+                              <a href="#" data-toggle="modal" data-target="#more-filter-Modal"> More Filters</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <section class="filter-results">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                      <div class="search-top-sort-strip">
+                          <div class="row">
+                              <div class="col-lg-5 col-md-5 col-sm-5 col-12 border-rights text-left">
+                                  <div class="search-top-sort-strip-title-section">
+                                      <span class="smart-image pull-left">
+                                          <img src="images/us-air.png">
+                                      </span>
+                                      <span class="smart-title pull-left">
+                                          <span><strong>SMART VALUE</strong> FLIGHTS ON TOP !</span>
+                                          Popularity based on duration and price.
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="col-lg-7 col-md-7 col-sm-7 col-12">
+                                  <div class="search-top-sort-strip-dd-section">
+                                      <ul>
+                                          <li class="cheap-strt-price">
+                                              Cheapest starting at
+                                              <strong><i class="fa fa-inr" aria-hidden="true"></i> 11,234</strong>
+                                          </li>
+                                          <li>
+                                              <select class="form-control crncy-sortby-select">
+                                                  <option selected="selected">Currency</option>
+                                                  <option>Us Dollar - USD</option>
+                                                  <option>Indian Rupee - INR</option>
+                                                  <option>Us Dollar - USD</option>
+                                                  <option>Indian Rupee - INR</option>
+                                                  <option>Us Dollar - USD</option>
+                                              </select>
+                                          </li>
+                                          <li>
+                                              <select class="form-control crncy-sortby-select">
+                                                  <option selected="selected">Sort By</option>
+                                                  <option><strong>Popularity</strong>: Beta Version</option>
+                                                  <option><strong>Duration</strong>: Low to High</option>
+                                                  <option><stron g>Departure</strong> from JFK (early)</option>
+                                                  <option><strong>Departure</strong> from JFK (late)</option>
+                                                  <option><strong>Arrival</strong> at ORD (early)</option>
+                                                  <option><strong>Arrival</strong> at ORD (late)</option>
+                                                  <option><strong>Arrival</strong> at JFK (early)</option>
+                                                  <option><strong>Arrival</strong> at JFK (late)</option>
+                                                  <option><strong>Price</strong> Low to High</option>
+                                              </select>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <ul class="nav nav-tabs search-result-tabs" id="myTab" role="tablist">
+                          <li class="nav-item search-result-tabs-item">
+                              <a class="nav-link search-result-tabs-link active" id="cheapests" data-toggle="tab" href="#cheapest-tab" role="tab" aria-controls="cheapests" aria-selected="true">Cheapest</a>
+                          </li>
+                          <li class="nav-item search-result-tabs-item">
+                              <a class="nav-link search-result-tabs-link" id="alternates" data-toggle="tab" href="#alternate-tab" role="tab" aria-controls="alternates" aria-selected="false">Alternate Dates</a>
+                          </li>
+                          <li class="nav-item search-result-tabs-item">
+                              <a class="nav-link search-result-tabs-link" id="nearbys" data-toggle="tab" href="#nearby-tab" role="tab" aria-controls="nearbys" aria-selected="false">Nearby Airports</a>
+                          </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+                          <div class="tab-pane fade show active" id="cheapest-tab" role="tabpanel" aria-labelledby="cheapests">
+                              <div class="result-box d-none d-sm-block">
+                                  <div class="result-box-top-bar">
+                                      <div class="row">
+                                          <div class="col-lg-7 col-md-7 col-sm-7 col-12">
+                                              <div class="row">
+                                                  <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                      <div class="airline-icon"><img src="images\us-air.png"></div>
+                                                  </div>
+                                                  <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                                                      <div class="airline-brand">Air Italy</div>
+                                                      <ul class="airline-type-list">
+                                                          <li class="active">Smart Value</li>
+                                                          <li>Value For Money</li>
+                                                          <li>Cheapest Flight</li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right border-rights">
+                                                      <div class="deal-title"><strong>Provoke Deal Available</strong><br>Get $4212 Discount</div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-left">
+                                                      <ul class="price-and-book">
+                                                          <li class="flight-price">$57000</li>
+                                                          <li class="flight-book-butn"><a href="#">Book Now</a> </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="offer-deal-strip">
+                                      <span class="offer-deal-strip-title">Deal</span> Get Upto 10% off on SBI Credit Cards. Use code PVASBI
+                                  </div>
+                                  <div class="result-box-deatil-bar">
+                                      <div class="row">
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 full-width">
+                                              <div class="result-box-deatil-bar-box">
+                                                  <div class="flight-date-destination">
+                                                      <strong>Tue, 22 Jan</strong> New Delhi to New York
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 roundtrip">
+                                              <div class="result-box-deatil-bar-box">
+                                                  <div class="flight-date-destination">
+                                                      <strong>Tue, 22 Jan</strong> New Delhi to New York
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-left">
+                                              <div class="flight-date-destination refund-bagage">
+                                                  <strong>Non Refundable</strong> <i class="fa fa-circle"></i> 1Pcs Baggage
+                                              </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right">
+                                              <span class="flight-fare-btn" data-toggle="collapse" href="#collapseflightdtl" role="button" aria-expanded="false" aria-controls="collapseflightdtl" style="color:#0478BE;">Flight Details <i class="fa fa-angle-down"></i></span>
+                                              <span class="flight-fare-btn" data-toggle="collapse" href="#collapsefaredtl" role="button" aria-expanded="false" aria-controls="collapsefaredtl" style="color:#0478BE;">Fare Details <i class="fa fa-angle-down"></i></span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="result-box collapse" aria-labelledby="headingOne" id="collapseflightdtl" data-parent="#accordion">
+                                  <div class="row">
+                                      <div class="col-lg-6 col-md-6 col-sm-6 col-12 border-rights full-width ">
+                                          <div class="f-detail-box">
+                                              <div class="f-detail-box-type"><i class="fa fa-long-arrow-right"></i> Departure</div>
+                                              <div class="f-detail-box-dst-strip">
+                                                  <span>New Delhi to new york, 22jan</span>
+                                                  <span class="pull-right">20h 45m</span>
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="connection-time-box text-center">
+                                                  Change of planes at Milan | Connection time: 2h 40m
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>JFK</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="baggage-alwnc">
+                                                  BAGGAGE ALLOWANCE FOR ADULT
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12 full-width">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Check-in : 1 Pc
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Cabin : 7 Kgs
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6 col-md-6 col-sm-6 col-12 roundtrip">
+                                          <div class="f-detail-box">
+                                              <div class="f-detail-box-type"><i class="fa fa-long-arrow-left"></i> Return</div>
+                                              <div class="f-detail-box-dst-strip">
+                                                  <span>New Delhi to new york, 22jan</span>
+                                                  <span class="pull-right">20h 45m</span>
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="connection-time-box text-center">
+                                                  Change of planes at Milan | Connection time: 2h 40m
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>JFK</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="baggage-alwnc">
+                                                  BAGGAGE ALLOWANCE FOR ADULT
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Check-in : 1 Pc
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Cabin : 7 Kgs
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="result-box collapse" id="collapsefaredtl" data-parent="#accordion">
+                                  <div class="row">
+                                      <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+                                          <div class="fare-detail-box">
+                                              <div class="fare-detail-box-totl-psngr border-bottoms">
+                                                  <span>TOTAL (1 Adults)</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i>  52,749</span>
+                                              </div>
+                                              <div class="">Base Fare</div>
+                                              <div class="fare-detail-box-base-fare border-bottoms">
+                                                  <span>Adults (1 x 23,952)</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 23,952</span>
+                                              </div>
+                                              <div class="">Surcharges</div>
+                                              <div class="fare-detail-box-surcharg-fare">
+                                                  <span>Adults (1 x 23,952)</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 31,398</span>
+                                              </div>
+                                              <div class="fare-detail-box-istant-total">
+                                                  <span>Instant discount applied</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 2,601</span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-7 col-md-7 col-sm-7 col-12">
+                                          <div class="f-rule-table">
+
+                                              <div class="card">
+                                                  <div class="card-header" id="ruleOne">
+                                                      <h5 class="mb-0">
+                                                          <button class="btn btn-link" data-toggle="collapse" data-target="#rulesOne" aria-expanded="true" aria-controls="rulesOne">
+                                                              <span class="pull-left f-rule-table-title">Fare rules<span> DEL-JFK</span> All charges are per passenger</span> <span class="clps-btn-dtl pull-right">Show Details</span>
+                                                          </button>
+                                                      </h5>
+                                                  </div>
+                                                  <div id="rulesOne" class="collapse" aria-labelledby="ruleOne" data-parent="#accordion">
+                                                      <div class="card-body">
+                                                          <table class="table table-bordered">
+                                                              <thead>
+                                                                  <tr>
+                                                                      <th>TIME</th>
+                                                                      <th>CANCELLATION FEES</th>
+                                                                      <th>DATE CHANGE FEES</th>
+                                                                  </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                  <tr>
+                                                                      <td>24 hrs - 365 days</td>
+                                                                      <td>Adult : Rs 16,065* + Rs 649**</td>
+                                                                      <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                                                  </tr>
+                                                              </tbody>
+                                                          </table>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="card">
+                                                  <div class="card-header" id="ruleTwo">
+                                                      <h5 class="mb-0">
+                                                          <button class="btn btn-link collapsed d-block" data-toggle="collapse" data-target="#rulesTwo" aria-expanded="false" aria-controls="rulesTwo">
+                                                              <span class="f-rule-table-title pull-left">Fare rules<span> JFK-DEL</span> All charges are per passenger</span>
+                                                              <span class="clps-btn-dtl2 pull-right">Show Details</span>
+                                                          </button>
+                                                      </h5>
+                                                  </div>
+                                                  <div id="rulesTwo" class="collapse" aria-labelledby="ruleTwo" data-parent="#accordion">
+                                                      <div class="card-body">
+                                                          <table class="table table-bordered">
+                                                              <thead>
+                                                                  <tr>
+                                                                      <th>TIME</th>
+                                                                      <th>CANCELLATION FEES</th>
+                                                                      <th>DATE CHANGE FEES</th>
+                                                                  </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                  <tr>
+                                                                      <td>24 hrs - 365 days</td>
+                                                                      <td>Adult : Rs 16,065* + Rs 649**</td>
+                                                                      <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                                                  </tr>
+                                                              </tbody>
+                                                          </table>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+                                          <p class="f-rule-table-note">*Airline Fee. | **MakeMyTrip Cancellation Service Fee.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="tab-pane fade" id="alternate-tab" role="tabpanel" aria-labelledby="alternates">
+                              <div class="result-box d-none d-sm-block">
+                                  <div class="result-box-top-bar">
+                                      <div class="row">
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                              <div class="row">
+                                                  <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                      <div class="airline-icon"><img src="images\us-air.png"></div>
+                                                  </div>
+                                                  <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                                                      <div class="airline-brand">Air Italy</div>
+                                                      <ul class="airline-type-list">
+                                                          <li class="active">Smart Value</li>
+                                                          <li>Value For Money</li>
+                                                          <li>Cheapest Flight</li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right border-rights">
+                                                      <div class="deal-title"><strong>Provoke Deal Available</strong><br>Get $4212 Discount</div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-left">
+                                                      <ul class="price-and-book">
+                                                          <li class="flight-price">$57000</li>
+                                                          <li class="flight-book-butn"><a href="#">Book Now</a> </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="offer-deal-strip">
+                                      <span class="offer-deal-strip-title">Deal</span> Get Upto 10% off on SBI Credit Cards. Use code PVASBI
+                                  </div>
+                                  <div class="result-box-deatil-bar">
+                                      <div class="row">
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 full-width">
+                                              <div class="result-box-deatil-bar-box">
+                                                  <div class="flight-date-destination">
+                                                      <strong>Tue, 22 Jan</strong> New Delhi to New York
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 roundtrip">
+                                              <div class="result-box-deatil-bar-box">
+                                                  <div class="flight-date-destination">
+                                                      <strong>Tue, 22 Jan</strong> New Delhi to New York
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-left">
+                                              <div class="flight-date-destination refund-bagage">
+                                                  <strong>Non Refundable</strong> <i class="fa fa-circle"></i> 1Pcs Baggage
+                                              </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right">
+                                              <span class="flight-fare-btn" data-toggle="collapse" href="#collapseflightdtl1" role="button" aria-expanded="false" aria-controls="collapseflightdtl1">Flight Details <i class="fa fa-angle-down"></i></span>
+                                              <span class="flight-fare-btn" data-toggle="collapse" href="#collapsefaredtl1" role="button" aria-expanded="false" aria-controls="collapsefaredtl1">Fare Details <i class="fa fa-angle-down"></i></span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="result-box collapse" aria-labelledby="headingOne" id="collapseflightdtl1" data-parent="#accordion">
+                                  <div class="row">
+                                      <div class="col-lg-6 col-md-6 col-sm-6 col-12 border-rights full-width">
+                                          <div class="f-detail-box">
+                                              <div class="f-detail-box-type"><i class="fa fa-long-arrow-right"></i> Departure</div>
+                                              <div class="f-detail-box-dst-strip">
+                                                  <span>New Delhi to new york, 22jan</span>
+                                                  <span class="pull-right">20h 45m</span>
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="connection-time-box text-center">
+                                                  Change of planes at Milan | Connection time: 2h 40m
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>JFK</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="baggage-alwnc">
+                                                  BAGGAGE ALLOWANCE FOR ADULT
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Check-in : 1 Pc
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Cabin : 7 Kgs
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6 col-md-6 col-sm-6 col-12 roundtrip">
+                                          <div class="f-detail-box">
+                                              <div class="f-detail-box-type"><i class="fa fa-long-arrow-left"></i> Return</div>
+                                              <div class="f-detail-box-dst-strip">
+                                                  <span>New Delhi to new york, 22jan</span>
+                                                  <span class="pull-right">20h 45m</span>
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="connection-time-box text-center">
+                                                  Change of planes at Milan | Connection time: 2h 40m
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>JFK</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="baggage-alwnc">
+                                                  BAGGAGE ALLOWANCE FOR ADULT
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Check-in : 1 Pc
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Cabin : 7 Kgs
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="result-box collapse" id="collapsefaredtl1" data-parent="#accordion">
+                                  <div class="row">
+                                      <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+                                          <div class="fare-detail-box">
+                                              <div class="fare-detail-box-totl-psngr border-bottoms">
+                                                  <span>TOTAL (1 Adults)</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i>  52,749</span>
+                                              </div>
+                                              <div class="">Base Fare</div>
+                                              <div class="fare-detail-box-base-fare border-bottoms">
+                                                  <span>Adults (1 x 23,952)</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 23,952</span>
+                                              </div>
+                                              <div class="">Surcharges</div>
+                                              <div class="fare-detail-box-surcharg-fare">
+                                                  <span>Adults (1 x 23,952)</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 31,398</span>
+                                              </div>
+                                              <div class="fare-detail-box-istant-total">
+                                                  <span>Instant discount applied</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 2,601</span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-7 col-md-7 col-sm-7 col-12">
+                                          <div class="f-rule-table">
+
+                                              <div class="card">
+                                                  <div class="card-header" id="ruleOne1">
+                                                      <h5 class="mb-0">
+                                                          <button class="btn btn-link" data-toggle="collapse" data-target="#rulesOne1" aria-expanded="true" aria-controls="rulesOne1">
+                                                              <span class="pull-left f-rule-table-title">Fare rules<span> DEL-JFK</span> All charges are per passenger</span> <span class="clps-btn-dtl2 pull-right">Show Details</span>
+                                                          </button>
+                                                      </h5>
+                                                  </div>
+                                                  <div id="rulesOne1" class="collapse" aria-labelledby="ruleOne1" data-parent="#accordion">
+                                                      <div class="card-body">
+                                                          <table class="table table-bordered">
+                                                              <thead>
+                                                                  <tr>
+                                                                      <th>TIME</th>
+                                                                      <th>CANCELLATION FEES</th>
+                                                                      <th>DATE CHANGE FEES</th>
+                                                                  </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                  <tr>
+                                                                      <td>24 hrs - 365 days</td>
+                                                                      <td>Adult : Rs 16,065* + Rs 649**</td>
+                                                                      <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                                                  </tr>
+                                                              </tbody>
+                                                          </table>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="card">
+                                                  <div class="card-header" id="ruleTwo2">
+                                                      <h5 class="mb-0">
+                                                          <button class="btn btn-link collapsed d-block" data-toggle="collapse" data-target="#rulesTwo2" aria-expanded="false" aria-controls="rulesTwo2">
+                                                              <span class="f-rule-table-title pull-left">Fare rules<span> JFK-DEL</span> All charges are per passenger</span>
+                                                              <span class="clps-btn-dtl4 pull-right">Show Details</span>
+                                                          </button>
+                                                      </h5>
+                                                  </div>
+                                                  <div id="rulesTwo2" class="collapse" aria-labelledby="ruleTwo2" data-parent="#accordion">
+                                                      <div class="card-body">
+                                                          <table class="table table-bordered">
+                                                              <thead>
+                                                                  <tr>
+                                                                      <th>TIME</th>
+                                                                      <th>CANCELLATION FEES</th>
+                                                                      <th>DATE CHANGE FEES</th>
+                                                                  </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                  <tr>
+                                                                      <td>24 hrs - 365 days</td>
+                                                                      <td>Adult : Rs 16,065* + Rs 649**</td>
+                                                                      <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                                                  </tr>
+                                                              </tbody>
+                                                          </table>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+                                          <p class="f-rule-table-note">*Airline Fee. | **MakeMyTrip Cancellation Service Fee.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="tab-pane fade" id="nearby-tab" role="tabpanel" aria-labelledby="nearbys">
+                              <div class="result-box d-none d-sm-block">
+                                  <div class="result-box-top-bar">
+                                      <div class="row">
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                              <div class="row">
+                                                  <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                      <div class="airline-icon"><img src="images\us-air.png"></div>
+                                                  </div>
+                                                  <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                                                      <div class="airline-brand">Air Italy</div>
+                                                      <ul class="airline-type-list">
+                                                          <li class="active">Smart Value</li>
+                                                          <li>Value For Money</li>
+                                                          <li>Cheapest Flight</li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right border-rights">
+                                                      <div class="deal-title"><strong>Provoke Deal Available</strong><br>Get $4212 Discount</div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-left">
+                                                      <ul class="price-and-book">
+                                                          <li class="flight-price">$57000</li>
+                                                          <li class="flight-book-butn"><a href="#">Book Now</a> </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="offer-deal-strip">
+                                      <span class="offer-deal-strip-title">Deal</span> Get Upto 10% off on SBI Credit Cards. Use code PVASBI
+                                  </div>
+                                  <div class="result-box-deatil-bar">
+                                      <div class="row">
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 full-width">
+                                              <div class="result-box-deatil-bar-box">
+                                                  <div class="flight-date-destination">
+                                                      <strong>Tue, 22 Jan</strong> New Delhi to New York
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 roundtrip">
+                                              <div class="result-box-deatil-bar-box">
+                                                  <div class="flight-date-destination">
+                                                      <strong>Tue, 22 Jan</strong> New Delhi to New York
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row result-box-deatil-bar-single">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                          <div class="flight-dest-radio">
+                                                              <label class="ccontainer">
+                                                                  <input type="radio" checked="checked" name="radio">
+                                                                  <span class="ccheckmark"></span>
+                                                              </label>
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                          <div class="flight-dest-arrow">
+                                                              <div class="t-time-stop">20h 45m | 1-stop</div>
+                                                              <div class="arrow-sign">
+                                                                  <span class="mid-point"></span>
+                                                              </div>
+                                                              <div class="arprt-code">mxp</div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                          <div class="flight-dest-radio">
+                                                              <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-left">
+                                              <div class="flight-date-destination refund-bagage">
+                                                  <strong>Non Refundable</strong> <i class="fa fa-circle"></i> 1Pcs Baggage
+                                              </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right">
+                                              <span class="flight-fare-btn" data-toggle="collapse" href="#collapseflightdtl2" role="button" aria-expanded="false" aria-controls="collapseflightdtl2">Flight Details <i class="fa fa-angle-down"></i></span>
+                                              <span class="flight-fare-btn" data-toggle="collapse" href="#collapsefaredtl2" role="button" aria-expanded="false" aria-controls="collapsefaredtl2">Fare Details <i class="fa fa-angle-down"></i></span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="result-box collapse" aria-labelledby="headingOne" id="collapseflightdtl2" data-parent="#accordion">
+                                  <div class="row">
+                                      <div class="col-lg-6 col-md-6 col-sm-6 col-12 border-rights full-width">
+                                          <div class="f-detail-box">
+                                              <div class="f-detail-box-type"><i class="fa fa-long-arrow-right"></i> Departure</div>
+                                              <div class="f-detail-box-dst-strip">
+                                                  <span>New Delhi to new york, 22jan</span>
+                                                  <span class="pull-right">20h 45m</span>
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="connection-time-box text-center">
+                                                  Change of planes at Milan | Connection time: 2h 40m
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>JFK</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="baggage-alwnc">
+                                                  BAGGAGE ALLOWANCE FOR ADULT
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Check-in : 1 Pc
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Cabin : 7 Kgs
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6 col-md-6 col-sm-6 col-12 roundtrip">
+                                          <div class="f-detail-box">
+                                              <div class="f-detail-box-type"><i class="fa fa-long-arrow-left"></i> Return</div>
+                                              <div class="f-detail-box-dst-strip">
+                                                  <span>New Delhi to new york, 22jan</span>
+                                                  <span class="pull-right">20h 45m</span>
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>DEL</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="connection-time-box text-center">
+                                                  Change of planes at Milan | Connection time: 2h 40m
+                                              </div>
+                                              <div class="f-detail-box-a-name flight-date-destination">
+                                                  <img src="images\us-air.png"> New Delhi to New York
+                                              </div>
+                                              <div class="row result-box-deatil-bar-single f-detail-box-deatil-bar-single">
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>MXP</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+                                                      <div class="flight-dest-arrow f-detail-box-dest-arrow">
+                                                          <div class="t-time-stop f-detail-box-time-bx">20h 45m</div>
+                                                          <div class="arrow-sign">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-left padding-left-none">
+                                                      <div class="flight-dest-radio">
+                                                          <div class="flight-destis"><strong>JFK</strong> 06:00</div>
+                                                      </div>
+                                                      <div class="f-detail-box-time">
+                                                          22 Jan' 19, Tue
+                                                      </div>
+                                                      <div class="f-detail-box-place">
+                                                          New Delhi, India
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="baggage-alwnc">
+                                                  BAGGAGE ALLOWANCE FOR ADULT
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Check-in : 1 Pc
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                      <div class="f-detail-box-baggage-pcs">
+                                                          <i class="fa fa-suitcase" aria-hidden="true"></i> Cabin : 7 Kgs
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="result-box collapse" id="collapsefaredtl2" data-parent="#accordion">
+                                  <div class="row">
+                                      <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+                                          <div class="fare-detail-box">
+                                              <div class="fare-detail-box-totl-psngr border-bottoms">
+                                                  <span>TOTAL (1 Adults)</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i>  52,749</span>
+                                              </div>
+                                              <div class="">Base Fare</div>
+                                              <div class="fare-detail-box-base-fare border-bottoms">
+                                                  <span>Adults (1 x 23,952)</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 23,952</span>
+                                              </div>
+                                              <div class="">Surcharges</div>
+                                              <div class="fare-detail-box-surcharg-fare">
+                                                  <span>Adults (1 x 23,952)</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 31,398</span>
+                                              </div>
+                                              <div class="fare-detail-box-istant-total">
+                                                  <span>Instant discount applied</span>
+                                                  <span class="pull-right"><i class="fa fa-inr" aria-hidden="true"></i> 2,601</span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-7 col-md-7 col-sm-7 col-12">
+                                          <div class="f-rule-table">
+
+                                              <div class="card">
+                                                  <div class="card-header" id="ruleOne3">
+                                                      <h5 class="mb-0">
+                                                          <button class="btn btn-link" data-toggle="collapse" data-target="#rulesOne3" aria-expanded="true" aria-controls="rulesOne3">
+                                                              <span class="pull-left f-rule-table-title">Fare rules<span> DEL-JFK</span> All charges are per passenger</span> <span class="clps-btn-dtl5 pull-right">Show Details</span>
+                                                          </button>
+                                                      </h5>
+                                                  </div>
+                                                  <div id="rulesOne3" class="collapse" aria-labelledby="ruleOne3" data-parent="#accordion">
+                                                      <div class="card-body">
+                                                          <table class="table table-bordered">
+                                                              <thead>
+                                                                  <tr>
+                                                                      <th>TIME</th>
+                                                                      <th>CANCELLATION FEES</th>
+                                                                      <th>DATE CHANGE FEES</th>
+                                                                  </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                  <tr>
+                                                                      <td>24 hrs - 365 days</td>
+                                                                      <td>Adult : Rs 16,065* + Rs 649**</td>
+                                                                      <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                                                  </tr>
+                                                              </tbody>
+                                                          </table>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="card">
+                                                  <div class="card-header" id="ruleTwo4">
+                                                      <h5 class="mb-0">
+                                                          <button class="btn btn-link collapsed d-block" data-toggle="collapse" data-target="#rulesTwo4" aria-expanded="false" aria-controls="rulesTwo4">
+                                                              <span class="f-rule-table-title pull-left">Fare rules<span> JFK-DEL</span> All charges are per passenger</span>
+                                                              <span class="clps-btn-dtl6 pull-right">Show Details</span>
+                                                          </button>
+                                                      </h5>
+                                                  </div>
+                                                  <div id="rulesTwo4" class="collapse" aria-labelledby="ruleTwo4" data-parent="#accordion">
+                                                      <div class="card-body">
+                                                          <table class="table table-bordered">
+                                                              <thead>
+                                                                  <tr>
+                                                                      <th>TIME</th>
+                                                                      <th>CANCELLATION FEES</th>
+                                                                      <th>DATE CHANGE FEES</th>
+                                                                  </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                  <tr>
+                                                                      <td>24 hrs - 365 days</td>
+                                                                      <td>Adult : Rs 16,065* + Rs 649**</td>
+                                                                      <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                                                  </tr>
+                                                              </tbody>
+                                                          </table>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+                                          <p class="f-rule-table-note">*Airline Fee. | **MakeMyTrip Cancellation Service Fee.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                      <div class="right-sidebar">
+                          <div class="right-sidebar-box">
+                              <div class="right-sidebar-box-title">Discounts for you</div>
+                              <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                              <span class="right-sidebar-box-text pull-left">
+                                  FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                                  <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                              </span>
+                          </div>
+                          <div class="right-sidebar-box">
+                              <div class="right-sidebar-box-title">Discounts for you</div>
+                              <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                              <span class="right-sidebar-box-text pull-left">
+                                  FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                                  <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                              </span>
+                          </div>
+                          <div class="right-sidebar-box">
+                              <div class="right-sidebar-box-title">Discounts for you</div>
+                              <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                              <span class="right-sidebar-box-text pull-left">
+                                  FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                                  <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                              </span>
+                          </div>
+                          <div class="right-sidebar-box">
+                              <div class="right-sidebar-box-title">Discounts for you</div>
+                              <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                              <span class="right-sidebar-box-text pull-left">
+                                  FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                                  <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <iframe src="footer.html" style="min-height:180px; width:100%;    background-color: #0478BE;" frameborder="0" scrolling="no" class="pd-iframe-header-height"></iframe>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script src="js/slimscroll.js"></script>
+      <script>
+          var swiper = new Swiper('.swiper-container', {
+              slidesPerView: 8,
+              spaceBetween: 5,
+              // init: false,
+              navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
+              },
+              /*autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+              },*/
+              breakpoints: {
+                  1024: {
+                      slidesPerView: 4,
+                      spaceBetween: 40,
+                  },
+                  768: {
+                      slidesPerView: 3,
+                      spaceBetween: 30,
+                  },
+                  640: {
+                      slidesPerView: 2,
+                      spaceBetween: 20,
+                  },
+                  320: {
+                      slidesPerView: 1,
+                      spaceBetween: 10,
+                  }
+              }
+          });
+      </script>
+      <script>
+          jQuery(function ($) {
+              // /////
+              // CLEARABLE INPUT
+              function tog(v) { return v ? 'addClass' : 'removeClass'; }
+              $(document).on('input', '.clearable', function () {
+                  $(this)[tog(this.value)]('x');
+              }).on('mousemove', '.x', function (e) {
+                  $(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]('onX');
+              }).on('touchstart click', '.onX', function (ev) {
+                  ev.preventDefault();
+                  $(this).removeClass('x onX').val('').change();
+              });
+
+
+          });
+          $(document).ready(function () {
+              $('.rz-pointer').click();
+          });
+      </script>
+      <script type="text/javascript">
+          $(window).on('load', function () {
+              $(".loader").addClass("unload");
+              $(".trip-round .rdcontainer").click();
+              setTimeout(lodertimeout, 3000);
+          });
+          function lodertimeout() {
+          }
+          $(document).ready(function () {
+              $(".datepicker2 datepicker3").datepicker({
+                  numberOfMonths: 1,
+                  showOtherMonths: true,
+                  dateFormat: 'M-dd-yy',
+                  minDate: 0,
+              });
+              $(".datedepart").datepicker({
+                  numberOfMonths: 1,
+                  showOtherMonths: true,
+                  dateFormat: 'M-dd-yy',
+                  minDate: 0,
+                  onSelect: function (selected) {
+                      $(".datereturn").datepicker("option", "minDate", selected)
+                  }
+              });
+              $(".datereturn").datepicker({
+                  numberOfMonths: 1,
+                  showOtherMonths: true,
+                  dateFormat: 'M-dd-yy',
+                  minDate: 0,
+                  onSelect: function (selected) {
+                      $(".datedepart").datepicker("option", "maxDate", selected)
+                  }
+              });
+
+          });
+      </script>
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $('.trip-oneway').click(function () {
+                  $('.field-box-arrival').addClass('layover-black');
+                  $('.field-box-arrival').removeClass('d-none');
+                  $('.field-box-arrival').addClass('d-i-block');
+                  $('.multi-hide-row-first').removeClass('d-block');
+                  $('.multi-hide-row-first').addClass('d-none');
+                  $('.multi-hide-row-fix').removeClass('d-block');
+                  $('.multi-hide-row-fix').addClass('d-none');
+                  $('.roundtrip').addClass('one-multi');
+                  $('.one-multi').removeClass('roundtrip');
+                  $('.full-width').removeClass('col-lg-6 col-md-6 col-sm-6');
+                  $('.full-width').addClass('col-lg-12 col-md-12 col-sm-12');
+                  $('.border-rights').css('border-right', 'none');
+              });
+              $('.trip-round').click(function () {
+                  $('.field-box-arrival').removeClass('layover-black');
+                  $('.field-box-arrival').removeClass('d-none');
+                  $('.field-box-arrival').addClass('d-i-block');
+                  $('.multi-hide-row-first').removeClass('d-block');
+                  $('.multi-hide-row-first').addClass('d-none');
+                  $('.multi-hide-row-fix').removeClass('d-block');
+                  $('.multi-hide-row-fix').addClass('d-none');
+                  $('.one-multi').addClass('roundtrip');
+                  $('.roundtrip').removeClass('one-multi');
+                  $('.full-width').removeClass('col-lg-12 col-md-12 col-sm-12');
+                  $('.full-width').addClass('col-lg-6 col-md-6 col-sm-6');
+                  $('.border-rights').css('border-right', '1px solid var(--maindark)');
+
+              });
+              $('.trip-multi').click(function () {
+                  $('.field-box-arrival').addClass('d-none');
+                  $('.multi-hide-row-first').removeClass('d-none');
+                  $('.multi-hide-row-first').addClass('d-block');
+                  $('.multi-hide-row-fix').addClass('d-block');
+                  $('.multi-hide-row-fix').removeClass('d-none');
+                  $('.roundtrip').addClass('one-multi');
+                  $('.one-multi').removeClass('roundtrip');
+                  $('.full-width').removeClass('col-lg-6 col-md-6 col-sm-6');
+                  $('.full-width').addClass('col-lg-12 col-md-12 col-sm-12');
+                  $('.border-rights').css('border-right', 'none');
+              });
+              $(".trip-oneway").click(function () {
+                  $(".field-box-arrival ").hide();
+                  $(".multi-hide-row").hide();
+                  $(".multi-hide-row").removeClass('d-block');
+                  $(".multi-hide-row").addClass('d-none');
+                  $('.multi-hide-row-fix').hide();
+              });
+              $(".trip-round").click(function () {
+                  $(".field-box-arrival ").show();
+                  $(".multi-hide-row").hide();
+                  $(".multi-hide-row").removeClass('d-block');
+                  $(".multi-hide-row").addClass('d-none');
+                  $('.multi-hide-row-fix').hide();
+              })
+              $('.trip-multi').click(function () {
+                  $(".multi-hide-row-first").show();
+                  $('.multi-hide-row-fix').show();
+                  $('.add-multi-row').show();
+
+                  //$(".multi-hide-row").removeClass('d-none');
+                  //$(".multi-hide-row").addClass('d-block');
+              });
+          });
+
+      </script>
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $('.add-multi-row').click(function () {
+                  var rowsitem = $('.multi-hide-row.d-none');
+                  var rowsitemb = $('.multi-hide-row.d-block');
+                  if (rowsitem.length > 0) {
+                      rowsitem.first().addClass('d-block');
+                      rowsitem.first().removeClass('d-none');
+                  }
+                  $('.delete-multi-row').show();
+                  if (rowsitemb.length == 2) {
+                      $('.add-multi-row').hide();
+                  }
+              });
+
+              $('.delete-multi-row').click(function () {
+                  var rowsitem = $('.multi-hide-row.d-block');
+                  var rowsitemb = $('.multi-hide-row.d-none');
+                  if (rowsitem.length > 0) {
+                      rowsitem.first().addClass('d-none');
+                      rowsitem.first().removeClass('d-block');
+                  }
+                  $('.add-multi-row').show();
+                  if (rowsitemb.length == 2) {
+                      $('.delete-multi-row').hide();
+                  }
+              });
+
+          });
+      </script>
+      <script>
+          $(".btn-opn-trvlrs").click(function (e) {
+              e.preventDefault();
+              $(".travelers-d-menu").fadeIn(300, function () { $(this).focus(); });
+          });
+
+          $('.close-trvlr').click(function () {
+              $(".travelers-d-menu").fadeOut(300);
+          });
+          $(".travelers-d-menu").on('blur', function () {
+              $(this).fadeOut(300);
+          });
+
+          $('.more').click(function () {
+              $('.complete').toggleClass('more-show');
+              $(this).addClass('d-none');
+              $(this).removeClass('d-block');
+              $('.less').addClass('d-block');
+          });
+          $('.less').click(function () {
+              $('.complete').toggleClass('more-show');
+              $(this).addClass('d-none');
+              $(this).removeClass('d-block');
+              $('.more').addClass('d-block');
+          });
+
+          $('.a-more').click(function () {
+              $('.a-complete').toggleClass('more-show');
+              $(this).addClass('d-none');
+              $(this).removeClass('d-block');
+              $('.a-less').addClass('d-block');
+          });
+          $('.a-less').click(function () {
+              $('.a-complete').toggleClass('more-show');
+              $(this).addClass('d-none');
+              $(this).removeClass('d-block');
+              $('.a-more').addClass('d-block');
+          });
+          $('.plus-one-option').click(function () {
+              $('.minus-row').show();
+          })
+          $('.minus-one-option').click(function () {
+              $('.minus-row').hide();
+          })
+
+      </script>
+      <script type="text/javascript">
+          $(window).scroll(function () {
+              var scroll = $(window).scrollTop();
+
+              if (scroll >= 50) {
+                  $(".search-form-strip").addClass("form-fix");
+              } else {
+                  $(".search-form-strip").removeClass("form-fix");
+              }
+          });
+      </script>
+      <script>
+
+          $(".clps-btn-dtl, .clps-btn-dtl2, .clps-btn-dtl3, .clps-btn-dtl4, .clps-btn-dtl5, .clps-btn-dtl6").click(function () {
+              $(this).text(function (i, v) {
+                  return v === 'Show Details' ? 'Hide Details' : 'Show Details'
+              })
+          });
+                            //trip-oneway rdcontainer
+                                      // $(".clps-btn-dtl2").click(function () {
+                                      //     $(this).text(function(i, v){
+                                      //        return v === 'Show Details' ? 'Hide Details' : 'Show Details'
+                                      //     })
+                                      // });
+                                      // $(".clps-btn-dtl3").click(function () {
+                                      //     $(this).text(function(i, v){
+                                      //        return v === 'Show Details' ? 'Hide Details' : 'Show Details'
+                                      //     })
+                                      // });
+                                      // $(".clps-btn-dtl4").click(function () {
+                                      //     $(this).text(function(i, v){
+                                      //        return v === 'Show Details' ? 'Hide Details' : 'Show Details'
+                                      //     })
+                                      // });
+                                      // $(".clps-btn-dtl5").click(function () {
+                                      //     $(this).text(function(i, v){
+                                      //        return v === 'Show Details' ? 'Hide Details' : 'Show Details'
+                                      //     })
+                                      // });
+                                      // $(".clps-btn-dtl6").click(function () {
+                                      //     $(this).text(function(i, v){
+                                      //        return v === 'Show Details' ? 'Hide Details' : 'Show Details'
+                                      //     })
+                                      // });
+      </script>
+  </body>
+</html>

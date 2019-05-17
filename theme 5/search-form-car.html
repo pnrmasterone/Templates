@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flight</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css">
+    <link rel="stylesheet" href="css/slimscroll.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
+    <link rel="stylesheet" href="css/style-default.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/ngProgress.css" rel="stylesheet" />
+    <link href="css/style-nz.css" rel="stylesheet" />
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/rzslider.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+    <link href="search.css" rel="stylesheet" />
+    <link href="book.css" rel="stylesheet" />
+    <script src="js/xml2json.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/ngprogress.js"></script>
+    <script src="js/ngprogress.min.js"></script>
+    <script src="js/angucomplete-alt.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="2.2.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.2.0.js"></script>
+    <script src="js/slider-custom.js"></script>
+  </head>
+  <body id="pd-theme" ng-app="MyApp">
+    <section class="search-form">
+      <div class="search-form-strip">
+        <div class="container-fluid">
+          <div class="search-form-inner">
+            <div class="row">
+              <div class="col-lg-12">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="Pick Up Point">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="Drop Off Point">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="Pick Up Date">
+                  </li>
+                  <li class="form-field-box field-box-arrival">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datereturn form-control" placeholder="Drop Off Date">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-clock-o"></i>
+                    <input type="text" name="" id="timepicker1" class="form-control" placeholder="Pick Up Time">
+                  </li>
+                  <li class="form-field-box field-box-arrival">
+                    <i class="fa fa-clock-o"></i>
+                    <input type="text" name="" id="timepicker2" class="form-control" placeholder="Drop Off Time">
+                  </li>
+                  <li class="form-field-box field-box-button">
+                    <a href="index.html" type="button" class="btn btn-search-form">Search</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section><a href="#" data-toggle="modal" data-target="#popup-searching">Search Popup</a>
+    <div class="modal fade" id="popup-searching" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body search-Popup-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div></section>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/slimscroll.js"></script>
+    <script>
+      jQuery(function ($) {
+          // /////
+          // CLEARABLE INPUT
+          function tog(v) { return v ? 'addClass' : 'removeClass'; }
+          $(document).on('input', '.clearable', function () {
+              $(this)[tog(this.value)]('x');
+          }).on('mousemove', '.x', function (e) {
+              $(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]('onX');
+          }).on('touchstart click', '.onX', function (ev) {
+              ev.preventDefault();
+              $(this).removeClass('x onX').val('').change();
+          });
+      
+      
+      });
+      $(document).ready(function () {
+          $('.rz-pointer').click();
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".datepicker2 datepicker3").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+          });
+          $(".datedepart").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+              onSelect: function (selected) {
+                  $(".datereturn").datepicker("option", "minDate", selected)
+              }
+          });
+          $(".datereturn").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+              onSelect: function (selected) {
+                  $(".datedepart").datepicker("option", "maxDate", selected)
+              }
+          });
+      
+      });
+    </script>
+  <script type="text/javascript">
+            $('#timepicker1').timepicker();
+            $('#timepicker2').timepicker();
+        </script>
+  </body>
+</html>

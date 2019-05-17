@@ -1,0 +1,1239 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.css">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slimscroll.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">-->
+    <link rel="stylesheet" href="css/style-default.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/ngProgress.css" rel="stylesheet" />
+    <link href="css/style-nz.css" rel="stylesheet" />
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/rzslider.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>-->
+    <link href="search.css" rel="stylesheet" />
+    <link href="book.css" rel="stylesheet" />
+    <link href="css/icons.css" rel="stylesheet" />
+    <script src="js/xml2json.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/ngprogress.js"></script>
+    <script src="js/ngprogress.min.js"></script>
+    <script src="js/angucomplete-alt.js"></script>
+    <!--<script data-require="ui-bootstrap@*" data-semver="2.2.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.2.0.js"></script>-->
+    <script src="js/slider-custom.js"></script>
+    <style>
+        .pAccordian {
+            text-align: center
+        }
+
+        .accordian {
+            background-color: #fff;
+            display: none;
+        }
+
+        .accordian-active {
+            display: block;
+        }
+
+        .panel-btn-acc {
+            cursor: pointer;
+            transition: 9s;
+        }
+
+        .panel-board-acc {
+            display: none;
+            overflow: hidden;
+        }
+
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: #797979;
+            z-index: 9999;
+            display:none;
+            opacity: .9;
+        }
+
+        .unload {
+            display: none;
+        }
+
+        .bookings-logs {
+            display: block;
+        }
+
+        .imgloader {
+            position: relative;
+            vertical-align: middle;
+            -webkit-border-horizontal-spacing: middel;
+            margin: auto;
+            border-style: none;
+            left: 500px;
+            top: 200px;
+        }
+
+        /* veritcal tabs styles*/
+        /* Style the tab */
+        .tab {
+            float: left;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            width: 30%;
+        }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+                display: block;
+                background-color: inherit;
+                color: black;
+                padding: 22px 16px;
+                width: 100%;
+                border: none;
+                outline: none;
+                text-align: left;
+                cursor: pointer;
+                transition: 0.3s;
+                font-size: 17px;
+            }
+
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                    background-color: #ddd;
+                }
+
+                /* Create an active/current "tab button" class */
+                .tab button.active {
+                    background-color: #ccc;
+                }
+
+        /* Style the tab content */
+        .tabcontent {
+            float: left;
+            padding: 0px 12px;
+            border: 1px solid #ccc;
+            width: 70%;
+            border-left: none;
+        }
+
+        .tablinks {
+            background-image: linear-gradient(#f6f6f6,#eee);
+            box-shadow: inset 0 1px #fff;
+            border-bottom: 1px solid #ccc;
+        }
+
+        }
+        /* End of vertical tab styles*/
+    </style>
+</head>
+<body id="pd-theme" ng-app="MyApp">
+    <div class="loader">
+        <img class="imgloader" src="images/loader1.gif" />
+    </div>
+    <iframe src="header.html" style="height:70px; width:100%;" frameborder="0" scrolling="no" class="pd-iframe-header-height"></iframe>
+    <!-- Checkout Page Body -->
+    <section class="popup-modals">
+        <div class="modal fade" id="flight-detail-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-close"></i>
+                        </button>
+                        <div class="row">
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                                <div class="fm-modal-title">Flight details</div>
+                                <div class="fm-head-fromto">
+                                    Delhi <i class="fa fa-angle-right"></i> New York <span class="fm-head-fromto-date">(11 Oct 2018)</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                                        <div class="fm-total-price"><span class="fm-modal-title-sm">Total Price : </span>INR 64858.09</div>
+                                        <div class="fm-modal-title-sm">Non Refundable</div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                        <a href="#" class="btn btn-search-form">Book Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <nav>
+                                    <div class="nav nav-tabs fm-nav-tabs" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="true">Itinerary</a>
+                                        <a class="nav-item nav-link" id="nav-fare-tab" data-toggle="tab" href="#nav-farerule" role="tab" aria-controls="nav-farerule" aria-selected="false">Fare Rules</a>
+                                        <a class="nav-item nav-link" id="nav-baggage-tab" data-toggle="tab" href="#nav-baggage-info" role="tab" aria-controls="nav-baggage-info" aria-selected="false">Baggage Information</a>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-itinerary" role="tabpanel" aria-labelledby="nav-itinerary-tab">
+                                        <div class="row fm-heading-bar margin-t-b-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-modal-title"><strong>Airline Detail</strong></div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-modal-title"><strong>Departure</strong></div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-modal-title"><strong>Time & Class</strong></div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-modal-title"><strong>Arrival</strong></div>
+                                            </div>
+                                        </div>
+                                        <div class="row padding-lr-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-airline-dtl">
+                                                    <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                    <span class="span-50">
+                                                        <span class="fm-text-sm">Delta Air Lines</span>
+                                                        <span class="fm-text-sm">DL - 7533</span>
+                                                        <span class="fm-text-sm">Operated by:</span>
+                                                        <span class="fm-text-sm">Jet Airways</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-departure-dtl">
+                                                    <span class="fm-text-l">Delhi (DEL)</span>
+                                                    <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                                                    <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                                                    <span class="fm-text-l">Terminal:3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-time-class">
+                                                    <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                                                    <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-arrival-dtl">
+                                                    <span class="fm-text-l">Mumbai (BOM)</span>
+                                                    <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                                                    <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                                                    <span class="fm-text-l">Terminal:2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fm-layover-sperator">
+                                            <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                                        </div>
+                                        <div class="row padding-lr-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-airline-dtl">
+                                                    <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                    <span class="span-50">
+                                                        <span class="fm-text-sm">Delta Air Lines</span>
+                                                        <span class="fm-text-sm">DL - 7533</span>
+                                                        <span class="fm-text-sm">Operated by:</span>
+                                                        <span class="fm-text-sm">Jet Airways</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-departure-dtl">
+                                                    <span class="fm-text-l">Delhi (DEL)</span>
+                                                    <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                                                    <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                                                    <span class="fm-text-l">Terminal:3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-time-class">
+                                                    <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                                                    <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-arrival-dtl">
+                                                    <span class="fm-text-l">Mumbai (BOM)</span>
+                                                    <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                                                    <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                                                    <span class="fm-text-l">Terminal:2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fm-layover-sperator">
+                                            <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                                        </div>
+                                        <div class="row padding-lr-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-airline-dtl">
+                                                    <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                    <span class="span-50">
+                                                        <span class="fm-text-sm">Delta Air Lines</span>
+                                                        <span class="fm-text-sm">DL - 7533</span>
+                                                        <span class="fm-text-sm">Operated by:</span>
+                                                        <span class="fm-text-sm">Jet Airways</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-departure-dtl">
+                                                    <span class="fm-text-l">Delhi (DEL)</span>
+                                                    <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                                                    <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                                                    <span class="fm-text-l">Terminal:3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-time-class">
+                                                    <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                                                    <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-arrival-dtl">
+                                                    <span class="fm-text-l">Mumbai (BOM)</span>
+                                                    <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                                                    <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                                                    <span class="fm-text-l">Terminal:2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fm-layover-sperator">
+                                            <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                                        </div>
+                                        <div class="row padding-lr-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-airline-dtl">
+                                                    <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                    <span class="span-50">
+                                                        <span class="fm-text-sm">Delta Air Lines</span>
+                                                        <span class="fm-text-sm">DL - 7533</span>
+                                                        <span class="fm-text-sm">Operated by:</span>
+                                                        <span class="fm-text-sm">Jet Airways</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-departure-dtl">
+                                                    <span class="fm-text-l">Delhi (DEL)</span>
+                                                    <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                                                    <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                                                    <span class="fm-text-l">Terminal:3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-time-class">
+                                                    <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                                                    <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-arrival-dtl">
+                                                    <span class="fm-text-l">Mumbai (BOM)</span>
+                                                    <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                                                    <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                                                    <span class="fm-text-l">Terminal:2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fm-layover-sperator">
+                                            <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-farerule" role="tabpanel" aria-labelledby="nav-fare-tab">
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                                <div class="fm-fare-breakup">
+                                                    <div class="fm-modal-title margin-t-b-10"><strong>Fare Breakup</strong></div>
+                                                    <table class="table table-bordered table-fm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th colspan="2" class="fm-text-l">Base fare</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>2 Adult (2 X 21024.51)</td>
+                                                                <td>INR 21024.51</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2 Children (2 X 21024.51)</td>
+                                                                <td>INR 21024.51</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Taxes & Fees</strong></td>
+                                                                <td>INR 23456.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Total Price</strong></td>
+                                                                <td><strong>INR 23456.00</strong></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7 col-md-7 col-sm-7 col-7">
+                                                <div class="fm-fare-rules">
+                                                    <div class="fm-modal-title margin-t-b-10"><strong>Fare Rules</strong></div>
+                                                    <div class="fm-text-l margin-b-10">Cancellation Fee:</div>
+                                                    <table class="table table-bordered table-fm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Sector</th>
+                                                                <th>Airline Fee</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>DEL - JFK</td>
+                                                                <td>INR 17357.450  for cancellations done before the departure of the first flight.</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p class="fm-sml-text">All charges are prior to scheduled departure of the first flight. Does not include additional no-show charges.</p>
+                                                    <div class="fm-text-l margin-b-10">Date change Fee:</div>
+                                                    <table class="table table-bordered table-fm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Sector</th>
+                                                                <th>Airline Fee</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>DEL - JFK</td>
+                                                                <td>INR 6356.250  + fare difference (if applicable).</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p class="fm-sml-text">*Airlines stop accepting cancellation/change requests 4 - 72 hours before departure of the flight, depending on the airline. The airline fee is indicative based on an automated interpretation of airline fare rules. Provoke.com doesn't guarantee the accuracy of this information. The change/cancellation fee may also vary based on fluctuations in currency conversion rates. For exact cancellation/change fee, please call us at our customer care number.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tab-pane fade" id="nav-baggage-info" role="tabpanel" aria-labelledby="nav-baggage-tab">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <div class="fm-fare-breakup">
+                                                    <div class="fm-modal-title margin-t-b-10"><strong>Check in Baggage:</strong></div>
+                                                    <table class="table table-bordered table-fm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Sector</th>
+                                                                <th>Adults</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>DEL - BOM DL 7553</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>BOM - LHR DL 7526</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>LHR - JFK DL 2</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>JFK - CDG AF 7</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>CDG - DEL AF 226</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <p class="fm-sml-text">The information presented above is as obtained from the airline reservation system .Provoke.com does not guarantee the accuracy of this information. The baggage allowance may vary according to stop-overs, connecting flights and changes in airline rules.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <div>
+                <p class="pAccordian" style="">
+                    Booking Confirmation.<br />
+                    <small>Your booking is Successfull.</small>
+                </p>
+                <a href="" class="btn btn-primary" style="background-color:#0478BE; border: 1px solid #0478BE">Go Search</a>
+                <br />
+                <br />
+            </div>
+            <div class="row">
+
+                <div class="col-lg-9 col-md-12 col-sm-12 col-12">
+
+                    <div style="width:100%; font-family:'Rubik', sans-serif; margin-top:19px; box-shadow:1px 1px 5px #333;">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF" style="border:1px solid #ddd; margin:auto;border-radius:10px;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div style="padding:10px 15px;text-align:left;font-size:14px;font-weight:lighter;color:#333;text-transform:capitalize">
+                                                            Hi {PassangerName},
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div style="padding:10px 15px;text-align:left;font-size:14px;font-weight:lighter;color:#333">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div style="padding:10px 15px;text-align:left;font-size:14px;font-weight:lighter;color:#333">
+                                                            Your {Source} to {Destination} - {Source} flight is booked.
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div style="padding:10px 15px;text-align:left;font-size:14px;font-weight:lighter;color:#333">
+                                                            You would be receiving the ticket copy in a separate email from us after considering all the customer protection steps and we assure we take minimal time to complete those steps to make your experience with us the best one.
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div style="padding:10px 15px 0px 15px;text-align:left;font-size:14px;font-weight:600;color:#111">
+                                                            Travelers
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div style="padding:5px 15px;text-align:left;font-size:14px;font-weight:lighter;color:#333">
+                                                            Passenger 1. {PassangerName} {AdultKid}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#f8f8f8">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="padding:10px 15px;text-align:left;font-size:16px;font-weight:normal;color:#666">
+                                                        GlobalTours #: <span style="color:#111;font-weight:600">{tokenNO}</span>
+                                                    </td>
+                                                    <td style="padding:10px 15px;text-align:right;font-size:16px;font-weight:normal;color:#666">
+                                                        PNR: <span style="color:#111;font-weight:600">{PNR}</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#131a20">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="padding:5px 0px">
+                                                        <div style="float:left;width:30%;padding:1% 0 1% 2%;text-align:left;font-size:16px;font-weight:600;color:#fff">
+                                                            Qatar Airways<span style="color:#fff;font-weight:600"></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:10px 0px 10px 0px">
+                                            <tbody>
+                                                <tr>
+                                                    <th colspan="0" style="font-weight:600;color:#111;border-bottom:1px solid #eee;padding:3px 0px 5px 0px;font-size:16px;padding:7px 0px 7px 10px;text-align:left">
+                                                        {Source} to {Destination} <span style="color:#999;margin:0px 0px 0px 10px;font-size:12px">
+                                                            {TimeDateSource}
+                                                        </span>
+                                                    </th>
+                                                    <th style="font-weight:600;color:#d63933;border-bottom:1px solid #eee;padding:3px 0px 5px 0px;font-size:16px;padding:7px 0px 7px 10px;text-align:left">
+                                                        <span style="float:left"><img width="20" height="20" alt="" src="https://ci6.googleusercontent.com/proxy/5WmRx80KY94StTfvJGQX_hkearAPLCf5Hm80bUJpUMmBlJy5RXo7OJnekK7o156oHJpHKWggfiCtgMkiPbNzldoip3c9Dg5EH15nhXwO6DxCGtzm=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/durationClock.png" class="CToWUd"></span>
+                                                        <span style="float:left;color:#999;padding:4px 0px 0px 5px;font-size:12px">{TimeSpan}</span>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="padding:4px 0px 4px 10px;color:#666;font-weight:600;font-size:12px;border-bottom:1px solid #eee;text-align:left">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="2"><img src="https://ci6.googleusercontent.com/proxy/IJ3vLyaaZxGmp0O8AMpXxo_g0Y8ooWluhzMR-7SthzJnxyz91_U0BQNeXTQTpqhzDD8i-iKSf38Bf19mA3d61SqiUwU1LKjvDuDPLSl0ztDRAWHVp9miaBsrIDTlprNQ_PsX=s0-d-e1-ft#https://images.exploretrip.com/AirlineImages/AirLine/GDS/images/QATARAIRWAYS.gif" class="CToWUd"></td>
+                                                                                    <td>Qatar Airways</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="font-size:12px;color:#999">QR-4092</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2" width="100%">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:16px">JAX 11:14</td>
+                                                                                    <td rowspan="3" style="padding:0px 20px">
+                                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999"><img width="16" height="16" alt="" src="https://ci6.googleusercontent.com/proxy/MDXx25yETUwB4SnrY5s2TiWwim-5CNkmPIUPzBtolgyq1RQuX6NMfD27cx_Nu9h7meiMPjbXwh6OjXsI-eRNqbb0fsiWRTTwoZgV0g=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/clock.png" class="CToWUd"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">2H 16M</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">Economy</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                    <td align="left" style="font-size:16px">13:30 JFK</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:11px;color:#999;line-height:10px">Tue, 23 Oct 2018 11:14</td>
+                                                                                    <td align="left" style="font-size:11px;color:#999;line-height:10px">Tue, 23 Oct 2018 13:30</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                    <td align="left" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td colspan="3" align="center" style="padding:1px 10px;font-size:11px;color:#d63933;background:#f8f8f8">
+                                                                                        Layover : 7H 30M
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="font-size:12px;font-weight:600;color:#111">Operated by JetBlue Airways</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="2"><img src="https://ci6.googleusercontent.com/proxy/IJ3vLyaaZxGmp0O8AMpXxo_g0Y8ooWluhzMR-7SthzJnxyz91_U0BQNeXTQTpqhzDD8i-iKSf38Bf19mA3d61SqiUwU1LKjvDuDPLSl0ztDRAWHVp9miaBsrIDTlprNQ_PsX=s0-d-e1-ft#https://images.exploretrip.com/AirlineImages/AirLine/GDS/images/QATARAIRWAYS.gif" class="CToWUd"></td>
+                                                                                    <td>Qatar Airways</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="font-size:12px;color:#999">QR-702</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2" width="100%">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:16px">JFK 21:00</td>
+                                                                                    <td rowspan="3" style="padding:0px 20px">
+                                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999"><img width="16" height="16" alt="" src="https://ci6.googleusercontent.com/proxy/MDXx25yETUwB4SnrY5s2TiWwim-5CNkmPIUPzBtolgyq1RQuX6NMfD27cx_Nu9h7meiMPjbXwh6OjXsI-eRNqbb0fsiWRTTwoZgV0g=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/clock.png" class="CToWUd"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">12H 25M</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">Economy</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                    <td align="left" style="font-size:16px">16:25 DOH</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:11px;color:#999;line-height:10px">Tue, 23 Oct 2018 21:00</td>
+                                                                                    <td align="left" style="font-size:11px;color:#999;line-height:10px">Wed, 24 Oct 2018 16:25</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                    <td align="left" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td colspan="3" align="center" style="padding:1px 10px;font-size:11px;color:#d63933;background:#f8f8f8">
+                                                                                        Layover : 2H 30M
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="2"><img src="https://ci6.googleusercontent.com/proxy/IJ3vLyaaZxGmp0O8AMpXxo_g0Y8ooWluhzMR-7SthzJnxyz91_U0BQNeXTQTpqhzDD8i-iKSf38Bf19mA3d61SqiUwU1LKjvDuDPLSl0ztDRAWHVp9miaBsrIDTlprNQ_PsX=s0-d-e1-ft#https://images.exploretrip.com/AirlineImages/AirLine/GDS/images/QATARAIRWAYS.gif" class="CToWUd"></td>
+                                                                                    <td>Qatar Airways</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="font-size:12px;color:#999">QR-442</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2" width="100%">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:16px">DOH 18:55</td>
+                                                                                    <td rowspan="3" style="padding:0px 20px">
+                                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999"><img width="16" height="16" alt="" src="https://ci6.googleusercontent.com/proxy/MDXx25yETUwB4SnrY5s2TiWwim-5CNkmPIUPzBtolgyq1RQuX6NMfD27cx_Nu9h7meiMPjbXwh6OjXsI-eRNqbb0fsiWRTTwoZgV0g=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/clock.png" class="CToWUd"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">2H 5M</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">Economy</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                    <td align="left" style="font-size:16px">21:00 BGW</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:11px;color:#999;line-height:10px">Wed, 24 Oct 2018 18:55</td>
+                                                                                    <td align="left" style="font-size:11px;color:#999;line-height:10px">Wed, 24 Oct 2018 21:00</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                    <td align="left" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:10px 0px 10px 0px">
+                                            <tbody>
+                                                <tr>
+                                                    <th colspan="0" style="font-weight:600;color:#111;border-bottom:1px solid #eee;padding:3px 0px 5px 0px;font-size:16px;padding:7px 0px 7px 10px;text-align:left">
+                                                        {Destination} to {Source} <span style="color:#999;margin:0px 0px 0px 10px;font-size:12px">
+                                                            {TimeDateDestination}
+                                                        </span>
+                                                    </th>
+                                                    <th style="font-weight:600;color:#d63933;border-bottom:1px solid #eee;padding:3px 0px 5px 0px;font-size:16px;padding:7px 0px 7px 10px;text-align:left">
+                                                        <span style="float:left"><img width="20" height="20" alt="" src="https://ci6.googleusercontent.com/proxy/5WmRx80KY94StTfvJGQX_hkearAPLCf5Hm80bUJpUMmBlJy5RXo7OJnekK7o156oHJpHKWggfiCtgMkiPbNzldoip3c9Dg5EH15nhXwO6DxCGtzm=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/durationClock.png" class="CToWUd"></span>
+                                                        <span style="float:left;color:#999;padding:4px 0px 0px 5px;font-size:12px">1D 8H 10M</span>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="padding:4px 0px 4px 10px;color:#666;font-weight:600;font-size:12px;border-bottom:1px solid #eee;text-align:left">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="2"><img src="https://ci6.googleusercontent.com/proxy/IJ3vLyaaZxGmp0O8AMpXxo_g0Y8ooWluhzMR-7SthzJnxyz91_U0BQNeXTQTpqhzDD8i-iKSf38Bf19mA3d61SqiUwU1LKjvDuDPLSl0ztDRAWHVp9miaBsrIDTlprNQ_PsX=s0-d-e1-ft#https://images.exploretrip.com/AirlineImages/AirLine/GDS/images/QATARAIRWAYS.gif" class="CToWUd"></td>
+                                                                                    <td>Qatar Airways</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="font-size:12px;color:#999">QR-443</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2" width="100%">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:16px">BGW 22:00</td>
+                                                                                    <td rowspan="3" style="padding:0px 20px">
+                                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999"><img width="16" height="16" alt="" src="https://ci6.googleusercontent.com/proxy/MDXx25yETUwB4SnrY5s2TiWwim-5CNkmPIUPzBtolgyq1RQuX6NMfD27cx_Nu9h7meiMPjbXwh6OjXsI-eRNqbb0fsiWRTTwoZgV0g=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/clock.png" class="CToWUd"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">1H 59M</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">Economy</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                    <td align="left" style="font-size:16px">23:59 DOH</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:11px;color:#999;line-height:10px">Sun, 23 Dec 2018 22:00</td>
+                                                                                    <td align="left" style="font-size:11px;color:#999;line-height:10px">Sun, 23 Dec 2018 23:59</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                    <td align="left" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td colspan="3" align="center" style="padding:1px 10px;font-size:11px;color:#d63933;background:#f8f8f8">
+                                                                                        Layover : 7H 51M
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="2"><img src="https://ci6.googleusercontent.com/proxy/IJ3vLyaaZxGmp0O8AMpXxo_g0Y8ooWluhzMR-7SthzJnxyz91_U0BQNeXTQTpqhzDD8i-iKSf38Bf19mA3d61SqiUwU1LKjvDuDPLSl0ztDRAWHVp9miaBsrIDTlprNQ_PsX=s0-d-e1-ft#https://images.exploretrip.com/AirlineImages/AirLine/GDS/images/QATARAIRWAYS.gif" class="CToWUd"></td>
+                                                                                    <td>Qatar Airways</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="font-size:12px;color:#999">QR-729</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2" width="100%">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:16px">DOH 07:50</td>
+                                                                                    <td rowspan="3" style="padding:0px 20px">
+                                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999"><img width="16" height="16" alt="" src="https://ci6.googleusercontent.com/proxy/MDXx25yETUwB4SnrY5s2TiWwim-5CNkmPIUPzBtolgyq1RQuX6NMfD27cx_Nu9h7meiMPjbXwh6OjXsI-eRNqbb0fsiWRTTwoZgV0g=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/clock.png" class="CToWUd"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">16H 15M</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">Economy</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                    <td align="left" style="font-size:16px">15:05 DFW</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:11px;color:#999;line-height:10px">Mon, 24 Dec 2018 07:50</td>
+                                                                                    <td align="left" style="font-size:11px;color:#999;line-height:10px">Mon, 24 Dec 2018 15:05</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                    <td align="left" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td colspan="3" align="center" style="padding:1px 10px;font-size:11px;color:#d63933;background:#f8f8f8">
+                                                                                        Layover : 3H 45M
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="2"><img src="https://ci4.googleusercontent.com/proxy/Tr2tT1gF_g4NaHXWw6OmI2VHq3JHQxknHjWq-1YyTF9EEDHpMe_yP_L4xC3d_AaJyZLI42HuwWv8sRpkXF9sMWtOykVAjpuro95OXSiVTmMHqJN0MUYatEj3CmFHUlsZH_dlozsPGTM=s0-d-e1-ft#https://images.exploretrip.com/AirlineImages/AirLine/GDS/images/American_Airlines.gif" class="CToWUd"></td>
+                                                                                    <td>American Airlines</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="font-size:12px;color:#999">AA-2449</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <table border="0" cellspacing="0" cellpadding="2" width="100%">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:16px">DFW 18:50</td>
+                                                                                    <td rowspan="3" style="padding:0px 20px">
+                                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999"><img width="16" height="16" alt="" src="https://ci6.googleusercontent.com/proxy/MDXx25yETUwB4SnrY5s2TiWwim-5CNkmPIUPzBtolgyq1RQuX6NMfD27cx_Nu9h7meiMPjbXwh6OjXsI-eRNqbb0fsiWRTTwoZgV0g=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/clock.png" class="CToWUd"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">2H 20M</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="font-size:10px;color:#999;line-height:5px">Economy</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                    <td align="left" style="font-size:16px">22:10 JAX</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:11px;color:#999;line-height:10px">Mon, 24 Dec 2018 18:50</td>
+                                                                                    <td align="left" style="font-size:11px;color:#999;line-height:10px">Mon, 24 Dec 2018 22:10</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="right" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                    <td align="left" style="font-size:10px;color:#999;line-height:5px;font-weight:normal"></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div style="float:right;width:100%;padding:20px 0px;border-radius:10px">
+                                            <div style="float:left;width:100%;padding:10px 0px;margin:0px 0px 10px 0px;background:#131a20;color:#fff">
+                                                <span style="padding:0px 0px 0px 10px">Payment Details</span>
+                                            </div>
+                                            <table cellspacing="0" cellpadding="0" border="0" width="40%" style="float:right">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-size:14px;color:#333;padding:3px">Base Fare</td>
+                                                        <td class="m_2351773492898241644m_-5104695354728632808x_m_1135403028974698045right m_2351773492898241644m_-5104695354728632808x_m_1135403028974698045bold" style="font-size:16px;color:#333;font-weight:bold;padding:3px">
+                                                            {basefair}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="font-size:14px;color:#333;padding:3px">Taxes &amp; Fees</td>
+                                                        <td class="m_2351773492898241644m_-5104695354728632808x_m_1135403028974698045right m_2351773492898241644m_-5104695354728632808x_m_1135403028974698045bold" style="font-size:16px;color:#333;font-weight:bold;padding:3px">
+                                                            {taxfee}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="font-size:14px;color:#333;padding:3px">Total Amount</td>
+                                                        <td class="m_2351773492898241644m_-5104695354728632808x_m_1135403028974698045right m_2351773492898241644m_-5104695354728632808x_m_1135403028974698045bold" style="font-size:18px;color:#d63933;font-weight:bold;padding:3px;color:#d63933;font-size:17px">
+                                                            {totalamount}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div style="float:left;width:100%;padding:10px 0px;margin:30px 0px 0px 0px;background:#131a20;color:#fff">
+                                            <span style="padding:0px 0px 0px 10px">Trip Insurance</span>
+                                        </div>
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="10" style="border:1px solid #ccc">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:40%;border-right:1px solid #eee;text-align:center"><img width="90" alt="" src="https://ci6.googleusercontent.com/proxy/u4wj4LG5X4uuVW5z7_OxJSnndIqj-oL9aEhSW2DlH-kO4k0QDUAWeAfeDRSPTlhzDfKmvDFBtyZUe9Nr=s0-d-e1-ft#http://www.exploretrip.com/images/TG2.png" class="CToWUd"></td>
+                                                    <td style="width:60%;text-align:center;font-size:22px;font-weight:lighter;text-transform:uppercase;color:#d63933">
+                                                        Travel More... <span style="font-weight:bold">Worry Less</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="background:#f8f8f8;border-right:1px solid #eee;vertical-align:top;text-align:left;color:#0073ae;font-size:14px;text-transform:uppercase;font-weight:bold">
+                                                        Cover your travel with Travel Guard Insurance
+                                                    </td>
+                                                    <td style="background:#f8f8f8;vertical-align:top;text-align:left;color:#0073ae;font-size:14px;text-transform:uppercase;font-weight:bold">
+                                                        Coverage Includes
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="background:#f8f8f8;border-right:1px solid #eee;vertical-align:top;font-size:12px;color:#666">
+                                                        A Travel Guard travel insurance plan can help protect your vacation investment, offset expenses from travel mishaps and provide you with emergency travel assistance.
+                                                    </td>
+                                                    <td style="background:#f8f8f8;vertical-align:top;font-size:13px;color:#666">
+                                                        <table width="100%" border="0" cellspacing="5" cellpadding="0" style="float:left">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Trip Cancellation <img width="16" height="16" alt="" src="https://ci3.googleusercontent.com/proxy/MaaLged17z5XiQR5QqB_osvPNX5xo_7d91VLTlUD04xMY1wEo-FBXBVlzITqBF_fCRLzQPxJFXxJ4eV1tuKc=s0-d-e1-ft#http://www.exploretrip.com/images/tgTick.png" class="CToWUd"></td>
+                                                                    <td>Trip Delay <img width="16" height="16" alt="" src="https://ci3.googleusercontent.com/proxy/MaaLged17z5XiQR5QqB_osvPNX5xo_7d91VLTlUD04xMY1wEo-FBXBVlzITqBF_fCRLzQPxJFXxJ4eV1tuKc=s0-d-e1-ft#http://www.exploretrip.com/images/tgTick.png" class="CToWUd"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Trip Interruption <img width="16" height="16" alt="" src="https://ci3.googleusercontent.com/proxy/MaaLged17z5XiQR5QqB_osvPNX5xo_7d91VLTlUD04xMY1wEo-FBXBVlzITqBF_fCRLzQPxJFXxJ4eV1tuKc=s0-d-e1-ft#http://www.exploretrip.com/images/tgTick.png" class="CToWUd"></td>
+                                                                    <td>Baggage Delay <img width="16" height="16" alt="" src="https://ci3.googleusercontent.com/proxy/MaaLged17z5XiQR5QqB_osvPNX5xo_7d91VLTlUD04xMY1wEo-FBXBVlzITqBF_fCRLzQPxJFXxJ4eV1tuKc=s0-d-e1-ft#http://www.exploretrip.com/images/tgTick.png" class="CToWUd"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="background:#f8f8f8;border-right:1px solid #eee;vertical-align:top;font-size:11px;color:#999">
+                                                        To learn more about all of the benefits of purchasing a Travel Guard travel insurance plan.
+
+                                                    </td>
+                                                    <td style="background:#f8f8f8;vertical-align:top;font-size:11px;color:#999">
+                                                        Coverage is offered by Travel Guard Group, Inc, and limitations will apply;
+                                                        <a href="http://email.exploretrip.com/c/eJwdjcsOwiAUBb-mLAlQngsW1sb_4HFtSak0iNbPF01mc2ZxJlrHfVAUJcsI1cQwwRjXzGCKr7O4TMZwSgg3wswDJ_A5cqnQajpwKDtarQ9S6qi44syPUgZiFDEAd6EFVzKOKNu1tWMYLwO7dc7zxK26N-Tl5Wr8vXQb0zNkl3aofaBq9wLeVbfB2qPL7lL-55qdStnSY_kCg9430Q" style="color:#00a4e4;text-decoration:underline" id="m_2351773492898241644m_-5104695354728632808LPlnk418724" class="m_2351773492898241644m_-5104695354728632808OWAAutoLink" rel="noreferrer" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://email.exploretrip.com/c/eJwdjcsOwiAUBb-mLAlQngsW1sb_4HFtSak0iNbPF01mc2ZxJlrHfVAUJcsI1cQwwRjXzGCKr7O4TMZwSgg3wswDJ_A5cqnQajpwKDtarQ9S6qi44syPUgZiFDEAd6EFVzKOKNu1tWMYLwO7dc7zxK26N-Tl5Wr8vXQb0zNkl3aofaBq9wLeVbfB2qPL7lL-55qdStnSY_kCg9430Q&amp;source=gmail&amp;ust=1553610885684000&amp;usg=AFQjCNGRcltvYc2H_ZqruH6VhusNsINzRQ">
+                                                            click here
+                                                        </a> for full disclaimer.
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="background:#fff;font-size:14px;color:#999">
+                                                        <a href="" style="float:right;background:#0478BE;border-radius:2px; padding:5px 10px;color:#fff" id="m_2351773492898241644m_-5104695354728632808LPlnk361311" class="m_2351773492898241644m_-5104695354728632808OWAAutoLink" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                                            Purchase
+                                                            Insurance
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div style="padding:40px 15px 0px 15px;text-align:center;font-size:14px;font-weight:600;color:#333">
+                                                            GlobalTours Customer Support 24/7
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div style="padding:0px 15px 15px 15px;text-align:left;font-size:14px;font-weight:lighter;color:#333">
+                                                            <img width="18" height="18" alt="" style="float:left" src="https://ci4.googleusercontent.com/proxy/0i3j7bvV58xyCdf_bFfkvcCrVCu8gf2z_Z5lPOLOHRJkdEPXSERSGyPk5Q0Rgx0oDKKDJFhGe9tO-oo5zqEVyLKUj5xbG7XNdeRewA=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/phone.png" class="CToWUd">
+                                                            <span style="float:left;padding:1px 0px 0px 10px">Toll Free : 800-881-9230</span>
+
+                                                        </div><br />
+                                                        <div style="padding:0px 15px 15px 15px;text-align:left;font-size:14px;font-weight:lighter;color:#333">
+
+                                                            <img width="18" height="18" alt="" style="float:left" src="https://ci4.googleusercontent.com/proxy/0i3j7bvV58xyCdf_bFfkvcCrVCu8gf2z_Z5lPOLOHRJkdEPXSERSGyPk5Q0Rgx0oDKKDJFhGe9tO-oo5zqEVyLKUj5xbG7XNdeRewA=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/phone.png" class="CToWUd">
+                                                            <span style="float:left;padding:1px 0px 0px 10px">In NYC : 212-986-7400</span>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="float:right;padding:8px 15px 15px 15px;text-align:right;font-size:14px;font-weight:lighter;color:#333">
+                                                            <img width="18" height="18" alt="" style="float:left" src="https://ci6.googleusercontent.com/proxy/T6kVk2-L3ViKuSTNlreApFXugbIGAFB4mCvzdZ9zZX2zukRKRtyBwYrD1h-bxjfD931GOH9DJgfB4PSJ-uQwRzg0t_Qzv0BTvm8ybw=s0-d-e1-ft#https://images.trippro.com/TravelAgentImages/ET/email.png" class="CToWUd">
+                                                            <span style="float:left;padding:0px 0px 0px 10px"><a href="mailto:support@globaltoursinc.com" id="m_2351773492898241644m_-5104695354728632808LPlnk855667" class="m_2351773492898241644m_-5104695354728632808OWAAutoLink" rel="noreferrer" target="_blank">support@globaltoursinc.com</a></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+                <!-- Start of Sidebar-->
+                <div class="col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="right-sidebar">
+                        <div class="right-sidebar-box">
+                            <div class="right-sidebar-box-title">Discounts for you</div>
+                            <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                            <span class="right-sidebar-box-text pull-left">
+                                FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                                <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                            </span>
+                        </div>
+                        <div class="right-sidebar-box">
+                            <div class="right-sidebar-box-title">Discounts for you</div>
+                            <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                            <span class="right-sidebar-box-text pull-left">
+                                FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                                <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                            </span>
+                        </div>
+                        <div class="right-sidebar-box">
+                            <div class="right-sidebar-box-title">Discounts for you</div>
+                            <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                            <span class="right-sidebar-box-text pull-left">
+                                FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                                <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                            </span>
+                        </div>
+                        <div class="right-sidebar-box">
+                            <div class="right-sidebar-box-title">Discounts for you</div>
+                            <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                            <span class="right-sidebar-box-text pull-left">
+                                FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                                <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of Sidebar-->
+            </div>
+            <!-- end of row-->
+        </div>
+        <!-- end of container-fluid -->
+
+    </section>
+    <div style="padding-top:20px;"></div>
+    <!-- End of Checkout Page Body -->
+    <iframe src="footer.html" style="min-height:180px; width:100%;    background-color: #0478BE;" frameborder="0" scrolling="no" class="pd-iframe-header-height"></iframe>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script src="js/slimscroll.js"></script>
+    <script type="text/javascript">
+        $(document).on('load', function () {
+            $(".loader").addClass("unload");
+            setTimeout(lodertimeout, 3000);
+        });
+        function lodertimeout() {
+        }
+
+    </script>
+
+    <!-- Vertical tabs for payment-->
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+    <!-- End of vertical tab for payment-->
+
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 50) {
+                $(".search-form-strip").addClass("form-fix");
+            } else {
+                $(".search-form-strip").removeClass("form-fix");
+            }
+        });
+    </script>
+    <script>
+
+        var acc = document.getElementsByClassName("panel-btn-acc");
+        var i;
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+
+
+        $('#addtionalReq').click(function () {
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    </script>
+
+    <!--Validation Script-->
+
+    <script>
+        //type="text/javascript"
+        $('#bookings-info').click(function () {
+            $('.bookings-logs').toggle();
+        });
+
+        $('#guestcontinue').click(function () {
+            var email = $('#custemail').val();
+            $(".error").remove();
+            if (document.getElementById("checkbox").checked == true) {
+                if (email.length < 1) {
+                    $('#custemail').after('<span class="error" style="color:red;">This field is required</span>');
+                } else {
+                    var regEx = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/ // /^[A-Z0-9][A-Z0-9._%+-]{0,63}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/;
+                    var validEmail = regEx.test(email);
+                    if (!validEmail) {
+                        $('#custemail').after('<span class="error" style="color:red;">Enter a valid email</span>');
+                    }
+                    else {
+                        $('section').find('.accordian').addClass('accordian-active')
+                    }
+                }
+            }
+            else {
+                alert("Please agree to terms and conditions");
+            }
+        });
+
+    </script>
+    <!--end of validation script-->
+
+
+
+</body>
+</html>

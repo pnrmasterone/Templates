@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700|Rubik:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slimscroll.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
+    <link rel="stylesheet" href="css/style-default.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/ngProgress.css" rel="stylesheet" />
+    <link href="css/style-nz.css" rel="stylesheet" />
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/rzslider.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+    <link href="search.css" rel="stylesheet" />
+    <link href="book.css" rel="stylesheet" />
+    <script src="js/xml2json.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/ngprogress.js"></script>
+    <script src="js/ngprogress.min.js"></script>
+    <script src="js/angucomplete-alt.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="2.2.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.2.0.js"></script>
+    <script src="js/slider-custom.js"></script>
+   <style>
+        .loader-width {
+            background:#ccc;
+            padding-top:50px;
+        }
+        /*loader*/
+        .spin-loader {
+            margin: auto;
+            width: 550px;
+            height: 550px;
+            border-radius: 50%;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 5s linear infinite;
+        }
+
+       .planefa {
+           font-size: 50px;
+           padding: 62px;
+       }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+       .subscribe-text {
+           width: 100%;
+       }
+        .data-inside {
+            position: relative;
+            bottom: 350px;
+            margin: auto;
+            width: 400px;
+            left: 10px;
+            text-align:center;
+        }
+
+        /*loader*/
+    </style>
+</head>
+<body>
+    <div class="loader-width">
+        <div class="spin-loader">
+            <i class="fa fa-plane planefa"></i>
+
+        </div>
+        <div class="data-inside">
+            <div class="row">
+                <div class="col-5 col-md-5 col-lg-5">
+                    <p>From  </p>
+                    <p>Hyderabad</p>
+                </div>
+                <div class="col-2 col-md-2 col-lg-2">
+                    <i class="fa fa-plane" style="padding-top:25px;"></i>
+                </div>
+                <div class="col-5 col-md-5 col-lg-5">
+                    <p>  To </p>
+                    <p>Toronto</p>
+                </div>
+                <p class="col-lg-12 col-12" > May 25 - Jun 28</p>
+                <div class="subscribe-text">
+                    <!--<p style="font-size:18px; font-weight:600;">Cheap AirFare Alerts</p>
+                    <p style="">Be the first one to know were the fare Drops.</p>-->
+                    <input type="text" placeholder="Enter Your Email" class="form-control" name="" /><button style="position: relative; bottom: 38px; float: right; right:-15px;" class="btn btn-primary">FOR BETTER DEALS</button>
+                </div>
+
+            </div>
+            </div>
+    </div>
+</body>
+</html>

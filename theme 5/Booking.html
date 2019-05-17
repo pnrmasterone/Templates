@@ -1,0 +1,1645 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flight</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slimscroll.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
+    <link rel="stylesheet" href="css/style-default.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/ngProgress.css" rel="stylesheet" />
+    <link href="css/style-nz.css" rel="stylesheet" />
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/rzslider.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script> 
+    <link href="search.css" rel="stylesheet" />
+    <link href="book.css" rel="stylesheet" />
+    <script src="js/xml2json.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/ngprogress.js"></script>
+    <script src="js/ngprogress.min.js"></script>
+    <script src="js/angucomplete-alt.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="2.2.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.2.0.js"></script>
+    <script src="js/slider-custom.js"></script>
+  </head>
+  <body id="pd-theme" ng-app="MyApp">
+    <!--<section class="popup-modals">
+      <div class="modal fade" id="flight-detail-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="fa fa-close"></i>
+              </button>
+              <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                  <div class="fm-modal-title">Flight details</div>
+                  <div class="fm-head-fromto">
+                    Delhi <i class="fa fa-angle-right"></i> New York <span class="fm-head-fromto-date">(11 Oct 2018)</span>
+                  </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                      <div class="fm-total-price"><span class="fm-modal-title-sm">Total Price : </span>INR 64858.09</div>
+                      <div class="fm-modal-title-sm">Non Refundable</div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                      <a href="#" class="btn btn-search-form">Book Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                  <nav>
+                    <div class="nav nav-tabs fm-nav-tabs" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link active" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="true">Itinerary</a>
+                      <a class="nav-item nav-link" id="nav-fare-tab" data-toggle="tab" href="#nav-farerule" role="tab" aria-controls="nav-farerule" aria-selected="false">Fare Rules</a>
+                      <a class="nav-item nav-link" id="nav-baggage-tab" data-toggle="tab" href="#nav-baggage-info" role="tab" aria-controls="nav-baggage-info" aria-selected="false">Baggage Information</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-itinerary" role="tabpanel" aria-labelledby="nav-itinerary-tab">
+                      <div class="row fm-heading-bar margin-t-b-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-modal-title"><strong>Airline Detail</strong></div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div class="fm-modal-title"><strong>Departure</strong></div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-modal-title"><strong>Time & Class</strong></div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div class="fm-modal-title"><strong>Arrival</strong></div>
+                        </div>
+                      </div>
+                      <div class="row padding-lr-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-airline-dtl">
+                            <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                            <span class="span-50">
+                            <span class="fm-text-sm">Delta Air Lines</span>
+                            <span class="fm-text-sm">DL - 7533</span>
+                            <span class="fm-text-sm">Operated by:</span>
+                            <span class="fm-text-sm">Jet Airways</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-departure-dtl">
+                            <span class="fm-text-l">Delhi (DEL)</span>
+                            <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                            <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                            <span class="fm-text-l">Terminal:3</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-time-class">
+                            <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                            <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-arrival-dtl">
+                            <span class="fm-text-l">Mumbai (BOM)</span>
+                            <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                            <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                            <span class="fm-text-l">Terminal:2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fm-layover-sperator">
+                        <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                      </div>
+                      <div class="row padding-lr-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-airline-dtl">
+                            <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                            <span class="span-50">
+                            <span class="fm-text-sm">Delta Air Lines</span>
+                            <span class="fm-text-sm">DL - 7533</span>
+                            <span class="fm-text-sm">Operated by:</span>
+                            <span class="fm-text-sm">Jet Airways</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-departure-dtl">
+                            <span class="fm-text-l">Delhi (DEL)</span>
+                            <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                            <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                            <span class="fm-text-l">Terminal:3</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-time-class">
+                            <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                            <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-arrival-dtl">
+                            <span class="fm-text-l">Mumbai (BOM)</span>
+                            <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                            <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                            <span class="fm-text-l">Terminal:2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fm-layover-sperator">
+                        <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                      </div>
+                      <div class="row padding-lr-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-airline-dtl">
+                            <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                            <span class="span-50">
+                            <span class="fm-text-sm">Delta Air Lines</span>
+                            <span class="fm-text-sm">DL - 7533</span>
+                            <span class="fm-text-sm">Operated by:</span>
+                            <span class="fm-text-sm">Jet Airways</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-departure-dtl">
+                            <span class="fm-text-l">Delhi (DEL)</span>
+                            <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                            <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                            <span class="fm-text-l">Terminal:3</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-time-class">
+                            <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                            <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-arrival-dtl">
+                            <span class="fm-text-l">Mumbai (BOM)</span>
+                            <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                            <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                            <span class="fm-text-l">Terminal:2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fm-layover-sperator">
+                        <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                      </div>
+                      <div class="row padding-lr-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-airline-dtl">
+                            <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                            <span class="span-50">
+                            <span class="fm-text-sm">Delta Air Lines</span>
+                            <span class="fm-text-sm">DL - 7533</span>
+                            <span class="fm-text-sm">Operated by:</span>
+                            <span class="fm-text-sm">Jet Airways</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-departure-dtl">
+                            <span class="fm-text-l">Delhi (DEL)</span>
+                            <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                            <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                            <span class="fm-text-l">Terminal:3</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-time-class">
+                            <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                            <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-arrival-dtl">
+                            <span class="fm-text-l">Mumbai (BOM)</span>
+                            <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                            <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                            <span class="fm-text-l">Terminal:2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fm-layover-sperator">
+                        <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-farerule" role="tabpanel" aria-labelledby="nav-fare-tab">
+                      <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                          <div class="fm-fare-breakup">
+                            <div class="fm-modal-title margin-t-b-10"><strong>Fare Breakup</strong></div>
+                            <table class="table table-bordered table-fm">
+                              <thead>
+                                <tr>
+                                  <th colspan="2" class="fm-text-l">Base fare</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>2 Adult (2 X 21024.51)</td>
+                                  <td>INR 21024.51</td>
+                                </tr>
+                                <tr>
+                                  <td>2 Children (2 X 21024.51)</td>
+                                  <td>INR 21024.51</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Taxes & Fees</strong></td>
+                                  <td>INR 23456.00</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Total Price</strong></td>
+                                  <td><strong>INR 23456.00</strong></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-7">
+                          <div class="fm-fare-rules">
+                            <div class="fm-modal-title margin-t-b-10"><strong>Fare Rules</strong></div>
+                            <div class="fm-text-l margin-b-10">Cancellation Fee:</div>
+                            <table class="table table-bordered table-fm">
+                              <thead>
+                                <tr>
+                                  <th>Sector</th>
+                                  <th>Airline Fee</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>DEL - JFK</td>
+                                  <td>INR 17357.450  for cancellations done before the departure of the first flight.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <p class="fm-sml-text">All charges are prior to scheduled departure of the first flight. Does not include additional no-show charges.</p>
+                            <div class="fm-text-l margin-b-10">Date change Fee:</div>
+                            <table class="table table-bordered table-fm">
+                              <thead>
+                                <tr>
+                                  <th>Sector</th>
+                                  <th>Airline Fee</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>DEL - JFK</td>
+                                  <td>INR 6356.250  + fare difference (if applicable).</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <p class="fm-sml-text">*Airlines stop accepting cancellation/change requests 4 - 72 hours before departure of the flight, depending on the airline. The airline fee is indicative based on an automated interpretation of airline fare rules. Rehlat.com doesn't guarantee the accuracy of this information. The change/cancellation fee may also vary based on fluctuations in currency conversion rates. For exact cancellation/change fee, please call us at our customer care number.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-baggage-info" role="tabpanel" aria-labelledby="nav-baggage-tab">
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div class="fm-fare-breakup">
+                            <div class="fm-modal-title margin-t-b-10"><strong>Check in Baggage:</strong></div>
+                            <table class="table table-bordered table-fm">
+                              <thead>
+                                <tr>
+                                  <th>Sector</th>
+                                  <th>Adults</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>DEL - BOM DL 7553</td>
+                                  <td>2PC</td>
+                                </tr>
+                                <tr>
+                                  <td>BOM - LHR DL 7526</td>
+                                  <td>2PC</td>
+                                </tr>
+                                <tr>
+                                  <td>LHR - JFK DL 2</td>
+                                  <td>2PC</td>
+                                </tr>
+                                <tr>
+                                  <td>JFK - CDG AF 7</td>
+                                  <td>2PC</td>
+                                </tr>
+                                <tr>
+                                  <td>CDG - DEL AF 226</td>
+                                  <td>2PC</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                          <p class="fm-sml-text">The information presented above is as obtained from the airline reservation system .Rehlat.com does not guarantee the accuracy of this information. The baggage allowance may vary according to stop-overs, connecting flights and changes in airline rules.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>-->
+    <section>
+      <div class="container">
+        <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+          <ul class="nav nav-tabs" id="Booking-dtl-tabs" role="tablist">
+            <li class="nav-item Booking-dtl-tab-item">
+              <a class="nav-link Booking-dtl-nav-link active" id="bookings-summary" data-toggle="tab" href="#booking-summary" role="tab" aria-controls="bookings-summary" aria-selected="true">Review</a>
+            </li>
+            <li class="nav-item Booking-dtl-tab-item">
+              <a class="nav-link Booking-dtl-nav-link" id="travelers-summary" data-toggle="tab" href="#traveler-summary" role="tab" aria-controls="travelers-summary" aria-selected="false">Travellers</a>
+            </li>
+            <li class="nav-item Booking-dtl-tab-item">
+              <a class="nav-link Booking-dtl-nav-link" id="payments-summary" data-toggle="tab" href="#payment-summary" role="tab" aria-controls="payments-summary" aria-selected="false">Payments</a>
+            </li>
+          </ul>
+          <div class="tab-content Booking-dtl-tab-content" id="myTabContent">
+            <div class="tab-pane Booking-dtl-tab-pane fade show active" id="booking-summary" role="tabpanel" aria-labelledby="bookings-summary">
+              <section class="booking-dtl-section">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="booking-dtl-info">
+                      <div class="booking-dtl-info-header">
+                        <div class="row">
+                          <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                            <div class="onwrd-rtrn">ONWARD FLIGHT</div>
+                            <div class="fm-head-fromto">
+                              <strong>New York-LaGuardia Apt to Chicago,</strong> Fri, 01 Mar'19
+                            </div>
+                          </div>
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                            <div class="booking-dtl-info-header-time">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i> 2h 45m
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="booking-dtl-info-single-itnry">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                            <div class="fm-airline-dtl">
+                              <span class="pull-left"><img src="images/us-air.png" class="fm-air-img"></span>
+                              <span class="pull-left">
+                              <span class="fm-text-sm">Delta Air Lines</span>
+                              <span class="fm-text-sm text-secondary">DL - 7533</span>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                            <div  class="fm-departure-dtl">
+                              <span class="fm-departure-dtl-code"><strong>DEL</strong> 11:15, <span>01 Mar</span></span>
+                              <span class="fm-departure-dtl-place">Delhi Indira Gandhi Intl </span>
+                              <span class="fm-departure-dtl-trmnl">Terminal:3</span>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                            <div  class="fm-departure-dtl">
+                              <span class="fm-departure-dtl-code"><strong>DEL</strong> 11:15, <span>01 Mar</span></span>
+                              <span class="fm-departure-dtl-place">Delhi Indira Gandhi Intl </span>
+                              <span class="fm-departure-dtl-trmnl">Terminal:3</span>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                            <div class="fm-time-class">
+                              <span class="fm-departure-dtl-code"><strong>02h 25m</strong></span>
+                              <span class="fm-time-class-seat-bag"><i class="fa fa-plane" aria-hidden="true"></i> Economy Class</span>
+                              <span class="fm-time-class-seat-bag"><i class="fa fa-suitcase" aria-hidden="true"></i> Info not available</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="booking-dtl-info-header">
+                        <div class="row">
+                          <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                            <div class="onwrd-rtrn">ONWARD FLIGHT</div>
+                            <div class="fm-head-fromto">
+                              <strong>New York-LaGuardia Apt to Chicago,</strong> Fri, 01 Mar'19
+                            </div>
+                          </div>
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                            <div class="booking-dtl-info-header-time">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i> 2h 45m
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="booking-dtl-info-single-itnry">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                            <div class="fm-airline-dtl">
+                              <span class="pull-left"><img src="images/us-air.png" class="fm-air-img"></span>
+                              <span class="pull-left">
+                              <span class="fm-text-sm">Delta Air Lines</span>
+                              <span class="fm-text-sm text-secondary">DL - 7533</span>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                            <div  class="fm-departure-dtl">
+                              <span class="fm-departure-dtl-code"><strong>DEL</strong> 11:15, <span>01 Mar</span></span>
+                              <span class="fm-departure-dtl-place">Delhi Indira Gandhi Intl </span>
+                              <span class="fm-departure-dtl-trmnl">Terminal:3</span>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                            <div  class="fm-departure-dtl">
+                              <span class="fm-departure-dtl-code"><strong>DEL</strong> 11:15, <span>01 Mar</span></span>
+                              <span class="fm-departure-dtl-place">Delhi Indira Gandhi Intl </span>
+                              <span class="fm-departure-dtl-trmnl">Terminal:3</span>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                            <div class="fm-time-class">
+                              <span class="fm-departure-dtl-code"><strong>02h 25m</strong></span>
+                              <span class="fm-time-class-seat-bag"><i class="fa fa-plane" aria-hidden="true"></i> Economy Class</span>
+                              <span class="fm-time-class-seat-bag"><i class="fa fa-suitcase" aria-hidden="true"></i> Info not available</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fare-rule-popus">
+                        <div class="modal fade modal-fare_rules" id="fare_rule_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Fare Rules</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="f-rule-table">
+                                  <div class="card">
+                                    <div class="card-header" id="ruleOne">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#rulesOne" aria-expanded="true" aria-controls="rulesOne">
+                                        <span class="pull-left f-rule-table-title">Fare rules<span> DEL-JFK</span> All charges are per passenger</span> <span class="clps-btn-dtl pull-right">Show Details</span>
+                                        </button>
+                                      </h5>
+                                    </div>
+                                    <div id="rulesOne" class="collapse" aria-labelledby="ruleOne" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <table class="table table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th>TIME</th>
+                                              <th>CANCELLATION FEES</th>
+                                              <th>DATE CHANGE FEES</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td>24 hrs - 365 days</td>
+                                              <td>Adult : Rs 16,065* + Rs 649**</td>
+                                              <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card">
+                                    <div class="card-header" id="ruleTwo">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed d-block" data-toggle="collapse" data-target="#rulesTwo" aria-expanded="false" aria-controls="rulesTwo">
+                                        <span class="f-rule-table-title pull-left">Fare rules<span> JFK-DEL</span> All charges are per passenger</span>
+                                        <span class="clps-btn-dtl2 pull-right">Show Details</span>
+                                        </button>
+                                      </h5>
+                                    </div>
+                                    <div id="rulesTwo" class="collapse" aria-labelledby="ruleTwo" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <table class="table table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th>TIME</th>
+                                              <th>CANCELLATION FEES</th>
+                                              <th>DATE CHANGE FEES</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td>24 hrs - 365 days</td>
+                                              <td>Adult : Rs 16,065* + Rs 649**</td>
+                                              <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <p class="f-rule-table-note">*Airline Fee. | **MakeMyTrip Cancellation Service Fee.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal fade modal-fare_rules" id="fare_rule_baggage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Baggage</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <span class="bagagge-title-pp">Check-in Baggage</span>
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>Sector/Flight</th>
+                                      <th>Adult</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>LGA-ORD  <br> DL3722</td>
+                                      <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td>ORD-LGA   <br> DL1477</td>
+                                      <td>0 Pc</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <span class="bagagge-title-pp">Cabin Baggage</span>
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>Sector/Flight</th>
+                                      <th>Adult</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>LGA-ORD  <br> DL3722</td>
+                                      <td>7 Kgs</td>
+                                    </tr>
+                                    <tr>
+                                      <td>ORD-LGA   <br> DL1477</td>
+                                      <td>7 Kgs</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div class="modal-footer">
+                                  <p>The information presented above is as obtained from the airline reservation system. MakeMyTrip does not guarantee the accuracy of this information. The baggage allowance may vary according to stop-overs, connecting flights and changes in airline rules</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal fade modal-fare_rules" id="fare_rule_visa-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                ...
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="rule-bag-visa">
+                        <div class="row">
+                          <div class="col-lg-2 col-md-2 col-sm-2 col-12 padding-righ-none">
+                            <div><strong>Flight Information</strong></div>
+                          </div>
+                          <div class="col-lg-10 col-md-10 col-sm-10 col-12">
+                            <ul class="rule-menu">
+                              <li><a href="#" data-toggle="modal" data-target="#fare_rule_modal"><i class="fa fa-inr" aria-hidden="true"></i>Fare rules</a></li>
+                              <li><a href="#" data-toggle="modal" data-target="#fare_rule_baggage"><i class="fa fa-suitcase" aria-hidden="true"></i>Baggage</a></li>
+                              <li><a href="#" data-toggle="modal" data-target="#fare_rule_visa-info"><i class="fa fa-book" aria-hidden="true"></i>Visa info</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="book-email-box">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                            <div class="book-email-box-title">
+                              Contact Information
+                            </div>
+                            <div class="ticket-sent">
+                              Your ticket will be sent to this email id
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-6 booking-dtl-fmail">
+                            <input type="Email" name="" placeholder="Enter Your Email">
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-12"></div>
+                        </div>
+                      </div>
+                      <div class="agree-term-box">
+                        <div class="row">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div>
+                              <p class="secure-trip-p">
+                                <label class="ccontainer dropdown-form-label">
+                                <input type="checkbox" name="">I agree with the<a href="#"> Rules and Restrictions</a>,the<a href="#"> Privacy Policy<? , the Visa Rules and the</a> <a href="#">T&Cs</a> of provoke aero. provoke aero shall not be liable for any claims related to non-travel due to lack of destination/transit visa/other mandatory travel/visa document(s).
+                                <span class="ccheckmark"></span>
+                                </label>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="booking-single-box">
+                        <div class="row">
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="booking-dtl-fprice">Amount payable: <strong>INR 66500</strong></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="booking-single-box">
+                        <div class="row">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                            <button type="button" class="btn btn-search-form">Continue as Guest</button> <span class="seprator-or">or</span> <button type="button" class="btn  btn-secondary btn-search-form">Login & Continue</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="tab-pane Booking-dtl-tab-pane fade" id="traveler-summary" role="tabpanel" aria-labelledby="travelers-summary">
+              <div class="roundtrip-jrny-bar" role="button" data-toggle="collapse" data-parent="#accordion-booking" href="#collapsebooking" aria-expanded="true" aria-controls="collapsebooking">
+                <div class="booking-dtl-info-header">
+                  <div class="row">
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                      <div class="onwrd-rtrn">ONWARD FLIGHT</div>
+                      <div class="fm-head-fromto">
+                        <strong>New York-LaGuardia Apt to Chicago,</strong> Fri, 01 Mar'19
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                      <i class="fa angle-icon fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="booking-dtl-info collapse in" id="collapsebooking" class="" role="tabpanel" aria-labelledby="headingOne">
+                <div class="booking-dtl-info-header">
+                  <div class="row">
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                      <div class="onwrd-rtrn">ONWARD FLIGHT</div>
+                      <div class="fm-head-fromto">
+                        <strong>New York-LaGuardia Apt to Chicago,</strong> Fri, 01 Mar'19
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                      <div class="booking-dtl-info-header-time">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i> 2h 45m
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="booking-dtl-info-single-itnry">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                      <div class="fm-airline-dtl">
+                        <span class="pull-left"><img src="images/us-air.png" class="fm-air-img"></span>
+                        <span class="pull-left">
+                        <span class="fm-text-sm">Delta Air Lines</span>
+                        <span class="fm-text-sm text-secondary">DL - 7533</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                      <div  class="fm-departure-dtl">
+                        <span class="fm-departure-dtl-code"><strong>DEL</strong> 11:15, <span>01 Mar</span></span>
+                        <span class="fm-departure-dtl-place">Delhi Indira Gandhi Intl </span>
+                        <span class="fm-departure-dtl-trmnl">Terminal:3</span>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                      <div  class="fm-departure-dtl">
+                        <span class="fm-departure-dtl-code"><strong>DEL</strong> 11:15, <span>01 Mar</span></span>
+                        <span class="fm-departure-dtl-place">Delhi Indira Gandhi Intl </span>
+                        <span class="fm-departure-dtl-trmnl">Terminal:3</span>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                      <div class="fm-time-class">
+                        <span class="fm-departure-dtl-code"><strong>02h 25m</strong></span>
+                        <span class="fm-time-class-seat-bag"><i class="fa fa-plane" aria-hidden="true"></i> Economy Class</span>
+                        <span class="fm-time-class-seat-bag"><i class="fa fa-suitcase" aria-hidden="true"></i> Info not available</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="booking-dtl-info-header">
+                  <div class="row">
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                      <div class="onwrd-rtrn">ONWARD FLIGHT</div>
+                      <div class="fm-head-fromto">
+                        <strong>New York-LaGuardia Apt to Chicago,</strong> Fri, 01 Mar'19
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                      <div class="booking-dtl-info-header-time">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i> 2h 45m
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="booking-dtl-info-single-itnry">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                      <div class="fm-airline-dtl">
+                        <span class="pull-left"><img src="images/us-air.png" class="fm-air-img"></span>
+                        <span class="pull-left">
+                        <span class="fm-text-sm">Delta Air Lines</span>
+                        <span class="fm-text-sm text-secondary">DL - 7533</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                      <div  class="fm-departure-dtl">
+                        <span class="fm-departure-dtl-code"><strong>DEL</strong> 11:15, <span>01 Mar</span></span>
+                        <span class="fm-departure-dtl-place">Delhi Indira Gandhi Intl </span>
+                        <span class="fm-departure-dtl-trmnl">Terminal:3</span>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 padding-righ-none">
+                      <div  class="fm-departure-dtl">
+                        <span class="fm-departure-dtl-code"><strong>DEL</strong> 11:15, <span>01 Mar</span></span>
+                        <span class="fm-departure-dtl-place">Delhi Indira Gandhi Intl </span>
+                        <span class="fm-departure-dtl-trmnl">Terminal:3</span>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                      <div class="fm-time-class">
+                        <span class="fm-departure-dtl-code"><strong>02h 25m</strong></span>
+                        <span class="fm-time-class-seat-bag"><i class="fa fa-plane" aria-hidden="true"></i> Economy Class</span>
+                        <span class="fm-time-class-seat-bag"><i class="fa fa-suitcase" aria-hidden="true"></i> Info not available</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fare-rule-popus">
+                  <div class="modal fade modal-fare_rules" id="fare_rule_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Fare Rules</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="f-rule-table">
+                            <div class="card">
+                              <div class="card-header" id="ruleOne">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link" data-toggle="collapse" data-target="#rulesOne" aria-expanded="true" aria-controls="rulesOne">
+                                  <span class="pull-left f-rule-table-title">Fare rules<span> DEL-JFK</span> All charges are per passenger</span> <span class="clps-btn-dtl pull-right">Show Details</span>
+                                  </button>
+                                </h5>
+                              </div>
+                              <div id="rulesOne" class="collapse" aria-labelledby="ruleOne" data-parent="#accordion">
+                                <div class="card-body">
+                                  <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>TIME</th>
+                                        <th>CANCELLATION FEES</th>
+                                        <th>DATE CHANGE FEES</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>24 hrs - 365 days</td>
+                                        <td>Adult : Rs 16,065* + Rs 649**</td>
+                                        <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-header" id="ruleTwo">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link collapsed d-block" data-toggle="collapse" data-target="#rulesTwo" aria-expanded="false" aria-controls="rulesTwo">
+                                  <span class="f-rule-table-title pull-left">Fare rules<span> JFK-DEL</span> All charges are per passenger</span>
+                                  <span class="clps-btn-dtl2 pull-right">Show Details</span>
+                                  </button>
+                                </h5>
+                              </div>
+                              <div id="rulesTwo" class="collapse" aria-labelledby="ruleTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                  <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>TIME</th>
+                                        <th>CANCELLATION FEES</th>
+                                        <th>DATE CHANGE FEES</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>24 hrs - 365 days</td>
+                                        <td>Adult : Rs 16,065* + Rs 649**</td>
+                                        <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <p class="f-rule-table-note">*Airline Fee. | **MakeMyTrip Cancellation Service Fee.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade modal-fare_rules" id="fare_rule_baggage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Baggage</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <span class="bagagge-title-pp">Check-in Baggage</span>
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Sector/Flight</th>
+                                <th>Adult</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>LGA-ORD  <br> DL3722</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td>ORD-LGA   <br> DL1477</td>
+                                <td>0 Pc</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <span class="bagagge-title-pp">Cabin Baggage</span>
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Sector/Flight</th>
+                                <th>Adult</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>LGA-ORD  <br> DL3722</td>
+                                <td>7 Kgs</td>
+                              </tr>
+                              <tr>
+                                <td>ORD-LGA   <br> DL1477</td>
+                                <td>7 Kgs</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div class="modal-footer">
+                            <p>The information presented above is as obtained from the airline reservation system. MakeMyTrip does not guarantee the accuracy of this information. The baggage allowance may vary according to stop-overs, connecting flights and changes in airline rules</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade modal-fare_rules" id="fare_rule_visa-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          ...
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="rule-bag-visa">
+                  <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-12 padding-righ-none">
+                      <div><strong>Flight Information</strong></div>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-12">
+                      <ul class="rule-menu">
+                        <li><a href="#" data-toggle="modal" data-target="#fare_rule_modal"><i class="fa fa-inr" aria-hidden="true"></i>Fare rules</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#fare_rule_baggage"><i class="fa fa-suitcase" aria-hidden="true"></i>Baggage</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#fare_rule_visa-info"><i class="fa fa-book" aria-hidden="true"></i>Visa info</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="booking-single-box">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                      <button type="button" class="btn btn-search-form">Continue as Guest</button> <span class="seprator-or">or</span> <button type="button" class="btn  btn-secondary btn-search-form">Login & Continue</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="booking-trvlr-dtl-box">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="booking-trvlr-dtl-title border-bottom-1">
+                      <strong>Enter Traveller Details</strong>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="row padding-10">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <p class="psnger-count-title">Adult 1:</p>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <label class="booking-trvlr-dtl-label">Full Name <span>(as per passport)</span></label> 
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <input type="text" placeholder="Given Name" class="form-control" name=""> 
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <input type="text" placeholder="Surname" class="form-control" name=""> 
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                          <label class="btn btn-secondary active">
+                          <input type="radio" name="options" id="option1" autocomplete="off" checked> Male
+                          </label>
+                          <label class="btn btn-secondary">
+                          <input type="radio" name="options" id="option2" autocomplete="off"> Female
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <label class="booking-trvlr-dtl-label">Meal Preference</label> 
+                        <select class="form-control">
+                          <option selected="selected">Select Meal</option>
+                          <option value="Vegetarian Hindu Meal">Vegetarian Hindu Meal</option>
+                          <option value="Baby Meal">Baby Meal</option>
+                          <option value="Hindu ( Non Vegetarian) Meal">Hindu ( Non Vegetarian) Meal</option>
+                          <option value="Kosher Meal">Kosher Meal</option>
+                          <option value="Moslem Meal">Moslem Meal</option>
+                          <option value="Vegetarian Jain Meal">Vegetarian Jain Meal</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <label class="booking-trvlr-dtl-label">Nationality</label> 
+                        <select class="form-control">
+                          <option selected="selected">Nationality</option>
+                          <option>India</option>
+                          <option>Australia</option>
+                          <option>Canada</option>
+                          <option>Pakistan</option>
+                          <option>USA</option>
+                          <option>UK</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <label class="booking-trvlr-dtl-label">Date of Birth</label> 
+                        <div class="input-group">
+                          <input type="text" placeholder="DD" class="form-control" name="">
+                          <input type="text" placeholder="MM" class="form-control" name="">
+                          <input type="text" placeholder="YYYY" class="form-control" name="">
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <label class="booking-trvlr-dtl-label">PASSPORT Number</label> 
+                        <input type="text" placeholder="Passport Number" class="form-control" name="">
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <label class="booking-trvlr-dtl-label">ISSUING COUNTRY </label> 
+                        <select class="form-control">
+                          <option selected="selected">ISSUING COUNTRY </option>
+                          <option>India</option>
+                          <option>Australia</option>
+                          <option>Canada</option>
+                          <option>Pakistan</option>
+                          <option>USA</option>
+                          <option>UK</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <label class="booking-trvlr-dtl-label">Date of Expiry</label> 
+                        <div class="input-group">
+                          <input type="text" placeholder="DD" class="form-control" name="">
+                          <input type="text" placeholder="MM" class="form-control" name="">
+                          <input type="text" placeholder="YYYY" class="form-control" name="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="booking-trvlr-dtl-box">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="booking-trvlr-dtl-title border-bottom-1">
+                      <strong>Contact Information <span>(Your mobile number will be used only for sending flight related communication.)</span></strong>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="row padding-10">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <label class="booking-trvlr-dtl-label">Mobile Number</label> 
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-4 padding-righ-none">
+                            <input type="text" placeholder="+91" class="form-control" name="">
+                          </div>
+                          <div class="col-lg-8 col-md-8 col-sm-8 col-8 padding-left-none">
+                            <input type="text" placeholder="Mobile Number" class="form-control" name=""> 
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <label class="booking-trvlr-dtl-label">Email Address</label>
+                        <input type="text" placeholder="Email Address" class="form-control" name="">
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-4"></div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <p class="secure-trip-p">
+                          <label class="ccontainer dropdown-form-label">
+                          <input type="checkbox" name="">I have a GST Number (optional)
+                          <span class="ccheckmark"></span>
+                          </label>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="roundtrip-jrny-bar margin-t-10" role="button" data-toggle="collapse" data-parent="#accordion-t-srvs" href="#accordion-t-srvs" aria-expanded="true" aria-controls="accordion-t-srvs">
+                <div class="booking-dtl-info-header">
+                  <div class="row">
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                      <div class="booking-trvlr-srvc-title border-bottom-1">
+                      <strong>Travel Services <span>Save more by using our frequent travel services</span></strong>
+                    </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                      <i class="fa angle-icon fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="booking-dtl-info collapse in" id="accordion-t-srvs" role="tabpanel" aria-labelledby="headingOne">
+                <div class="travel-service-box-expnd">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                      <span class="travel-service-box-expnd-title">I want to be contacted for:</span>
+                          <label class="ccontainer dropdown-form-label">
+                            <input type="checkbox" name="">Intl. Roaming Pack
+                            <span class="ccheckmark"></span>
+                          </label>
+                          <label class="ccontainer dropdown-form-label">
+                            <input type="checkbox" name="">Forex
+                            <span class="ccheckmark"></span>
+                          </label>
+                          <label class="ccontainer dropdown-form-label">
+                            <input type="checkbox" name="">Select All
+                            <span class="ccheckmark"></span>  
+                          </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class="tab-pane Booking-dtl-tab-pane fade" id="payment-summary" role="tabpanel" aria-labelledby="payments-summary">
+              <section class="booking-dtl-section traveler-info-section">
+                <div class="book-payment-box">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="booking-dtl-info">
+                      <div class="row booking-dtl-info-header">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                          <div class="fm-head-fromto">
+                            Payment 
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row padding-10">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Payment method</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <select class="form-control">
+                                <option selected="selected">Choose a Card</option>
+                                <option>Visa</option>
+                                <option>Master Card</option>
+                                <option>American Express</option>
+                                <option>Discovery</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Credit or Debit Card Number</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <input type="text" class="form-control" placeholder="Credit or Debit card Number" name="">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Card Holder's Name</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <input type="text" class="form-control" placeholder="card Holder's name" name="">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Expiration Date</label>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-12">
+                              <select class="form-control">
+                                <option selected="selected">Select Month</option>
+                                <option>January</option>
+                                <option>February</option>
+                                <option>March</option>
+                                <option>April</option>
+                                <option>May</option>
+                                <option>June</option>
+                                <option>July</option>
+                                <option>August</option>
+                                <option>September</option>
+                                <option>Ocotber</option>
+                                <option>November</option>
+                                <option>December</option>
+                              </select>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                              <select class="form-control">
+                                <option selected="selected">Select Year</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                                <option>2022</option>
+                                <option>2023</option>
+                                <option>2024</option>
+                                <option>2025</option>
+                                <option>2026</option>
+                                <option>2027</option>
+                                <option>2028</option>
+                                <option>2029</option>
+                                <option>2030</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </section>
+              <section class="booking-dtl-section traveler-info-section payment-info-section">
+                <div class="book-payment-box">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="booking-dtl-info">
+                      <div class="row booking-dtl-info-header">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                          <div class="fm-head-fromto">
+                            Billing & Contact Information
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row padding-10">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 devider-grey">
+                              <label class="payments-label">Credit Card Billing Address</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Country</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <select class="form-control">
+                                <option selected="selected">Select Country</option>
+                                <option>India</option>
+                                <option>USA</option>
+                                <option>Australia</option>
+                                <option>Canada</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Street</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <input type="text" class="form-control" placeholder="Street Address" name="">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">City</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <input type="text" class="form-control" placeholder="City" name="">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">State</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <input type="text" class="form-control" placeholder="State" name="">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Zip</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <input type="text" class="form-control" placeholder="Zip" name="">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 devider-grey">
+                              <label class="payments-label">Contact Information</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Phone Number</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <input type="text" class="form-control" placeholder="Phone no. (in case we need to reach you)" name="">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Email</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <input type="text" class="form-control" placeholder="Email" name="">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                              <label class="payments-label">Retype Email</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                              <input type="text" class="form-control" placeholder="Retype Email" name="">
+                            </div>
+                          </div>
+<!--                           <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-right">
+                              <button type="button" class="btn btn-search-form"><i class="fa fa-lock"></i> Book Now</button>
+                            </div>
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </section>
+
+              <div class="booking-single-box">
+                        <div class="row">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+                            <button type="button" class="btn btn-search-form">Book Now</button>
+                          </div>
+                        </div>
+                      </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+            <div class="right-sidebar">
+              <div class="right-sidebar-box">
+                <div class="right-sidebar-box-title">Discounts for you</div>
+                <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                <span class="right-sidebar-box-text pull-left">FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                  <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                </span>
+              </div>
+              <div class="right-sidebar-box">
+                <div class="right-sidebar-box-title">Discounts for you</div>
+                <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                <span class="right-sidebar-box-text pull-left">FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                  <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                </span>
+              </div>
+              <div class="right-sidebar-box">
+                <div class="right-sidebar-box-title">Discounts for you</div>
+                <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                <span class="right-sidebar-box-text pull-left">FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                  <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                </span>
+              </div>
+              <div class="right-sidebar-box">
+                <div class="right-sidebar-box-title">Discounts for you</div>
+                <span class="right-sidebar-box-sign-rupe pull-left"><i class="fa fa-inr"></i></span>
+                <span class="right-sidebar-box-text pull-left">FLAT 10% Off upto Rs.12,000 on your booking on HDFC credit cards. Limited period offer, Book now!
+                  <span class="use-code">USE CODE : <strong>PVAHDFC</strong></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/slimscroll.js"></script>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 8,
+        spaceBetween: 5,
+        // init: false,
+         navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        /*autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },*/
+        breakpoints: {
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          }
+        }
+      });
+    </script>
+    <script>
+      jQuery(function ($) {
+          // /////
+          // CLEARABLE INPUT
+          function tog(v) { return v ? 'addClass' : 'removeClass'; }
+          $(document).on('input', '.clearable', function () {
+              $(this)[tog(this.value)]('x');
+          }).on('mousemove', '.x', function (e) {
+              $(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]('onX');
+          }).on('touchstart click', '.onX', function (ev) {
+              ev.preventDefault();
+              $(this).removeClass('x onX').val('').change();
+          });
+      
+      
+      });
+      $(document).ready(function () {
+          $('.rz-pointer').click();
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#datepicker2, #datepicker3").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+          });
+          $(".datedepart").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+              onSelect: function (selected) {
+                  $(".datereturn").datepicker("option", "minDate", selected)
+              }
+          });
+          $(".datereturn").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+              onSelect: function (selected) {
+                  $(".datedepart").datepicker("option", "maxDate", selected)
+              }
+          });
+      
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $('.trip-oneway').click(function(){
+              $('.field-box-arrival').addClass('layover-black');
+              $('.field-box-arrival').removeClass('d-none');
+              $('.field-box-arrival').addClass('d-i-block');
+              $('.multi-hide-row-first').removeClass('d-block');
+              $('.multi-hide-row-first').addClass('d-none');
+              $('.multi-hide-row-fix').removeClass('d-block');
+              $('.multi-hide-row-fix').addClass('d-none');
+          });
+          $('.trip-round').click(function(){
+              $('.field-box-arrival').removeClass('layover-black');
+              $('.field-box-arrival').removeClass('d-none');
+              $('.field-box-arrival').addClass('d-i-block');
+              $('.multi-hide-row-first').removeClass('d-block');
+              $('.multi-hide-row-first').addClass('d-none');
+              $('.multi-hide-row-fix').removeClass('d-block');
+              $('.multi-hide-row-fix').addClass('d-none');
+          });
+          $('.trip-multi').click(function(){
+              $('.field-box-arrival').addClass('d-none');
+              $('.multi-hide-row-first').removeClass('d-none');
+              $('.multi-hide-row-first').addClass('d-block');
+              $('.multi-hide-row-fix').addClass('d-block');
+              $('.multi-hide-row-fix').removeClass('d-none');
+      
+      
+          });
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+          $('.add-multi-row').click(function () {
+              var rowsitem = $('.multi-hide-row.d-none');
+              var rowsitemb = $('.multi-hide-row.d-block');
+              if (rowsitem.length > 0) {
+                  rowsitem.first().addClass('d-block');
+                  rowsitem.first().removeClass('d-none');
+              }
+              $('.delete-multi-row').show();
+              if (rowsitemb.length == 2) {
+                  $('.add-multi-row').hide();
+              }
+          });
+      
+          $('.delete-multi-row').click(function () {
+              var rowsitem = $('.multi-hide-row.d-block');
+              var rowsitemb = $('.multi-hide-row.d-none');
+              if (rowsitem.length > 0) {
+                  rowsitem.first().addClass('d-none');
+                  rowsitem.first().removeClass('d-block');
+              }
+              $('.add-multi-row').show();
+              if (rowsitemb.length == 2) {
+                  $('.delete-multi-row').hide();
+              }
+          });
+      
+          });
+    </script>
+    <script>
+      $(".btn-opn-trvlrs").click(function(e){
+      e.preventDefault();
+      $(".travelers-d-menu").fadeIn(300,function(){$(this).focus();});
+      });
+      
+      $('.close-trvlr').click(function() {
+      $(".travelers-d-menu").fadeOut(300);
+      });
+      $(".travelers-d-menu").on('blur',function(){
+      $(this).fadeOut(300);
+      });
+      
+      $('.more').click(function(){
+        $('.complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.less').addClass('d-block');
+      });
+      $('.less').click(function(){
+        $('.complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.more').addClass('d-block');
+      });
+      
+      $('.a-more').click(function(){
+        $('.a-complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.a-less').addClass('d-block');
+      });
+      $('.a-less').click(function(){
+        $('.a-complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.a-more').addClass('d-block');
+      });
+      $('.plus-one-option').click(function(){
+        $('.minus-row').show();
+      })
+      $('.minus-one-option').click(function(){
+        $('.minus-row').hide();
+      })
+    </script>
+    <script type="text/javascript">
+      $('.colapser1').click(function(){
+            $('.more-less').toggleClass('fa-minus')
+          });
+      $('.colapser2').click(function(){
+            $('.more-lesss').toggleClass('fa-minus')
+          });
+    </script>
+    <script type="text/javascript">
+      $('.panel-collapse').on('show.bs.collapse', function () {
+      $(this).siblings('.panel-heading').addClass('active');
+      });
+      
+      $('.panel-collapse').on('hide.bs.collapse', function () {
+      $(this).siblings('.panel-heading').removeClass('active');
+      });
+      
+      
+    </script>
+    <script type="text/javascript">
+      $(".roundtrip-jrny-bar").click(function(){
+        $(".angle-icon").toggleClass("fa-chevron-up");
+      });
+    </script>
+  </body>
+</html>

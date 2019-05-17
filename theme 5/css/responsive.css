@@ -1,0 +1,163 @@
+@media only screen and (min-width:320px) and (max-width:575px) {
+ .form-field-box {
+     width: 49.5%;
+     margin-bottom: 2px;
+} 
+.field-box-button {
+    width: 100%;
+}
+.btn-search-form
+{
+	width: 100%;
+} 
+.search-form-inner {
+    padding: 15px 0px;
+}
+.search-form-inner .rdcontainer {
+    padding-right: 42px;
+}
+.swiper-button-next {
+    right: 0px !important;
+}
+.swiper-button-prev {
+    left: 0px !important;
+    }
+    .search-result-tabs-link {
+    padding: 5px;
+    min-width: auto;
+    font-size: 13px;
+}
+.search-result-tabs {
+    margin-top: 20px;
+}
+.sort-by-bar-types li {
+    width: 100%;
+    }
+    .search-result-tabs-item {
+    width: 33.33%;
+}
+.single-result-bar
+{
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.plus-one-option {
+    position: relative;
+    left: 0%;
+    width: 100%;
+    top: 0%;
+    line-height: 24px;
+    display: block;
+    text-align: center;
+    border:0px;
+    background-color: var(--main-e-light);
+    }
+    .mobile-price-row {
+    background-color: var(--mainlight);
+    padding: 7px;
+    margin-top: 5px;
+}
+.result-bar-btn {
+    color: var(--mainlight);
+    background-color: var(--white);
+}
+.result-bar-price
+{
+    color: var(--white);
+    line-height: 17px;
+}
+.result-bar-price strong {
+    color: var(--white);
+}
+.result-bar-persons {
+    color: var(--white);
+}
+.result-bar-a-img img {
+    width: 44px;
+    margin-top: 0px;
+}
+.pad-mobile-5
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.result-bar-a-name {
+    font-size: 12px;
+}
+.result-bar-triptime, .result-bar-stops {
+    display: inline-block;
+    margin-top: 0px;
+}
+.result-bar-time {
+    font-size: 14px;
+}
+.flight-and-seat-deatil li {
+    line-height: 22px;
+}
+.flight-and-seat-deatil {
+    margin-top: 2px;
+}
+.popup-modals .modal-dialog {
+    width: 95% !important;
+    min-width: 95%;
+    max-width: 95%;
+}
+.fm-head-fromto {
+    font-size: 16px;
+}
+.fm-total-price {
+    font-size: 15px;
+}
+#flight-detail-modal .modal-body {
+    padding: 5px;
+}
+.fm-nav-tabs .nav-item {
+    font-size: 12px !important;
+    padding: 8px 10px;
+}
+#flight-detail-modal  .fm-modal-title
+{
+    display: none;
+}
+.fm-arrival-dtl {
+    padding-top: 0%;
+}
+.fm-airline-dtl .span-50
+{
+    width: 100%;
+}
+.fm-text-l {
+    font-size: 12px;
+}
+.fm-layover-sperator {
+    width: 100%;
+    padding: 3px 10px;
+}
+}
+@media only screen and (min-width:576px) and (max-width:767px) {
+	.form-field-box {
+    width: 33%;
+    margin-bottom: 2px;
+}
+ .field-box-depart {
+    width: 33%;
+}
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+	.form-field-box {
+    width: 33%;
+    margin-bottom: 2px;
+}
+ .field-box-depart {
+    width: 33%;
+}
+}
+
+@media only screen and (min-width:992px) and (max-width:1199px) {
+    
+}
+
+@media only screen and (min-width:892px) and (max-width:1920px) {
+   
+}

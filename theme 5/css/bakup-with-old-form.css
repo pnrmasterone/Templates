@@ -1,0 +1,1572 @@
+:root {
+    --main-e-dark: #11504f;
+    --maindark: #2b7a78;
+    --mainlight: #3aafa9;
+    --main-e-light: #def2f1;
+    --white: #fff;
+    --black:#333;
+    --grey:#ddd;
+    --darkgrey:#888;
+    --btn-bg:#3bdcd8;
+    --lgrey:#f8f8f8;
+}
+body
+{
+    background-color: var(--main-e-light);
+    font-size: 11px;
+    font-family: 'Roboto', sans-serif;
+}
+ul
+{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.btn:focus
+{
+    box-shadow: none;
+}
+.search-form {
+    background-color: var(--main-e-light);
+    padding: 40px 0px;
+}
+.search-form-inner
+{
+        background-color: var(--mainlight);
+        padding: 15px;
+}
+.trip-types li
+{
+    display: inline-block;
+    margin-right: 20px;
+    line-height: 18px;
+    color: var(--white);
+}
+.form-field-box
+{
+    display: inline-block;
+    width: 20%;
+    position: relative;
+    vertical-align: middle;
+}
+.field-box-depart
+{
+    width: 15%;
+}
+.field-box-arrival
+{
+    width: 15%;
+}
+.field-box-button
+{
+    width: 7.9%;
+}
+.layover-black input
+{
+    background-color: rgba(0,0,0,0.4);
+    cursor: not-allowed;
+}
+.rdcontainer {
+    line-height: 18px;
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.rdcontainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.rdcheckmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 19px;
+    width: 19px;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.rdcontainer:hover input ~ .rdcheckmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.rdcontainer input:checked ~ .rdcheckmark {
+        background-color: var(--mainlight);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.rdcheckmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.rdcontainer input:checked ~ .rdcheckmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.rdcontainer .rdcheckmark:after {
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+
+.ccontainer {
+    display: block;
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 16px;
+}
+
+/* Hide the browser's default checkbox */
+.ccontainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.ccheckmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 17px;
+    width: 17px;
+    background-color: #eee;
+    border: 1px solid var(--maindark);
+}
+
+/* On mouse-over, add a grey background color */
+.ccontainer:hover input ~ .ccheckmark {
+    background-color: #ccc;
+    border: 1px solid var(--maindark);
+}
+
+/* When the checkbox is checked, add a blue background */
+.ccontainer input:checked ~ .ccheckmark {
+    background-color: var(--grey);
+    border: 1px solid var(--maindark);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.ccheckmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.ccontainer input:checked ~ .ccheckmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.ccontainer .ccheckmark:after {
+    left: 3px;
+    top: 3px;
+    width: 9px;
+    height: 9px;
+    border: solid;
+    border-color: var(--maindark);
+    border-width: 3px 3px 3px 3px;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    background-color: var(--maindark);
+}
+.form-field-container .fa-calendar {
+    position: absolute;
+    right: 5px;
+    top: 16px;
+    color: var(--maindark);
+}
+.form-field-container .form-control, .form-field-container .form-control:focus 
+{
+    border-radius: 0px;
+    border: 0px;
+    height: 45px;
+    box-shadow: none;
+}
+.btn-search-form {
+    height: 45px;
+    color: var(--maindark);
+    border-radius: 0px;
+     border: 0px;
+      text-transform: uppercase;
+       font-weight: 600;
+        background-color: var( --grey);
+            line-height: 34px;
+}
+.clearable {
+    background: #fff url('../images/download.gif') no-repeat right -10px center;
+    transition: background 0.4s;
+}
+
+    .clearable.x {
+        background-position: right 5px center;
+    }
+
+    .clearable.onX {
+        cursor: pointer;
+    }
+
+    .clearable::-ms-clear {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+.add-multi-row, .delete-multi-row {
+    height: 32px;
+    color: var(--maindark);
+    border-radius: 0px;
+    border: 0px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 10px;
+    padding: 5px;
+    background-color:var(--grey);
+}
+.multi-hide-row-fix, .multi-hide-row
+{
+    margin-top: 5px;
+}
+.travelers-d-menu {
+    min-width: 100%;
+    border-radius: 0px;
+    padding: 0px;
+}
+.pm-control
+{
+    display: block;
+    width: 100%;
+    float: left;
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 7px;
+}
+.pm-control ul
+{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    overflow: hidden;
+    clip: both;
+    float: left;
+}
+.pm-control ul li
+{
+    float: left;
+    display: inline-block;
+}
+.pm-control ul li:first-child
+{
+    width: 40%;
+}
+.pm-control ul li:last-child
+{
+    width: 60%;
+    border:1px solid var(--grey);
+    display: table;
+}
+.pm-control ul li:last-child span
+{
+    display: table-cell;
+    text-align: center;
+}
+.travelers-d-menu .dropdown-item {
+    padding: 10px 8px;
+    overflow: hidden;
+     border-bottom: 1px solid var(--grey);
+     font-size: 13px;
+    }
+    .plus-minus {
+    background-color: var(--mainlight);
+    width: 30%;
+    font-size: 20px;
+    line-height: 23px;
+    color: #fff;
+}
+.passenger-counts
+{
+    width: 40%;
+    border-left: 1px solid var(--grey);
+}
+.form-field-box .dropdown-item .pm-control:last-child
+{
+   
+}
+.dropdown-form-label
+{
+    display: block;
+}
+.form-field-box .dropdown-item.active, .form-field-box .dropdown-item:active {
+    color: inherit;
+    background-color: inherit;
+}
+.form-field-box .rdcontainer
+{
+    font-size: 13px;
+}
+.dropdown-travler
+{
+    position: relative;
+}
+
+
+/*.swiper-slider.css*/
+            .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+
+    .flight-slider {
+    padding: 3px !important;
+    background-color: var(--main-e-light);
+}
+.swiper-button-next {
+    right: -27px !important;
+    background-color: var(--main-e-light);
+    height: 35px;
+    top: 34px;
+    background-image: url(../images/right.png);
+    border-radius: 50%;
+    width: 35px;
+    background-size: 50%;
+}
+.swiper-button-prev
+{
+    left: -27px !important;
+    background-color: var(--main-e-light);
+    height: 35px;
+    top: 34px;
+    background-image: url('../images/left.png');
+    border-radius: 50%;
+    width: 35px;
+    background-size: 50%;
+}
+#flight-name-slider
+{
+    background-color: var(--white);
+    padding: 10px;
+}
+.swiper-slide
+{
+    padding: 10px 0px;
+    box-shadow: 0px 0px 5px var(--maindark);
+    transition: transform .2s
+}
+.swiper-slide:hover
+{
+    box-shadow: 0px 0px 5px var(--maindark);
+    transform: scale(1.1);
+    z-index: 999;
+}
+.flight-slider-img
+{
+    width: 40px;
+}
+.swiper-slide ul
+{
+    width: 100%;
+    float: left;
+    overflow: hidden;
+}
+.swiper-slide ul li:first-child
+{
+    width: 30%;
+    float: left;
+}
+.swiper-slide ul li:last-child
+{
+    width: 70%;
+    float: left;
+}
+.flight-slider-fname
+{
+    font-size: 11px;
+    display: block;
+    text-align: left;
+}
+.flight-slider-fair
+{
+    font-size: 11px;
+    display: block;
+    text-align: left;
+    font-weight: bold;
+}
+.filter-section
+{
+    
+}
+.price_filter
+{
+    margin-top: 5px;
+}
+.stops_filter
+{
+    margin-bottom: 5px;
+}
+.outbond-return .tab-pane
+{
+padding:15px 0px;
+}
+.outbond-return .tab-pane ul 
+{
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+    overflow: hidden;
+    margin-top: 15px;
+}
+.outbond-return .tab-pane ul li 
+{
+    width: 24.3%;
+    float: left;
+    background-color: #f8f8f8;
+    padding: 3px;
+    margin: 0px 1px;
+}
+.outbond-return .tab-pane ul li:hover
+{
+    background-color: var(--main-e-light);
+}
+.outbond-timing-from
+{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.outbond-return
+{
+    margin-top: 0px;
+}
+.outbond-return .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    border: 0px;
+    border-bottom: 3px solid transparent;
+    color: var(--black);
+    font-size: 16px;
+}
+.outbond-return .nav-link.active, .outbond-return .nav-link:hover
+{
+    border-color: var(--maindark);
+}
+.reset-flt
+{
+    float: right;
+    font-size: 13px;
+}
+.outbond-return .nav-tabs
+{
+    border: 0px;
+}
+.outbond-return .tab-pane ul li .fa, .outbond-return .tab-pane ul li span
+{
+    display: block;
+    text-align: center;
+}
+.dropdown-sort:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown-sort>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+.sort-by-bar-types
+{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.sort-by-bar-types li
+{
+display: inline-block;
+float: left;
+width: 20%;
+background-color: var(--mainlight);
+min-height: 40px;
+line-height: 38px;
+background-image:var(--main-e-light);
+padding: 0px 10px;
+color: var(--white);
+font-size: 14px;
+
+}
+.filter-results
+{
+    margin-top: 30px;
+}
+.sort-by-bar-types li:hover
+{
+    
+}
+.sort-by-bar-types li:last-child
+{
+    
+}
+.sort-by-bar {
+    background-color: var(--white);
+    width: 100%;
+    /* overflow: hidden; */
+    margin-bottom: 5px;
+    clear: both;
+}
+.padding-left-none
+{
+    padding-left: 0px;
+}
+.padding-righ-none
+{
+    padding-right: 0px;
+}
+.padding-none
+{
+    padding: 0px;
+}
+.sort-by-bar-types .dropdown-menu {
+    top: 96%;
+    border-radius: 0px;
+    background-image: var(--white);
+    margin: 0px;
+    font-size: 13px;
+    padding: 0px;
+
+    }
+    .sort-by-bar-types .dropdown-menu a
+    {
+        line-height: 20px;
+        padding: 5px 7px;
+        background-color: #efefef;
+        border-bottom: 1px solid var(--maindark);
+    }
+    .sort-by-bar-types .dropdown-menu a:hover
+    {
+        background-color: var(--main-e-light);
+    }
+   .sort-by-bar-types .dropdown-toggle
+    {
+    background-color: transparent;
+    border: 0px;
+    color: var(--white);
+    font-size: 14px;
+    }
+    .filter-single-section {
+    padding: 15px 10px 8px 10px;
+    border-bottom: 1px solid var(--main-e-light);
+    background-color: var(--white);
+    }
+    .filter-title
+    {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        color: var(--maindark);
+    }
+    .filter-lavel
+    {
+        font-size: 13px;
+    }
+    .more-show
+    {
+        display: block !important;
+    }
+.more, .less, .a-more, .a-less
+{
+    text-align: right;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+/*................slider-css..............*/
+.irs {
+    position: relative; display: block;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+    .irs-line {
+        position: relative; display: block;
+        overflow: hidden;
+        outline: none !important;
+    }
+        .irs-line-left, .irs-line-mid, .irs-line-right {
+            position: absolute; display: block;
+            top: 0;
+        }
+        .irs-line-left {
+            left: 0; width: 11%;
+        }
+        .irs-line-mid {
+            left: 9%; width: 82%;
+        }
+        .irs-line-right {
+            right: 0; width: 11%;
+        }
+
+    .irs-bar {
+        position: absolute; display: block;
+        left: 0; width: 0;
+    }
+        .irs-bar-edge {
+            position: absolute; display: block;
+            top: 0; left: 0;
+        }
+
+    .irs-shadow {
+        position: absolute; display: none;
+        left: 0; width: 0;
+    }
+
+    .irs-slider {
+        position: absolute; display: block;
+        cursor: default;
+        z-index: 1;
+    }
+        .irs-slider.single {
+
+        }
+        .irs-slider.from {
+
+        }
+        .irs-slider.to {
+
+        }
+        .irs-slider.type_last {
+            z-index: 2;
+        }
+
+    .irs-min {
+        position: absolute; display: block;
+        left: 0;
+        cursor: default;
+    }
+    .irs-max {
+        position: absolute; display: block;
+        right: 0;
+        cursor: default;
+    }
+
+    .irs-from, .irs-to, .irs-single {
+        position: absolute; display: block;
+        top: 0; left: 0;
+        cursor: default;
+        white-space: nowrap;
+    }
+
+.irs-grid {
+    position: absolute; display: none;
+    bottom: 0; left: 0;
+    width: 100%; height: 20px;
+}
+.irs-with-grid .irs-grid {
+    display: block;
+}
+    .irs-grid-pol {
+        position: absolute;
+        top: 0; left: 0;
+        width: 1px; height: 8px;
+        background: #000;
+    }
+    .irs-grid-pol.small {
+        height: 4px;
+    }
+    .irs-grid-text {
+        position: absolute;
+        bottom: 0; left: 0;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 9px; line-height: 9px;
+        padding: 0 3px;
+        color: #000;
+    }
+
+.irs-disable-mask {
+    position: absolute; display: block;
+    top: 0; left: -1%;
+    width: 102%; height: 100%;
+    cursor: default;
+    background: rgba(0,0,0,0.0);
+    z-index: 2;
+}
+.lt-ie9 .irs-disable-mask {
+    background: #000;
+    filter: alpha(opacity=0);
+    cursor: not-allowed;
+}
+
+.irs-disabled {
+    opacity: 0.4;
+}
+
+
+.irs-hidden-input {
+    position: absolute !important;
+    display: block !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: none !important;
+    z-index: -9999 !important;
+    background: none !important;
+    border-style: solid !important;
+    border-color: transparent !important;
+}
+
+
+/* Ion.RangeSlider, Simple Skin
+// css version 2.0.3
+// Â© Denis Ineshin, 2014    https://github.com/IonDen
+// Â© guybowden, 2014        https://github.com/guybowden
+// ===================================================================================================================*/
+
+/* =====================================================================================================================
+// Skin details */
+
+.irs {
+    height: 40px;
+}
+.irs-with-grid {
+    height: 75px;
+}
+.irs-line {
+    height: 10px; top: 33px;
+    background: #EEE;
+    background: linear-gradient(to bottom, #DDD -50%, #FFF 150%); /* W3C */
+    border: 1px solid #CCC;
+    border-radius: 16px;
+    -moz-border-radius: 16px;
+}
+    .irs-line-left {
+        height: 8px;
+    }
+    .irs-line-mid {
+        height: 8px;
+    }
+    .irs-line-right {
+        height: 8px;
+    }
+
+.irs-bar {
+    height: 10px; top: 33px;
+    border-top: 1px solid var(--mainlight);
+    border-bottom: 1px solid var(--mainlight);
+    background: var(--mainlight);
+    background: linear-gradient(to top, var(--mainlight) 0%,var(--main-e-light) 100%); /* W3C */
+}
+    .irs-bar-edge {
+        height: 10px; top: 33px;
+        width: 14px;
+        border: 1px solid var(--mainlight);
+        border-right: 0;
+        background: var(--mainlight);
+        background: linear-gradient(to top, var(--mainlight) 0%,var(--main-e-light) 100%); /* W3C */
+        border-radius: 16px 0 0 16px;
+        -moz-border-radius: 16px 0 0 16px;
+    }
+
+.irs-shadow {
+    height: 2px; top: 38px;
+    background: #000;
+    opacity: 0.3;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.lt-ie9 .irs-shadow {
+    filter: alpha(opacity=30);
+}
+
+.irs-slider {
+    top: 25px;
+    width: 14px;
+    height: 27px;
+    border: 1px solid #AAA;
+    background: #DDD;
+    background: linear-gradient(to bottom, var(--mainlight) 0%,var(--main-e-light) 100%); /* W3C */
+    border-radius: 27px;
+    -moz-border-radius: 27px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.irs-slider.state_hover, .irs-slider:hover {
+    background: #FFF;
+}
+
+.irs-min, .irs-max {
+    color: #333;
+    font-size: 12px; line-height: 1.333;
+    text-shadow: none;
+    top: 0;
+    padding: 1px 5px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.lt-ie9 .irs-min, .lt-ie9 .irs-max {
+    background: #ccc;
+}
+
+.irs-from, .irs-to, .irs-single {
+    color: #fff;
+    font-size: 14px; line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    background: var(--mainlight);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+.lt-ie9 .irs-from, .lt-ie9 .irs-to, .lt-ie9 .irs-single {
+    background: #999;
+}
+
+.irs-grid {
+    height: 27px;
+}
+.irs-grid-pol {
+    opacity: 0.5;
+    background: var(--mainlight);
+}
+.irs-grid-pol.small {
+    background: #999;
+}
+
+.irs-grid-text {
+    bottom: 5px;
+    color: #99a4ac;
+}
+
+.irs-disabled {
+}
+.extra-controls
+{
+    width: 100%;
+    overflow: hidden;   
+}
+.extra-controls input {
+    width: 51px !important;
+    border: 0px;
+    padding: 0px;
+    font-size: 13px;
+}
+.extra-controls .form-group
+{
+    width: auto;
+}
+.irs-from, .irs-to, .irs-max, .irs-min, .irs-single
+{
+    display: none;
+}
+
+
+
+
+/*.......result-box....*/
+.result-bar-a-img img
+{
+    width: 30px;
+    margin-top: 10px;
+}
+.single-result-bar {
+    background-color: var(--white);
+    padding: 10px;
+    font-size: 13px;
+    position: relative;
+    box-shadow: 2px 2px 5px var(--darkgrey);
+    margin-bottom: 40px;
+    float: left;
+    width: 100%;
+}
+.result-bar-a-name
+{
+    color: var(--darkgrey);
+}
+.result-bar-city-name {
+    color: var(--darkgrey);
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+}
+.result-bar-time {
+    color: var(--black);
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: 500;
+}
+.result-bar-triptime, .result-bar-stops
+{
+    display: inline-block;
+    margin-top: 20px;
+}
+.result-bar-triptime
+{
+    color: var(--black);
+    font-size: 12px;
+}
+.result-bar-stops
+{
+    color: var(--darkgrey);
+    font-size: 14px;
+}
+.result-bar-divider
+{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    border-bottom:  1px solid var(--main-e-light);
+}
+.result-bar-price-box {
+    background-color: #f8f8f8;
+    height: 115%;
+    padding-top: 14%;
+    position: absolute;
+    right: 5px;
+    top: -10px;
+    width: 100%;
+    /* bottom: 0px; */
+}
+.result-bar-price strong {
+    font-size: 19px;
+    color: var(--black);
+    margin-left: 4px;
+}
+.result-bar-persons {
+    color: var(--darkgrey);
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 11px;
+}
+.result-bar-btn {
+    color: var(--white);
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 0px;
+    /* background-image: linear-gradient(var(--mainlight), var(--btn-bg)); */
+    background-color: var(--mainlight);
+}
+.flight-and-seat-deatil
+{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    margin-top: 10px;
+}
+.flight-and-seat-deatil li
+{
+    float: left;
+    margin-right: 20px;
+    color: var(--mainlight);
+    font-size: 12px;
+    font-weight:normal;
+    position: relative;
+    cursor: pointer;
+}
+.flight-and-seat-deatil li:after
+{
+    position: absolute;
+    content: '|';
+    top: 0px;
+    right:-10px;
+}
+.flight-and-seat-deatil li:last-child:after
+{
+    display: none;
+}
+.dest-ariv-seprator
+{
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 20%;
+}
+.dest-ariv-seprator span
+{
+    width: 60%;
+    float: left;
+    height: 1px;
+    background-color: var(--darkgrey);
+}
+.dest-ariv-seprator-rev span
+{
+    width: 60%;
+    float: left;
+    height: 1px;
+    background-color: var(--darkgrey);
+}
+.dest-ariv-seprator .fa {
+    float: left;
+    width: 10%;
+    color: var(--darkgrey);
+    transform: rotate(45deg);
+    margin-top: -5px;
+    margin-left: -4px;
+}
+.dest-ariv-seprator-rev .fa {
+    float: right;
+    width: 10%;
+    color: var(--darkgrey);
+    transform: rotate(228deg);
+    margin-top: -5px;
+    margin-right: -4px;
+}
+
+
+
+/*........datepicker........*/
+#ui-datepicker-div {
+    width: 300px;
+    padding: 0px;
+    border-radius: 0px;
+    border: 0px;
+    box-shadow: 1px 1px 4px var(--maindark);
+    border-top: 5px solid var(--mainlight);
+}
+.ui-datepicker .ui-datepicker-header {
+    background-color: var(--maindark);
+    color: var(--white);
+    font-size: 18px;
+    border: 0px;
+    border-radius: 0px;
+}
+.ui-datepicker-calendar thead tr {
+    background-color: var(--mainlight);
+    color: var(--white);
+    font-size: 13px;
+}
+.ui-datepicker td span, .ui-datepicker td a {
+    padding: 11px 5px;
+    text-align: center;
+    font-size: 12px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default {
+    border: 0px solid #c5c5c5;
+    background: var(--main-e-light);
+    font-weight: normal;
+    color:#454545;
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight {
+    border: 1px solid var(--mainlight);
+    background: var(--mainlight);
+    color: var(--white);
+}
+.ui-datepicker table {
+   margin: 0px 0px 1px 0px;
+}
+.ui-state-active, .ui-widget-content .ui-state-active
+{
+    background: var(--maindark);
+    color: var(--white);
+}
+
+
+
+
+
+
+
+
+
+
+/*.........flight-details-modal...........*/
+.popup-modals
+{
+
+}
+.popup-modals .modal-dialog
+{
+    width: 80% !important;
+    min-width: 80%;
+    max-width: 80%;
+}
+.popup-modals .modal-header
+{
+    display: block;
+    background-color: var(--maindark);
+    color: var(--white);
+    border-radius: 0px;
+}
+.popup-modals .modal-content
+{
+        border-radius: 0px;
+}
+.fm-modal-title
+{
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.fm-head-fromto
+{
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--main-e-light);
+}
+.fm-head-fromto-date
+{
+    margin-left: 5px;
+    color: var(--grey);
+}
+.fm-total-price
+{
+    font-size: 18px;
+    color: var(--main-e-light);
+    font-weight: bold;
+}
+.fm-modal-title-sm {
+    font-size: 13px;
+    text-transform: capitalize;
+    color: var(--white);
+    font-weight: normal;
+}
+.margin-t-10
+{
+    margin-top: 10px;
+}
+.margin-b-10
+{
+    margin-bottom: 10px;
+}
+.margin-t-b-10
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.padding-lr-10
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.fm-airline-dtl .span-50
+{
+    width: 50%;
+    float: left;
+}
+.fm-airline-dtl span, .fm-departure-dtl span, .fm-time-class span, .fm-arrival-dtl span
+{
+    display: block;
+}
+.fm-air-img
+{
+    width: 50px;
+}
+.fm-text-sm
+{
+    font-size: 11px;
+    line-height: 15px;
+}
+.fm-text-l
+{
+    font-size: 13px;
+    line-height: 17px;
+}
+.fm-heading-bar .fm-modal-title
+{
+    background-color: var(--lgrey);
+    padding: 3px 10px;
+    font-weight: lighter;
+}
+.fm-layover-sperator {
+    background-color: var(--main-e-light);
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+    padding: 0px 50px;
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
+.fm-nav-tabs .nav-item.show .nav-link, .fm-nav-tabs .nav-link.active {
+    color: var(--black);
+    background-color: var(--main-e-light);
+    border-color: var(--grey) var(--grey) var(--white);
+    text-transform: uppercase;
+    font-size: 13px;
+}
+.fm-nav-tabs .nav-link
+{
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--black); 
+    border-color: var(--grey) var(--grey) var(--white);
+}
+.plus-one-option {
+    position: absolute;
+    left: 0%;
+    top: 100%;
+    color: var(--black);
+    background-color: var( --white);
+    padding: 0px 40px;
+    box-shadow: 2px 4px 5px var(--darkgrey);
+    z-index: 1;
+    cursor: pointer;
+    line-height: 20px;
+    font-size: 13px;
+    border-top: 1px solid var(--grey);
+}
+.minus-one-option {
+    position: absolute;
+    left: 0%;
+    top: 100%;
+    color: var(--black);
+    background-color: var( --white);
+    padding: 0px 40px;
+    box-shadow: 2px 4px 5px var(--darkgrey);
+    z-index: 1;
+    cursor: pointer;
+    line-height: 20px;
+    font-size: 13px;
+    border-top: 1px solid var(--grey);
+}
+.search-form-strip
+{
+    background-color: var(--mainlight);
+}
+.table-fm td,  .table-fm th
+{
+    font-size: 12px;
+    padding: 8px;
+}
+.table-fm thead
+{
+    background-color: var(--main-e-light);
+    font-size: 13px;
+}
+
+.fm-sml-text
+{
+    color: var(--darkgrey);
+}
+.popup-modals .modal-header .close {
+    background-color: #fff;
+    padding: 0px !important;
+    margin: -1rem -1rem -1rem auto;
+    border-radius: 50%;
+    position: absolute;
+    left: 100%;
+    bottom: 100%;
+    height: 20px;
+    width: 20px;
+    opacity: 1;
+    line-height: 6px;
+    font-size: 15px;
+    border:2px solid var(--black);
+}
+
+
+/*.............booking-page-css..........*/
+.booking-dtl-info
+{
+    background-color: var(--white);
+    padding:0px 10px 10px 10px;
+}
+.booking-dtl-info-header
+{
+    background-color: var(--mainlight);
+    padding: 10px;
+    position: relative;
+}
+.booking-dtl-info-header:after {
+    position: absolute;
+    bottom: -3px;
+    left: 1px;
+    content: '';
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid #176f6b;
+    border-left: 3px solid transparent;
+    border-right: 4px solid transparent;
+    transform: rotate(45deg);
+}
+.booking-dtl-info-header:before {
+    position: absolute;
+    bottom: -3px;
+    right: 1px;
+    content: '';
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid #176f6b;
+    border-left: 3px solid transparent;
+    border-right: 4px solid transparent;
+    transform: rotate(-45deg);
+}
+.booking-dtl-info-header span
+{
+    line-height: 30px;
+    color: var(--grey);
+    font-size: 13px;
+}
+.booking-dtl-show-btn
+{
+    font-size: 13px;
+}
+.booking-dtl-login-bar
+{
+    padding:20px 10px;
+    background-color: var(--white);
+    margin-bottom: 20px;
+}
+.booking-dtl-login-bar ul
+{
+    margin: 0px;
+    padding: 0px;
+}
+.booking-dtl-login-bar ul li
+{
+    display: inline-block;
+    padding: 0px 10px;
+    font-size: 13px;
+    text-transform: capitalize;
+    line-height: 32px;
+}
+.booking-dtl-login-bar ul li:first-child
+{
+    font-size: 15px;
+    font-weight: 600;
+}
+.booking-dtl-login-bar ul li:last-child
+{
+    float: right;
+}
+.booking-dtl-login-bar ul li .fa
+{
+    font-size: 6px;
+    line-height: 20px;
+}
+#Booking-dtl-tabs
+{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.booking-title-add-on
+{
+    background-color: var(--grey);
+    padding:10px 25px;
+    font-size: 13px;
+}
+.secure-trip-p
+{
+    margin-top: 25px;
+}
+.secure-trip-p a
+{
+    margin: 0px 10px;
+}
+.secure-trip-p strong
+{
+    color: var(--maindark);
+    margin-left: 10px;
+}
+.sep-plan-thin
+{
+    border-bottom: 1px solid;
+    border-color:var(--main-e-light);
+    display: block;
+    margin: 20px 0px;
+}
+.booking-dtl-chkn-bags
+{
+    font-size: 13px;
+}
+.booking-dtl-chkn-bags  li
+{
+    display: inline-block;
+}
+.booking-dtl-chkn-bags  li:first-child
+{
+    width: 22%;
+}
+.booking-dtl-chkn-bags  li:last-child
+{
+    width: 76%;
+}
+.booking-dtl-chkn-bags  li .fa
+{
+    font-size: 40px;
+}
+.booking-dtl-chkn-bags  li span
+{
+    display: block;
+}
+.booking-dtl-chkn-bags  li span:last-child
+{
+    color: var(--darkgrey);
+    font-size: 11px;
+    font-weight: 500;
+}
+.booking-dtl-fmail label, .booking-dtl-coupon label
+{
+    display: block;
+    margin-bottom: 0px;
+}
+.booking-dtl-fmail input, .booking-dtl-coupon input
+{
+    height: 30px;
+    padding: 0px 5px;
+    width: 100%;
+}
+.booking-dtl-coupon input
+{
+    width: 70%;
+}
+.booking-dtl-coupon button {
+    max-height: 30px;
+    line-height: 20px;
+    font-size: 13px;
+    color: var(--maindark) !important;
+    margin-top: -3px;
+    width: 28%;
+}
+.booking-dtl-fprice
+{
+    font-size:20px;
+    color: var(--maindark)
+    margin-left:10px;
+    margin-top: 20px;
+}
+.booking-dtl-fprice strong
+{
+    margin-left: 10px;
+}
+.traveler-info-section
+{
+    margin-bottom: 30px;
+}
+.traveler-info-section .fm-airline-dtl .span-50:first-child {
+    width: 30%;
+    float: left;
+}
+.traveler-info-section .fm-airline-dtl .span-50:last-child {
+    width: 70%;
+    float: left;
+}
+.padding-10
+{
+    padding: 10px;
+}
+.traveler-info-section .fm-text-l
+{
+    font-size: 13px;
+    text-transform: capitalize;
+}
+.traveler-info-section .fm-text-sm
+{
+    font-size: 11px;
+    color: var(--darkgrey);
+    font-weight: 500; 
+}
+.trvl-info-price
+{
+    font-size: 17px;
+    color: var(--maindark);
+    font-weight: bold;
+}
+.traveler-info-section .fm-time-class strong
+{
+    font-weight: normal;
+}
+.traveler-info-section .fm-departure-dtl .fa
+{
+    font-size: 8px;
+}
+.fm-arrival-dtl
+{
+    padding-top: 13%;
+}
+
+
+
+.panel-group .panel {
+        border-radius: 0;
+        box-shadow: none;
+        border-color: #EEEEEE;
+    }
+
+    .panel-default > .panel-heading {
+        padding: 0;
+        border-radius: 0;
+        color: #212121;
+        background-color: #FAFAFA;
+        border-color: #EEEEEE;
+    }
+
+    .panel-title {
+        font-size: 14px;
+    }
+
+    .panel-title > a {
+        display: block;
+        padding: 15px;
+        text-decoration: none;
+    }
+
+    .more-less {
+        float: right;
+        color: #212121;
+    }
+
+    .panel-default > .panel-heading + .panel-collapse > .panel-body {
+        border-top-color: #EEEEEE;
+    }

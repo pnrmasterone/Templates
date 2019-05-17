@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flight</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slimscroll.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
+    <link rel="stylesheet" href="css/style-default.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/ngProgress.css" rel="stylesheet" />
+    <link href="css/style-nz.css" rel="stylesheet" />
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/rzslider.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+    <link href="search.css" rel="stylesheet" />
+    <link href="book.css" rel="stylesheet" />u
+    <script src="js/xml2json.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/ngprogress.js"></script>
+    <script src="js/ngprogress.min.js"></script>
+    <script src="js/angucomplete-alt.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="2.2.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.2.0.js"></script>
+    <script src="js/slider-custom.js"></script>
+  </head>
+  <body id="pd-theme" ng-app="MyApp">
+    <section class="search-form">
+      <div class="search-form-strip">
+        <div class="container-fluid">
+          <div class="search-form-inner">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-title">Book Domestic and International flights</div>
+                <ul class="trip-types">
+                  <li>
+                    <label class="trip-oneway rdcontainer">
+                    <input type="radio" name="radio"> One Way
+                    <span class="rdcheckmark"></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="trip-round rdcontainer">
+                    <input type="radio" checked="checked"  name="radio"> Round Trip
+                    <span class="rdcheckmark"></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="trip-multi rdcontainer">
+                    <input type="radio"  name="radio"> Multi City
+                    <span class="rdcheckmark"></span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                  <li class="form-field-box field-box-arrival">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datereturn form-control" placeholder="To Date">
+                  </li>
+                  <li class="form-field-box field-box-travelers">
+                    <div class="dropdown-travler">
+                      <input type="text" name="" class="form-control btn-opn-trvlrs" placeholder="Travelers">
+                      <div class="dropdown-menu travelers-d-menu" tabindex="-1">
+                        <div class="row">
+                          <div class="col-lg-8 col-md-8 col-sm-8 col-8 padding-righ-none">
+                            <span class="dropdown-item" href="#">
+                          <div class="pm-control adults-control">
+                            <ul class="psnger-title">
+                              <li>Adults <span class="age-labels">(+12 yrs)</span></li>
+                            </ul>
+                            <ul class="passenger-numbers">
+                              <li class="psngr-selected">1</li>
+                              <li>2</li>
+                              <li>3</li>
+                              <li>4</li>
+                              <li>5</li>
+                              <li>6</li>
+                              <li>7</li>
+                              <li>8</li>
+                              <li>9</li>
+                            </ul>
+                          </div>
+                          <div class="pm-control childrens-control">
+                            <ul class="psnger-title">
+                              <li>Childrens <span class="age-labels">2-12 yrs (On day of travel)</span></li>
+                            </ul>
+                            <ul class="passenger-numbers">
+                              <li>1</li>
+                              <li>2</li>
+                              <li class="psngr-selected">3</li>
+                              <li>4</li>
+                              <li>5</li>
+                              <li>6</li>
+                            </ul>
+                          </div>
+                          <div class="pm-control infant-control">
+                            <ul class="psnger-title">
+                              <li>Infants <span class="age-labels">Under 2 yrs on day of travel</span></li>
+                            </ul>
+                            <ul class="passenger-numbers">
+                              <li>1</li>
+                              <li class="psngr-selected">2</li>
+                              <li>3</li>
+                              <li>4</li>
+                              <li>5</li>
+                              <li>6</li>
+                            </ul>
+                          </div>
+                        </span>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                            <div>
+                              <div class="btn-group btns-cls-flight btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-sm btn-secondary active">
+                                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Economy
+                                </label>
+                                <label class="btn btn-sm btn-secondary">
+                                  <input type="radio" name="options" id="option2" autocomplete="off"> Premium Economy
+                                </label>
+                                <label class="btn btn-sm btn-secondary">
+                                  <input type="radio" name="options" id="option3" autocomplete="off"> Business
+                                </label>
+                                <label class="btn btn-sm btn-secondary">
+                                  <input type="radio" name="options" id="option3" autocomplete="off"> First Class
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </li>
+                  <li class="form-field-box field-box-button">
+                    <a href="index.html" type="button" class="btn btn-search-form">Search</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row-fix d-none" >
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row d-none">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row d-none">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row d-none">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row-fix d-none">
+                <button type="button" class="btn btn-sm add-multi-row">+ Add Another Flight</button>
+                <button type="button" class="btn btn-sm delete-multi-row">- Delete Flight</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section><a href="#" data-toggle="modal" data-target="#popup-searching">Search Popup</a>
+    <div class="modal fade show" id="popup-searching" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><img src="https://www.barakehtravel.com/images/logo.png"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body search-Popup-body">
+        <h3>Loading Your Results...</h3>
+        <div class="progress-bars">
+    <span class="progress-bar-fills" style="width: 20%"></span>
+
+</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/slimscroll.js"></script>
+    <script>
+      jQuery(function ($) {
+          // /////
+          // CLEARABLE INPUT
+          function tog(v) { return v ? 'addClass' : 'removeClass'; }
+          $(document).on('input', '.clearable', function () {
+              $(this)[tog(this.value)]('x');
+          }).on('mousemove', '.x', function (e) {
+              $(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]('onX');
+          }).on('touchstart click', '.onX', function (ev) {
+              ev.preventDefault();
+              $(this).removeClass('x onX').val('').change();
+          });
+      
+      
+      });
+      $(document).ready(function () {
+          $('.rz-pointer').click();
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".datepicker2 datepicker3").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+          });
+          $(".datedepart").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+              onSelect: function (selected) {
+                  $(".datereturn").datepicker("option", "minDate", selected)
+              }
+          });
+          $(".datereturn").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+              onSelect: function (selected) {
+                  $(".datedepart").datepicker("option", "maxDate", selected)
+              }
+          });
+      
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $('.trip-oneway').click(function(){
+              $('.field-box-arrival').addClass('layover-black');
+              $('.field-box-arrival').removeClass('d-none');
+              $('.field-box-arrival').addClass('d-i-block');
+              $('.multi-hide-row-first').removeClass('d-block');
+              $('.multi-hide-row-first').addClass('d-none');
+              $('.multi-hide-row-fix').removeClass('d-block');
+              $('.multi-hide-row-fix').addClass('d-none');
+          });
+          $('.trip-round').click(function(){
+              $('.field-box-arrival').removeClass('layover-black');
+              $('.field-box-arrival').removeClass('d-none');
+              $('.field-box-arrival').addClass('d-i-block');
+              $('.multi-hide-row-first').removeClass('d-block');
+              $('.multi-hide-row-first').addClass('d-none');
+              $('.multi-hide-row-fix').removeClass('d-block');
+              $('.multi-hide-row-fix').addClass('d-none');
+          });
+          $('.trip-multi').click(function(){
+              $('.field-box-arrival').addClass('d-none');
+              $('.multi-hide-row-first').removeClass('d-none');
+              $('.multi-hide-row-first').addClass('d-block');
+              $('.multi-hide-row-fix').addClass('d-block');
+              $('.multi-hide-row-fix').removeClass('d-none');
+      
+      
+          });
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+          $('.add-multi-row').click(function () {
+              var rowsitem = $('.multi-hide-row.d-none');
+              var rowsitemb = $('.multi-hide-row.d-block');
+              if (rowsitem.length > 0) {
+                  rowsitem.first().addClass('d-block');
+                  rowsitem.first().removeClass('d-none');
+              }
+              $('.delete-multi-row').show();
+              if (rowsitemb.length == 2) {
+                  $('.add-multi-row').hide();
+              }
+          });
+      
+          $('.delete-multi-row').click(function () {
+              var rowsitem = $('.multi-hide-row.d-block');
+              var rowsitemb = $('.multi-hide-row.d-none');
+              if (rowsitem.length > 0) {
+                  rowsitem.first().addClass('d-none');
+                  rowsitem.first().removeClass('d-block');
+              }
+              $('.add-multi-row').show();
+              if (rowsitemb.length == 2) {
+                  $('.delete-multi-row').hide();
+              }
+          });
+      
+          });
+    </script>
+    <script>
+    $('.progress-bar-fills').delay(1000).queue(function () {
+        $(this).css('width', '100%')
+    });
+</script>
+<script>
+      $(".btn-opn-trvlrs").click(function(e){
+      e.preventDefault();
+      $(".travelers-d-menu").fadeIn(300,function(){$(this).focus();});
+      });
+      
+      $('.close-trvlr').click(function() {
+      $(".travelers-d-menu").fadeOut(300);
+      });
+      $(".travelers-d-menu").on('blur',function(){
+      $(this).fadeOut(300);
+      });
+      
+      $('.more').click(function(){
+        $('.complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.less').addClass('d-block');
+      });
+      $('.less').click(function(){
+        $('.complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.more').addClass('d-block');
+      });
+      
+      $('.a-more').click(function(){
+        $('.a-complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.a-less').addClass('d-block');
+      });
+      $('.a-less').click(function(){
+        $('.a-complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.a-more').addClass('d-block');
+      });
+      $('.plus-one-option').click(function(){
+        $('.minus-row').show();
+      })
+      $('.minus-one-option').click(function(){
+        $('.minus-row').hide();
+      })
+      
+    </script>
+  </body>
+</html>

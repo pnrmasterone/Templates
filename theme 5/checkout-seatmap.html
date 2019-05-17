@@ -1,0 +1,2197 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.css">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slimscroll.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">-->
+    <link rel="stylesheet" href="css/style-default.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/ngProgress.css" rel="stylesheet" />
+    <link href="css/style-nz.css" rel="stylesheet" />
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/rzslider.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>-->
+    <link href="search.css" rel="stylesheet" />
+    <link href="book.css" rel="stylesheet" />
+    <link href="css/icons.css" rel="stylesheet" />
+    <link href="css/seatMap.css" rel="stylesheet" />
+    <script src="js/xml2json.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/ngprogress.js"></script>
+    <script src="js/ngprogress.min.js"></script>
+    <script src="js/angucomplete-alt.js"></script>
+    <!--<script data-require="ui-bootstrap@*" data-semver="2.2.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.2.0.js"></script>-->
+    <script src="js/slider-custom.js"></script>
+    <style>
+        .pAccordian {
+            text-align: center
+        }
+
+        .accordian {
+            background-color: #fff;
+            display: block; /*Change this to none*/
+        }
+
+        .accordian-active {
+            display: block;
+        }
+
+        .panel-btn-acc {
+            cursor: pointer;
+            transition: 9s;
+        }
+
+        .panel-board-acc {
+            display: none;
+            overflow: hidden;
+        }
+
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: #797979;
+            z-index: 9999;
+            opacity: .9;
+        }
+
+        .unload {
+            display: none;
+        }
+
+        .bookings-logs {
+            display: block;
+        }
+
+        .imgloader {
+            position: relative;
+            vertical-align: middle;
+            -webkit-border-horizontal-spacing: middel;
+            margin: auto;
+            border-style: none;
+            left: 500px;
+            top: 200px;
+        }
+
+        /* veritcal tabs styles*/
+        /* Style the tab */
+        .tab {
+            float: left;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            width: 30%;
+        }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+                display: block;
+                background-color: inherit;
+                color: black;
+                padding: 22px 16px;
+                width: 100%;
+                border: none;
+                outline: none;
+                text-align: left;
+                cursor: pointer;
+                transition: 0.3s;
+                font-size: 17px;
+            }
+
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                    background-color: #ddd;
+                }
+
+                /* Create an active/current "tab button" class */
+                .tab button.active {
+                    background-color: #ccc;
+                }
+
+        /* Style the tab content */
+        .tabcontent {
+            float: left;
+            padding: 0px 12px;
+            border: 1px solid #ccc;
+            width: 70%;
+            border-left: none;
+        }
+
+        .tablinks {
+            background-image: linear-gradient(#f6f6f6,#eee);
+            box-shadow: inset 0 1px #fff;
+            border-bottom: 1px solid #ccc;
+        }
+
+        }
+        /* End of vertical tab styles*/
+    </style>
+</head>
+<body id="pd-theme" ng-app="MyApp">
+    <div class="loader">
+        <img class="imgloader" src="images/loader1.gif" />
+    </div>
+    <iframe src="header.html" style="height:70px; width:100%;" frameborder="0" scrolling="no" class="pd-iframe-header-height"></iframe>
+    <!-- Checkout Page Body -->
+    <section class="popup-modals">
+        <div class="modal fade" id="flight-detail-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-close"></i>
+                        </button>
+                        <div class="row">
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                                <div class="fm-modal-title">Flight details</div>
+                                <div class="fm-head-fromto">
+                                    Delhi <i class="fa fa-angle-right"></i> New York <span class="fm-head-fromto-date">(11 Oct 2018)</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                                        <div class="fm-total-price"><span class="fm-modal-title-sm">Total Price : </span>INR 64858.09</div>
+                                        <div class="fm-modal-title-sm">Non Refundable</div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                        <a href="#" class="btn btn-search-form">Book Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <nav>
+                                    <div class="nav nav-tabs fm-nav-tabs" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="true">Itinerary</a>
+                                        <a class="nav-item nav-link" id="nav-fare-tab" data-toggle="tab" href="#nav-farerule" role="tab" aria-controls="nav-farerule" aria-selected="false">Fare Rules</a>
+                                        <a class="nav-item nav-link" id="nav-baggage-tab" data-toggle="tab" href="#nav-baggage-info" role="tab" aria-controls="nav-baggage-info" aria-selected="false">Baggage Information</a>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-itinerary" role="tabpanel" aria-labelledby="nav-itinerary-tab">
+                                        <div class="row fm-heading-bar margin-t-b-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-modal-title"><strong>Airline Detail</strong></div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-modal-title"><strong>Departure</strong></div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-modal-title"><strong>Time & Class</strong></div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-modal-title"><strong>Arrival</strong></div>
+                                            </div>
+                                        </div>
+                                        <div class="row padding-lr-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-airline-dtl">
+                                                    <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                    <span class="span-50">
+                                                        <span class="fm-text-sm">Delta Air Lines</span>
+                                                        <span class="fm-text-sm">DL - 7533</span>
+                                                        <span class="fm-text-sm">Operated by:</span>
+                                                        <span class="fm-text-sm">Jet Airways</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-departure-dtl">
+                                                    <span class="fm-text-l">Delhi (DEL)</span>
+                                                    <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                                                    <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                                                    <span class="fm-text-l">Terminal:3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-time-class">
+                                                    <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                                                    <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-arrival-dtl">
+                                                    <span class="fm-text-l">Mumbai (BOM)</span>
+                                                    <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                                                    <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                                                    <span class="fm-text-l">Terminal:2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fm-layover-sperator">
+                                            <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                                        </div>
+                                        <div class="row padding-lr-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-airline-dtl">
+                                                    <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                    <span class="span-50">
+                                                        <span class="fm-text-sm">Delta Air Lines</span>
+                                                        <span class="fm-text-sm">DL - 7533</span>
+                                                        <span class="fm-text-sm">Operated by:</span>
+                                                        <span class="fm-text-sm">Jet Airways</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-departure-dtl">
+                                                    <span class="fm-text-l">Delhi (DEL)</span>
+                                                    <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                                                    <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                                                    <span class="fm-text-l">Terminal:3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-time-class">
+                                                    <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                                                    <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-arrival-dtl">
+                                                    <span class="fm-text-l">Mumbai (BOM)</span>
+                                                    <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                                                    <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                                                    <span class="fm-text-l">Terminal:2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fm-layover-sperator">
+                                            <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                                        </div>
+                                        <div class="row padding-lr-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-airline-dtl">
+                                                    <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                    <span class="span-50">
+                                                        <span class="fm-text-sm">Delta Air Lines</span>
+                                                        <span class="fm-text-sm">DL - 7533</span>
+                                                        <span class="fm-text-sm">Operated by:</span>
+                                                        <span class="fm-text-sm">Jet Airways</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-departure-dtl">
+                                                    <span class="fm-text-l">Delhi (DEL)</span>
+                                                    <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                                                    <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                                                    <span class="fm-text-l">Terminal:3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-time-class">
+                                                    <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                                                    <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-arrival-dtl">
+                                                    <span class="fm-text-l">Mumbai (BOM)</span>
+                                                    <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                                                    <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                                                    <span class="fm-text-l">Terminal:2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fm-layover-sperator">
+                                            <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                                        </div>
+                                        <div class="row padding-lr-10">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-airline-dtl">
+                                                    <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                    <span class="span-50">
+                                                        <span class="fm-text-sm">Delta Air Lines</span>
+                                                        <span class="fm-text-sm">DL - 7533</span>
+                                                        <span class="fm-text-sm">Operated by:</span>
+                                                        <span class="fm-text-sm">Jet Airways</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-departure-dtl">
+                                                    <span class="fm-text-l">Delhi (DEL)</span>
+                                                    <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                                                    <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                                                    <span class="fm-text-l">Terminal:3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="fm-time-class">
+                                                    <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                                                    <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <div class="fm-arrival-dtl">
+                                                    <span class="fm-text-l">Mumbai (BOM)</span>
+                                                    <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                                                    <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                                                    <span class="fm-text-l">Terminal:2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fm-layover-sperator">
+                                            <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-farerule" role="tabpanel" aria-labelledby="nav-fare-tab">
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                                <div class="fm-fare-breakup">
+                                                    <div class="fm-modal-title margin-t-b-10"><strong>Fare Breakup</strong></div>
+                                                    <table class="table table-bordered table-fm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th colspan="2" class="fm-text-l">Base fare</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>2 Adult (2 X 21024.51)</td>
+                                                                <td>INR 21024.51</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2 Children (2 X 21024.51)</td>
+                                                                <td>INR 21024.51</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Taxes & Fees</strong></td>
+                                                                <td>INR 23456.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Total Price</strong></td>
+                                                                <td><strong>INR 23456.00</strong></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7 col-md-7 col-sm-7 col-7">
+                                                <div class="fm-fare-rules">
+                                                    <div class="fm-modal-title margin-t-b-10"><strong>Fare Rules</strong></div>
+                                                    <div class="fm-text-l margin-b-10">Cancellation Fee:</div>
+                                                    <table class="table table-bordered table-fm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Sector</th>
+                                                                <th>Airline Fee</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>DEL - JFK</td>
+                                                                <td>INR 17357.450  for cancellations done before the departure of the first flight.</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p class="fm-sml-text">All charges are prior to scheduled departure of the first flight. Does not include additional no-show charges.</p>
+                                                    <div class="fm-text-l margin-b-10">Date change Fee:</div>
+                                                    <table class="table table-bordered table-fm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Sector</th>
+                                                                <th>Airline Fee</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>DEL - JFK</td>
+                                                                <td>INR 6356.250  + fare difference (if applicable).</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p class="fm-sml-text">*Airlines stop accepting cancellation/change requests 4 - 72 hours before departure of the flight, depending on the airline. The airline fee is indicative based on an automated interpretation of airline fare rules. Provoke.com doesn't guarantee the accuracy of this information. The change/cancellation fee may also vary based on fluctuations in currency conversion rates. For exact cancellation/change fee, please call us at our customer care number.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tab-pane fade" id="nav-baggage-info" role="tabpanel" aria-labelledby="nav-baggage-tab">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <div class="fm-fare-breakup">
+                                                    <div class="fm-modal-title margin-t-b-10"><strong>Check in Baggage:</strong></div>
+                                                    <table class="table table-bordered table-fm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Sector</th>
+                                                                <th>Adults</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>DEL - BOM DL 7553</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>BOM - LHR DL 7526</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>LHR - JFK DL 2</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>JFK - CDG AF 7</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>CDG - DEL AF 226</td>
+                                                                <td>2PC</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <p class="fm-sml-text">The information presented above is as obtained from the airline reservation system .Provoke.com does not guarantee the accuracy of this information. The baggage allowance may vary according to stop-overs, connecting flights and changes in airline rules.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <div>
+                <p class="pAccordian">
+                    Review trip details and book<br />
+                    <small>you're on the final step. Only a few more minutes to finish!</small>
+                </p>
+                <a href="" class="btn btn-primary" style="background-color:#0478BE; border: 1px solid #0478BE">Go Back</a>
+                <br />
+            </div>
+            <div class="row slide-height-bar-top ">
+                <div class="col-lg-9 col-md-12 col-sm-12 col-12">
+
+
+                    <!--Seperating panels-->
+                    <!--tab 1-->
+
+                    <br />
+                    <div class="accordian accordian-active">
+                        <section class="booking-dtl-section">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="booking-dtl-info">
+                                        <div class="booking-dtl-info-header " id="bookings-info">
+
+                                            <div class="fm-head-fromto">
+                                                <strong>Booking Summary</strong>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                                                <div class="booking-dtl-info-single-itnry">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 padding-righ-none">
+                                                            <div class="fm-airline-dtl">
+                                                                <span class="pull-left"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                                <span class="pull-left">
+                                                                    <span class="fm-text-sm">Delta Air Lines</span>
+                                                                    <span class="fm-text-sm text-secondary">DL - 7533</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 padding-righ-none">
+                                                            <div class="fm-departure-dtl">
+                                                                <label class="fm-departure-dtl-place">Toronto</label> <i class="fa fa-long-arrow-right"></i> <label class="fm-departure-dtl-place">Hyderabad</label>
+                                                                <label class="fm-departure-dtl-place"><small>via Abu Dhabi</small> </label>
+                                                                <span class="fm-departure-dtl-trmnl">Sat 25 Mar</span>
+                                                                <label class="fm-time-class-seat-bag"><i class="fa fa-plane" aria-hidden="true"></i> Economy Class</label>&nbsp;
+                                                                <label class="fm-time-class-seat-bag"><i class="fa fa-suitcase" aria-hidden="true"></i> Info not available</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 padding-righ-none">
+                                                            <div class="fm-departure-dtl">
+                                                                <span class="fm-departure-dtl-code">22:45 <i class="fa fa-fighter-jet"></i> 10:15 </span>
+                                                                <label class="fm-departure-dtl-trmnl">19h 20m,</label>
+                                                                <label class="fm-departure-dtl-trmnl">Stop:3</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="booking-dtl-info-single-itnry">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 padding-righ-none">
+                                                            <div class="fm-airline-dtl">
+                                                                <span class="pull-left"><img src="images/us-air.png" class="fm-air-img"></span>
+                                                                <span class="pull-left">
+                                                                    <span class="fm-text-sm">Delta Air Lines</span>
+                                                                    <span class="fm-text-sm text-secondary">DL - 7533</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 padding-righ-none">
+                                                            <div class="fm-departure-dtl">
+                                                                <label class="fm-departure-dtl-place">Toronto</label> <i class="fa fa-long-arrow-right"></i> <label class="fm-departure-dtl-place">Hyderabad</label>
+                                                                <label class="fm-departure-dtl-place"><small>via Abu Dhabi</small> </label>
+                                                                <span class="fm-departure-dtl-trmnl">Sat 25 Mar</span>
+                                                                <label class="fm-time-class-seat-bag"><i class="fa fa-plane" aria-hidden="true"></i> Economy Class</label>&nbsp;
+                                                                <label class="fm-time-class-seat-bag"><i class="fa fa-suitcase" aria-hidden="true"></i> Info not available</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 padding-righ-none">
+                                                            <div class="fm-departure-dtl">
+                                                                <span class="fm-departure-dtl-code">22:45 <i class="fa fa-fighter-jet"></i> 10:15 </span>
+                                                                <label class="fm-departure-dtl-trmnl">19h 20m,</label>
+                                                                <label class="fm-departure-dtl-trmnl">Stop:3</label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                <div class="view-Details">
+                                                    <span class="fm-departure-dtl-code"><strong class="colorcode-red">CAD 1,200</strong></span>
+                                                    <label class="fm-departure-dtl-trmnl">
+                                                        Adults 1, Infants 0
+                                                    </label><br />
+
+                                                    <a href="#" data-toggle="modal" data-target="#flight_details">Flight Details</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="fare-rule-popus">
+                                            <div class="modal fade modal-flight_details" id="flight_details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Flight Details</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <ul class="nav nav-tabs search-result-tabs" id="myTab" role="tablist">
+                                                                <li class="nav-item search-result-tabs-item">
+                                                                    <a class="nav-link search-result-tabs-link active" id="Itenary" data-toggle="tab" href="#Itenary-tab" role="tab" aria-controls="Itenary" aria-selected="true">Itinerary</a>
+                                                                </li>
+                                                                <li class="nav-item search-result-tabs-item">
+                                                                    <a class="nav-link search-result-tabs-link" id="Fair_Rules" data-toggle="tab" href="#Fair_Rules-tab" role="tab" aria-controls="Fair_Rules" aria-selected="false">Fare Rules</a>
+                                                                </li>
+                                                                <li class="nav-item search-result-tabs-item">
+                                                                    <a class="nav-link search-result-tabs-link" id="Baggage" data-toggle="tab" href="#Baggage-tab" role="tab" aria-controls="Baggage" aria-selected="false">Baggage Information</a>
+                                                                </li>
+                                                            </ul>
+                                                            <div class="tab-content" id="myTabContent">
+                                                                <div style="padding:5px; border-bottom:1px solid #ccc;"></div>
+                                                                <div style="padding:5px; "></div>
+                                                                <div class="tab-pane fade show active" id="Itenary-tab" role="tabpanel" aria-labelledby="Itenary">
+                                                                    <div class="trip-oneway">
+                                                                        <div class="row fair-details-popup">
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="row">
+                                                                                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                                                        <img src="images\us-air.png" height="50">
+                                                                                    </div>
+                                                                                    <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                        <div class="fm-text-sm">
+                                                                                            Etihad Airways
+                                                                                        </div>
+                                                                                        <label class="fm-text-sm">EY - 140</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place">Hyderabad (HYD)</span>
+                                                                                    <span><strong>Sat 25 May, 22:20</strong></span>
+                                                                                    <span class="fm-departure-dtl-place"><small>Rajiv Gandhi International Airport</small></span>
+                                                                                    <span class="fm-departure-dtl-place">Airport (HYD)</span>
+                                                                                    <span class="fm-departure-dtl-place">Terminal 3</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place" style="text-align:center;"><i class="fa fa-clock-o" style=" font-size:30px;"></i></span>
+                                                                                    <span class="fm-departure-dtl-place" style="text-align:center;"><strong>12h 45m | Economy</strong></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place">AbuDhabi (AUH)</span>
+                                                                                    <span><strong>Sat 26 May, 12:20</strong></span>
+                                                                                    <span class="fm-departure-dtl-place"><small>Abu Dhabi Intl Airport</small></span>
+                                                                                    <span class="fm-departure-dtl-place">Airport (AHU)</span>
+                                                                                    <span class="fm-departure-dtl-place">Terminal 3</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="poplinediv">
+                                                                            <div class="popabovediv"></div>
+                                                                            <label class="poplinealign"> Layover at Abu Dhabi | Connecting Time 02h 40m</label>
+                                                                        </div>
+                                                                        <div class="row fair-details-popup">
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="row">
+                                                                                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                                                        <img src="images\us-air.png" height="50">
+                                                                                    </div>
+                                                                                    <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                        <div class="fm-text-sm">
+                                                                                            Etihad Airways
+                                                                                        </div>
+                                                                                        <label class="fm-text-sm">EY - 140</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place">AbuDhabi (AUH)</span>
+                                                                                    <span><strong>Sat 26 May, 12:20</strong></span>
+                                                                                    <span class="fm-departure-dtl-place"><small>Abu Dhabi Intl Airport</small></span>
+                                                                                    <span class="fm-departure-dtl-place">Airport (AHU)</span>
+                                                                                    <span class="fm-departure-dtl-place">Terminal 3</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place" style="text-align:center;"><i class="fa fa-clock-o" style=" font-size:30px;"></i></span>
+                                                                                    <span class="fm-departure-dtl-place" style="text-align:center;"><strong>12h 45m | Economy</strong></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place">Toronto (YYZ)</span>
+                                                                                    <span><strong>Sat 27 May, 22:20</strong></span>
+                                                                                    <span class="fm-departure-dtl-place"><small>Lester B. Pearson International </small></span>
+                                                                                    <span class="fm-departure-dtl-place">Airport (YYZ)</span>
+                                                                                    <span class="fm-departure-dtl-place">Terminal 3</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="trip-round">
+                                                                        <div class="poplinediv">
+                                                                            <div class="popabovediv"></div>
+                                                                            <div style="margin-bottom:50px"></div>
+                                                                        </div>
+
+                                                                        <div class="row fair-details-popup">
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="row">
+                                                                                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                                                        <img src="images\us-air.png" height="50">
+                                                                                    </div>
+                                                                                    <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                        <div class="fm-text-sm">
+                                                                                            Etihad Airways
+                                                                                        </div>
+                                                                                        <label class="fm-text-sm">EY - 140</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place">Toronto (YYZ)</span>
+                                                                                    <span><strong>Sat 24 Jun, 22:20</strong></span>
+                                                                                    <span class="fm-departure-dtl-place"><small>Lester B. Pearson International </small></span>
+                                                                                    <span class="fm-departure-dtl-place">Airport (YYZ)</span>
+                                                                                    <span class="fm-departure-dtl-place">Terminal 3</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place" style="text-align:center;"><i class="fa fa-clock-o" style=" font-size:30px;"></i></span>
+                                                                                    <span class="fm-departure-dtl-place" style="text-align:center;"><strong>12h 45m | Economy</strong></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place">AbuDhabi (AUH)</span>
+                                                                                    <span><strong>Sat 25 Jun, 12:20</strong></span>
+                                                                                    <span class="fm-departure-dtl-place"><small>Abu Dhabi Intl Airport</small></span>
+                                                                                    <span class="fm-departure-dtl-place">Airport (AHU)</span>
+                                                                                    <span class="fm-departure-dtl-place">Terminal 3</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="poplinediv">
+                                                                            <div class="popabovediv"></div>
+                                                                            <label class="poplinealign"> Layover at Abu Dhabi | Connecting Time 02h 40m</label>
+                                                                        </div>
+                                                                        <div class="row fair-details-popup">
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="row">
+                                                                                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                                                        <img src="images\us-air.png" height="50">
+                                                                                    </div>
+                                                                                    <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                        <div class="fm-text-sm">
+                                                                                            Etihad Airways
+                                                                                        </div>
+                                                                                        <label class="fm-text-sm">EY - 140</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place">AbuDhabi (AUH)</span>
+                                                                                    <span><strong>Sat 26 May, 12:20</strong></span>
+                                                                                    <span class="fm-departure-dtl-place"><small>Abu Dhabi Intl Airport</small></span>
+                                                                                    <span class="fm-departure-dtl-place">Airport (AHU)</span>
+                                                                                    <span class="fm-departure-dtl-place">Terminal 3</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place" style="text-align:center;"><i class="fa fa-clock-o" style=" font-size:30px;"></i></span>
+                                                                                    <span class="fm-departure-dtl-place" style="text-align:center;"><strong>12h 45m | Economy</strong></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                <div class="fm-departure-dtl">
+                                                                                    <span class="fm-departure-dtl-place">Hyderabad (HYD)</span>
+                                                                                    <span><strong>Sat 26 May, 22:20</strong></span>
+                                                                                    <span class="fm-departure-dtl-place"><small>Rajiv Gandhi International Airport</small></span>
+                                                                                    <span class="fm-departure-dtl-place">Airport (YYZ)</span>
+                                                                                    <span class="fm-departure-dtl-place">Terminal 3</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- Fare Rules Tab-->
+                                                                <div class="tab-pane fade " id="Fair_Rules-tab" role="tabpanel" aria-labelledby="Fair_Rules">
+                                                                    <div class="row fare-rules">
+                                                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+
+                                                                            <div class="base_detail">
+
+                                                                                <div class="fare_Title">Fare Breakup</div>
+                                                                                <div class="base_detail_title">
+                                                                                    Base Fare:
+
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 left" style="border-bottom:1px solid #ccc">
+                                                                                        <div> Adult (1 X 190.000)</div>
+                                                                                        <div class="fnt-strong"> Taxes & Fees:	</div>
+                                                                                        <div class="fnt-strong" style="padding-top:5px; ">
+                                                                                            Total Price
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 right " style="border-bottom:1px solid #ccc">
+                                                                                        <div>KWD 190.000</div>
+                                                                                        <div>KWD 168.656</div>
+                                                                                        <div class="fnt-strong" style="padding-top:5px; border-top:1px solid #ccc">
+                                                                                            KWD 358.656
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+                                                                            <div class="fare_Title">Fare Rules</div>
+                                                                            <div class="fnt-strong">
+                                                                                Cancellation fee :
+                                                                            </div>
+                                                                            <div class="fare-tab-model">
+                                                                                <table class="fare-tables" width="100%">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th class="faretab-head" width="40%"> Sector</th>
+                                                                                            <th class="faretab-head" width="80%">Airline Fee</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <th class="faretab-body">YYZ - HYD</th>
+
+                                                                                            <th class="faretab-body">
+                                                                                                KWD 108.000  for cancellations done before the departure of the first flight.
+                                                                                            </th>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <div class="policywrite">All charges are prior to scheduled departure of the first flight. Does not include additional no-show charges</div>
+                                                                            <div class="fnt-strong">
+                                                                                Date change fee :
+                                                                            </div>
+                                                                            <div class="fare-tab-model">
+                                                                                <table class="fare-tables" width="100%">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th class="faretab-head" width="40%"> Sector</th>
+                                                                                            <th class="faretab-head" width="80%">Airline Fee</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <th class="faretab-body">YYZ - HYD</th>
+
+                                                                                            <th class="faretab-body">KWD 40.000  + fare difference (if applicable).</th>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <div class="policywrite">
+                                                                                *Airlines stop accepting cancellation/change requests 4 - 72 hours before departure of the flight, depending on the airline.
+                                                                                The airline fee is indicative based on an automated interpretation of airline fare rules. Provoke doesn't guarantee the accuracy of this information. The change/cancellation fee may also vary based on fluctuations in currency conversion rates.
+                                                                                For exact cancellation/change fee, please call us at our customer care number.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- End of Fare Rules Tab-->
+                                                                <div class="tab-pane fade " id="Baggage-tab" role="tabpanel" aria-labelledby="Baggage">
+                                                                    <div class="fare_Title"> Check-in Baggage :</div>
+
+                                                                    <table class="fare-tables" width="50%" style="margin-top:10px;">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="faretab-head" width="80%"> Sector</th>
+                                                                                <th class="faretab-head" width="40%">Adult</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr class="trip-baggage-details">
+                                                                                <td> YYZ - LHR  9W 5048</td>
+                                                                                <td>2PC</td>
+
+                                                                            </tr>
+                                                                            <tr class="trip-baggage-details">
+                                                                                <td> YYZ - LHR  9W 5048</td>
+                                                                                <td>2PC</td>
+
+                                                                            </tr>
+                                                                            <tr class="trip-baggage-details">
+                                                                                <td> YYZ - LHR  9W 5048</td>
+                                                                                <td>2PC</td>
+
+                                                                            </tr>
+                                                                            <tr class="trip-baggage-details">
+                                                                                <td> YYZ - LHR  9W 5048</td>
+                                                                                <td>2PC</td>
+
+                                                                            </tr>
+
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <div class="policywrite">
+                                                                        The information presented above is as obtained from the airline reservation system.
+                                                                        Rehlat does not guarantee the accuracy of this information.
+                                                                        The baggage allowance may vary according to stop-overs, connecting flights and changes in airline rules.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade modal-fare_rules" id="fare_rule_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Fare Rules</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="f-rule-table">
+                                                                <div class="card">
+                                                                    <div class="card-header" id="ruleOne">
+                                                                        <h5 class="mb-0">
+                                                                            <button class="btn btn-link" data-toggle="collapse" data-target="#rulesOne" aria-expanded="true" aria-controls="rulesOne">
+                                                                                <span class="pull-left f-rule-table-title">Fare rules<span> DEL-JFK</span> All charges are per passenger</span> <span class="clps-btn-dtl pull-right">Show Details</span>
+                                                                            </button>
+                                                                        </h5>
+                                                                    </div>
+                                                                    <div id="rulesOne" class="collapse" aria-labelledby="ruleOne" data-parent="#accordion">
+                                                                        <div class="card-body">
+                                                                            <table class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TIME</th>
+                                                                                        <th>CANCELLATION FEES</th>
+                                                                                        <th>DATE CHANGE FEES</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>24 hrs - 365 days</td>
+                                                                                        <td>Adult : Rs 16,065* + Rs 649**</td>
+                                                                                        <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card">
+                                                                    <div class="card-header" id="ruleTwo">
+                                                                        <h5 class="mb-0">
+                                                                            <button class="btn btn-link collapsed d-block" data-toggle="collapse" data-target="#rulesTwo" aria-expanded="false" aria-controls="rulesTwo">
+                                                                                <span class="f-rule-table-title pull-left">Fare rules<span> JFK-DEL</span> All charges are per passenger</span>
+                                                                                <span class="clps-btn-dtl2 pull-right">Show Details</span>
+                                                                            </button>
+                                                                        </h5>
+                                                                    </div>
+                                                                    <div id="rulesTwo" class="collapse" aria-labelledby="ruleTwo" data-parent="#accordion">
+                                                                        <div class="card-body">
+                                                                            <table class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TIME</th>
+                                                                                        <th>CANCELLATION FEES</th>
+                                                                                        <th>DATE CHANGE FEES</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>24 hrs - 365 days</td>
+                                                                                        <td>Adult : Rs 16,065* + Rs 649**</td>
+                                                                                        <td>Adult : Rs 7,350* + Rs 500** + fare difference</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="f-rule-table-note">*Airline Fee. | **MakeMyTrip Cancellation Service Fee.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade modal-fare_rules" id="fare_rule_baggage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Baggage</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <span class="bagagge-title-pp">Check-in Baggage</span>
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sector/Flight</th>
+                                                                        <th>Adult</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>LGA-ORD  <br> DL3722</td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>ORD-LGA   <br> DL1477</td>
+                                                                        <td>0 Pc</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <span class="bagagge-title-pp">Cabin Baggage</span>
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sector/Flight</th>
+                                                                        <th>Adult</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>LGA-ORD  <br> DL3722</td>
+                                                                        <td>7 Kgs</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>ORD-LGA   <br> DL1477</td>
+                                                                        <td>7 Kgs</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="modal-footer">
+                                                                <p>The information presented above is as obtained from the airline reservation system. MakeMyTrip does not guarantee the accuracy of this information. The baggage allowance may vary according to stop-overs, connecting flights and changes in airline rules</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade modal-fare_rules" id="fare_rule_visa-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            ...
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="bookings-logs">
+                                            <div class="rule-bag-visa ">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-12 padding-righ-none">
+                                                        <div><strong>Flight Information</strong></div>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-10 col-sm-10 col-12">
+                                                        <ul class="rule-menu">
+                                                            <li><a href="#" data-toggle="modal" data-target="#fare_rule_modal"><i class="fa fa-inr" aria-hidden="true"></i>Fare rules</a></li>
+                                                            <li><a href="#" data-toggle="modal" data-target="#fare_rule_baggage"><i class="fa fa-suitcase" aria-hidden="true"></i>Baggage</a></li>
+                                                            <li><a href="#" data-toggle="modal" data-target="#fare_rule_visa-info"><i class="fa fa-book" aria-hidden="true"></i>Visa info</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="book-email-box">
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                                                        <div class="book-email-box-title">
+                                                            Contact Information
+                                                        </div>
+                                                        <div class="ticket-sent">
+                                                            Your ticket will be sent to this email id
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-6 booking-dtl-fmail">
+                                                        <input type="Email" id="custemail" name="" placeholder="Enter Your Email">
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-12"></div>
+                                                </div>
+                                            </div>
+                                            <div class="agree-term-box">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div>
+                                                            <p class="secure-trip-p">
+                                                                <label class="ccontainer dropdown-form-label">
+                                                                    <input type="checkbox" id="checkbox" name="">I agree with the<a href="#"> Rules and Restrictions</a>,the<a href="#"> Privacy Policy<? , the Visa Rules and the</a> <a href="#">T&Cs</a> of provoke aero. provoke aero shall not be liable for any claims related to non-travel due to lack of destination/transit visa/other mandatory travel/visa document(s).
+                                                                    <span class="ccheckmark"></span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="booking-single-box">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                        <div class="booking-dtl-fprice">Amount payable: <strong>INR 66500</strong></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="booking-single-box">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                                                        <button type="button" id="guestcontinue" class="btn btn-secondary btn-search-form">Continue as Guest</button> <span class="seprator-or">or</span> <button type="button" id="logincontinue" class="btn  btn-secondary btn-search-form">Login & Continue</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Angular Prospect-->
+                        <!--<div ng-repeat="FDetail in fareMatchRQ.FlightDetail.Flight.Sectors">
+                        <div class="pd-itnry-dep pd-result-block pd-border-t-n pd-border-b-n pd-padding-t-b-10">
+                            <div ng-repeat='Airline in FDetail | FilterReturnType:{IsReturn:"false"}'>
+                                <div class="d-none d-sm-block">
+                                    <div class="row pd-margin-none pd-itnry-dep-top pd-margin-b-10">
+                                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                                            <div class="pd-itnry-airline" ng-if="!Airline.IsSecret">
+                                                <div class="pd-itnry-img"><img ng-src="images/airline/{{Airline.AirV}}.gif" class="img-fluid pd-air-img"></div>
+                                                <div class="pd-itnry-air-info">
+                                                    <div class="pd-itnry-air-title">{{Airline.AirlineName}}</div>
+                                                    <div class="pd-airline-info">Flight {{Airline.FltNum}} more </div>
+                                                </div>
+                                            </div>
+                                            <div class="pd-itnry-airline" ng-if="Airline.IsSecret">
+                                                <div class="pd-itnry-img"><img ng-src="images/airline/ZZI.gif" class="img-fluid pd-air-img"></div>
+                                                <div class="pd-itnry-air-info">
+                                                    <div class="pd-itnry-air-title">Major Airline</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-4 col-4 left-pad-0">
+                                            <div class="pd-aport-time-date">
+                                                <div class="pd-aport-time"><strong>{{To12HourTime(Airline.Departure.Time)}}</strong></div>
+                                                <div class="pd-aport-date"><strong>{{ToDate(Airline.Departure.Date)|date:'EEE MMM dd'}}</strong></div>
+                                            <!--</div>
+                                            <div class="pd-aport-time-date">
+                                                <div class="pd-aport-time"><strong>{{To12HourTime(Airline.Arrival.Time)}}</strong></div>
+                                                <div class="pd-aport-date"><strong>{{ToDate(Airline.Arrival.Date)|date:'EEE MMM dd'}}</strong><!--May 11, Fri</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 left-pad-0">
+                                            <div class="pd-airport-name"> {{Airline.Departure.AirpName}}({{Airline.Departure.AirpCode}})</div> <!---->
+                        <!-- <div class="pd-airport-city">{{Airline.Arrival.AirpName}}({{Airline.Arrival.AirpCode}})</div> <!---->
+                        <!--</div>
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-4">
+                                <div class="pd-flight-stop-class">
+                                    <div class="pd-flight-stop"><strong>Nonstop </strong><i class="fa fa-suitcase" aria-hidden="true"></i>  {{Airline.BaggageInfo}}</div>
+                                    <div class="pd-flight-class"><span ng-bind="Airline  | getDiff"></span></div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <!--</div>
+
+                        <div class="d-block d-sm-none">
+                            <div class="row pd-margin-none pd-itnry-dep-top pd-margin-b-10 ">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                    <div class="pd-itnry-airline" ng-if="!Airline.IsSecret">
+                                        <div class="pd-itnry-img"><img ng-src="images/airline/{{Airline.AirV}}.gif" class="img-fluid pd-air-img"></div>
+                                        <div class="pd-itnry-air-info">
+                                            <div class="pd-itnry-air-title">{{Airline.AirlineName}}</div>
+                                            <div class="pd-airline-info">Flight {{Airline.FltNum}} more </div>
+                                        </div>
+                                    </div>
+                                    <div class="pd-itnry-airline" ng-if="Airline.IsSecret">
+                                        <div class="pd-itnry-img"><img ng-src="images/airline/ZZI.gif" class="img-fluid pd-air-img"></div>
+                                        <div class="pd-itnry-air-info">
+                                            <div class="pd-itnry-air-title">Major Airline</div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                        <!--<div class="col-lg-4 col-md-4 col-sm-4 col-4 left-pad-0">
+                                    <div class="pd-airport-name"> {{Airline.Departure.AirpName}}({{Airline.Departure.AirpCode}})</div>
+                                    <div class="pd-aport-time-date">
+                                        <div class="pd-aport-time"><strong>{{To12HourTime(Airline.Departure.Time)}}</strong></div>
+                                        <div class="pd-aport-date"><strong>{{ToDate(Airline.Departure.Date)|date:'EEE MMM dd'}}</strong></div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-4 left-pad-0">
+
+                                    <div class="pd-airport-city">{{Airline.Arrival.AirpName}}({{Airline.Arrival.AirpCode}})</div>
+                                    <div class="pd-aport-time-date">
+                                        <div class="pd-aport-time"><strong>{{To12HourTime(Airline.Arrival.Time)}}</strong></div>
+                                        <div class="pd-aport-date"><strong>{{ToDate(Airline.Arrival.Date)|date:'EEE MMM dd'}}</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <!--<div class="row pd-margin-t-b-10" ng-hide="isObjectEmpty(fareMatchRQ.FlightDetail.Flight | layoverTime: 'false' : $index)">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+                                        <div class="pd-air-conctn-info">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i> {{fareMatchRQ.FlightDetail.Flight | layoverTime: "false" : $index}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row pd-margin-t-b-10" ng-if="$last">
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+                                    <div class="pd-air-dur-info">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Total trip duration: {{fareMatchRQ.FlightDetail.Flight | totalTripDuration: "false"}} ({{fareMatchRQ.FlightDetail.Flight |flightTime:"false" }})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pd-result-block pd-border-t-n pd-border-b-n">
+                            <div class="row pd-margin-none pd-padding-t-b-10">
+                                <div class="pd-depart-return-devider"></div>
+                            </div>
+                        </div>
+                        <div ng-repeat="FDetail in fareMatchRQ.FlightDetail.Flight.Sectors" class="pd-itnry-ret pd-result-block pd-border-t-n pd-padding-t-b-10">
+
+
+                            <div ng-repeat='Airline in FDetail | FilterReturnType:{IsReturn:"true"}'>
+                                <div class="d-none d-sm-block">
+                                    <div class="row pd-margin-none pd-itnry-ret-top pd-margin-b-10">
+                                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                                            <div class="pd-itnry-airline" ng-if="!Airline.IsSecret">
+                                                <div class="pd-itnry-img"><img ng-src="images/airline/{{Airline.AirV}}.gif" class="img-fluid pd-air-img"></div>
+                                                <div class="pd-itnry-air-info">
+                                                    <div class="pd-itnry-air-title">{{Airline.AirlineName}}</div>
+                                                    <div class="pd-airline-info">Flight {{Airline.FltNum}} more </div>
+                                                </div>
+                                            </div>
+                                            <div class="pd-itnry-airline" ng-if="Airline.IsSecret">
+                                                <div class="pd-itnry-img"><img ng-src="images/airline/ZZI.gif" class="img-fluid pd-air-img"></div>
+                                                <div class="pd-itnry-air-info">
+                                                    <div class="pd-itnry-air-title">Major Airline</div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                        <!--<div class="col-lg-3 col-md-3 col-sm-4 col-4 left-pad-0">
+                                                <div class="pd-aport-time-date">
+                                                    <div class="pd-aport-time"><strong>{{To12HourTime(Airline.Departure.Time)}}</strong></div>
+                                                    <div class="pd-aport-date"><strong>{{ToDate(Airline.Departure.Date)|date:'EEE MMM dd'}}</strong></div>
+                                                </div>
+                                                <div class="pd-aport-time-date">
+                                                    <div class="pd-aport-time"><strong>{{To12HourTime(Airline.Arrival.Time)}}</strong></div>
+                                                    <div class="pd-aport-date"><strong>{{ToDate(Airline.Arrival.Date)|date:'EEE MMM dd'}}</strong> </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 left-pad-0">
+                                                <div class="pd-airport-name">{{Airline.Departure.AirpName}}({{Airline.Departure.AirpCode}})</div>
+                                                <div class="pd-airport-city">{{Airline.Arrival.AirpName}}({{Airline.Arrival.AirpCode}})</div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-4">
+                                                <div class="pd-flight-stop-class">
+                                                    <div class="pd-flight-stop"><strong>Nonstop </strong><i class="fa fa-suitcase" aria-hidden="true"></i>  {{Airline.BaggageInfo}}</div>
+                                                    <div class="pd-flight-class"><span ng-bind="Airline  | getDiff"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-block d-sm-none">
+                                        <div class="row pd-margin-none pd-itnry-ret-top pd-margin-b-10">
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                                                <div class="pd-itnry-airline" ng-if="!Airline.IsSecret">
+                                                    <div class="pd-itnry-img"><img ng-src="images/airline/{{Airline.AirV}}.gif" class="img-fluid pd-air-img"></div>
+                                                    <div class="pd-itnry-air-info">
+                                                        <div class="pd-itnry-air-title">{{Airline.AirlineName}}</div>
+                                                        <div class="pd-airline-info">Flight {{Airline.FltNum}} more </div>
+                                                    </div>
+                                                </div>
+                                                <div class="pd-itnry-airline" ng-if="Airline.IsSecret">
+                                                    <div class="pd-itnry-img"><img ng-src="images/airline/ZZI.gif" class="img-fluid pd-air-img"></div>
+                                                    <div class="pd-itnry-air-info">
+                                                        <div class="pd-itnry-air-title">Major Airline</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-4 left-pad-0">
+                                                <div class="pd-airport-name">{{Airline.Departure.AirpName}}({{Airline.Departure.AirpCode}})</div>
+                                                <div class="pd-aport-time-date">
+                                                    <div class="pd-aport-time"><strong>{{To12HourTime(Airline.Departure.Time)}}</strong></div>
+                                                    <div class="pd-aport-date"><strong>{{ToDate(Airline.Departure.Date)|date:'EEE MMM dd'}}</strong></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 left-pad-0">
+                                                <div class="pd-airport-city">{{Airline.Arrival.AirpName}}({{Airline.Arrival.AirpCode}})</div>
+                                                <div class="pd-aport-time-date">
+                                                    <div class="pd-aport-time"><strong>{{To12HourTime(Airline.Arrival.Time)}}</strong></div>
+                                                    <div class="pd-aport-date"><strong>{{ToDate(Airline.Arrival.Date)|date:'EEE MMM dd'}}</strong> </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-4 d-none">
+                                                <div class="pd-flight-stop-class">
+                                                    <div class="pd-flight-stop"><strong>Nonstop </strong><i class="fa fa-suitcase" aria-hidden="true"></i>  {{Airline.BaggageInfo}}</div>
+                                                    <div class="pd-flight-class"><span ng-bind="Airline  | getDiff"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row pd-margin-t-b-10" ng-hide="isObjectEmpty(fareMatchRQ.FlightDetail.Flight | layoverTime: 'true' : $index)">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+                                            <div class="pd-air-conctn-info">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i> {{fareMatchRQ.FlightDetail.Flight | layoverTime: "true" : $index}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row pd-margin-t-b-10" ng-if="$last" ng-hide="IsOneWay">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+                                        <div class="pd-air-dur-info">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i> Total trip duration: {{fareMatchRQ.FlightDetail.Flight | totalTripDuration: "true"}} ({{fareMatchRQ.FlightDetail.Flight |flightTime:"true" }})
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <!--End of Angular Prospect-->
+                    </div>
+                    <br />
+                    <!-- End of tab1-->
+                    <!--tab 2-->
+
+                    <div class="accordian">
+                        <div class="booking-trvlr-dtl-title booking-dtl-info-header border-bottom-1 panel-btn-acc" style="padding: 0px; padding-left: 25px;">
+
+                            <div class="fm-head-fromto">
+
+                                Enter Traveller Details
+                            </div>
+                        </div>
+                        <div class="panel-board-acc">
+                            <div class="booking-trvlr-dtl-box ">
+
+
+                                <div class="row ">
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="row padding-10">
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <h3>Customer Details</h3>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <label class="booking-trvlr-dtl-label">Full Name <span>(as per passport)</span></label>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <input type="text" placeholder="First Name" class="form-control" name="">
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <input type="text" placeholder="Middle Name" class="form-control" name="">
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <input type="text" placeholder="Last Name" class="form-control" name="">
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                    <label class="btn btn-secondary active">
+                                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                                                        Male
+                                                    </label>
+                                                    <label class="btn btn-secondary">
+                                                        <input type="radio" name="options" id="option2" autocomplete="off"> Female
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label class="booking-trvlr-dtl-label">Nationality</label>
+                                                <select class="form-control">
+                                                    <option selected="selected">Nationality</option>
+                                                    <option>India</option>
+                                                    <option>Australia</option>
+                                                    <option>Canada</option>
+                                                    <option>Pakistan</option>
+                                                    <option>USA</option>
+                                                    <option>UK</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label class="booking-trvlr-dtl-label">Date of Birth</label>
+                                                <div class="input-group">
+                                                    <input type="text" placeholder="DD" class="form-control" name="">
+                                                    <input type="text" placeholder="MM" class="form-control" name="">
+                                                    <input type="text" placeholder="YYYY" class="form-control" name="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <label class="booking-trvlr-dtl-label">PASSPORT Number</label>
+                                                <input type="text" placeholder="Passport Number" class="form-control" name="">
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <label class="booking-trvlr-dtl-label">ISSUING COUNTRY </label>
+                                                <select class="form-control">
+                                                    <option selected="selected">ISSUING COUNTRY </option>
+                                                    <option>India</option>
+                                                    <option>Australia</option>
+                                                    <option>Canada</option>
+                                                    <option>Pakistan</option>
+                                                    <option>USA</option>
+                                                    <option>UK</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <label class="booking-trvlr-dtl-label">Date of Expiry</label>
+                                                <div class="input-group">
+                                                    <input type="text" placeholder="DD" class="form-control" name="">
+                                                    <input type="text" placeholder="MM" class="form-control" name="">
+                                                    <input type="text" placeholder="YYYY" class="form-control" name="">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <p id="addtionalReq" style="padding-left:10px; text-decoration:underline; cursor:pointer;">
+                                    Additional Requests : (Optional: Frequent Flyer and other special requests)
+                                </p>
+                                <div class="row " style="display:none;">
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="row padding-10">
+
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 ">
+                                                <label class="booking-trvlr-dtl-label">Meal Preference</label>
+                                                <select class="form-control">
+                                                    <option selected="selected">Select Meal</option>
+                                                    <option value="Vegetarian Hindu Meal">Vegetarian Hindu Meal</option>
+                                                    <option value="Baby Meal">Baby Meal</option>
+                                                    <option value="Hindu ( Non Vegetarian) Meal">Hindu ( Non Vegetarian) Meal</option>
+                                                    <option value="Kosher Meal">Kosher Meal</option>
+                                                    <option value="Moslem Meal">Moslem Meal</option>
+                                                    <option value="Vegetarian Jain Meal">Vegetarian Jain Meal</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 ">
+                                                <label class="booking-trvlr-dtl-label">Special Service</label>
+                                                <select class="form-control">
+                                                    <option selected="selected">Select an option</option>
+                                                    <option value="no special service requested">no special service requested</option>
+                                                    <option value="blind">blind passenger</option>
+                                                    <option value="deaf">deaf passenger</option>
+                                                    <option value="wchs">Wheelchair - Cannot walk up stairs but is able to walk to the seat</option>
+                                                    <option value="wchr">Wheelchair - Can walk up stairs and to the seat</option>
+                                                    <option value="wchc">Wheelchair - Cannot walk up stairs nor to the seat. Must be carried</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <label class="booking-trvlr-dtl-label">TSA Redress #:</label>
+                                                <input type="text" placeholder="(Not Required)" class="form-control" name="">
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <label class="booking-trvlr-dtl-label">Known Traveler #:</label>
+                                                <input type="text" placeholder="(Not Required)" class="form-control" name="">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label class="booking-trvlr-dtl-label" style="font-size:16px;">Frequent Flyer #:</label>
+                                                <input type="text" placeholder="" class="form-control" name="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="booking-trvlr-dtl-box ">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="booking-trvlr-dtl-title border-bottom-1">
+                                            <strong>Contact Information <span>(Your mobile number will be used only for sending flight related communication.)</span></strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="row padding-10">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <label class="booking-trvlr-dtl-label">Mobile Number</label>
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 padding-righ-none">
+                                                        <input type="text" placeholder="+91" class="form-control" name="">
+                                                    </div>
+                                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8 padding-left-none">
+                                                        <input type="text" placeholder="Mobile Number" class="form-control" name="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                                <label class="booking-trvlr-dtl-label">Email Address</label>
+                                                <input type="text" placeholder="Email Address" class="form-control" name="">
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4"></div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <p class="secure-trip-p">
+                                                    <label class="ccontainer dropdown-form-label">
+                                                        <input type="checkbox" name="">I have a GST Number (optional)
+                                                        <span class="ccheckmark"></span>
+                                                    </label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <!--End of tab2-->
+                    <!--New seatMap Accordion-->
+                    <div class="accordian">
+                        <section class="booking-dtl-section traveler-info-section" style="margin-bottom:20px;">
+                            <div class="book-payment-box">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="booking-dtl-info">
+                                            <div class="row booking-dtl-info-header panel-btn-acc">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                                                    <div class="fm-head-fromto">
+                                                        Select Your Seats
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row padding-10 panel-board-acc">
+
+                                                <!--copy form seatMap-->
+                                                <div class="Seatmap-tabs">
+
+                                                    <div class="Seattab">
+                                                        <button class="tabseatlink" onclick="openSeat(event, 'depStop1')" id="defaultOpen">YYZ to AUH</button>
+                                                        <button class="tabseatlink" onclick="openSeat(event, 'depStop2')">AUH to HYD</button>
+                                                        <button class="tabseatlink" onclick="openSeat(event, 'retStop1')">HYD to AUH</button>
+                                                        <button class="tabseatlink" onclick="openSeat(event, 'retStop2')">AUH to YYZ</button>
+                                                    </div>
+
+                                                    <div id="depStop1" class="Seattabcontent">
+
+                                                        <div class="view-seatmap">
+                                                            <img src="img/seatpng.png" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="depStop2" class="Seattabcontent">
+                                                        <div class="view-seatmap">
+                                                            <img src="img/seatpng.png" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="retStop1" class="Seattabcontent">
+                                                        <div class="view-seatmap">
+                                                            <img src="img/seatpng.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div id="retStop2" class="Seattabcontent">
+                                                        <div class="view-seatmap">
+                                                            <img src="img/seatpng.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="seating">
+                                                        <div class="row">
+                                                            <div class="col-md-3 col-3 col-lg-3">
+                                                                <span><img src="img/seatgold.png" /><lable>Premium Seat</lable></span>
+                                                            </div>
+                                                            <div class="col-md-3 col-3 col-lg-3">
+                                                                <span><img src="img/seatblue.png" /><lable>Available Seat</lable></span>
+                                                            </div>
+                                                            <div class="col-md-3 col-3 col-lg-3">
+                                                                <span><img src="img/seatplane.png" /><lable>Taken Seat</lable></span>
+                                                            </div>
+                                                            <div class="col-md-3 col-3 col-lg-3 " style="text-align:right;">
+                                                                <a href="">Clear Selection</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="seating-details">
+                                                        <table class="pax-details">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="min-width:25%">
+
+                                                                    </th>
+                                                                    <th>
+                                                                        Flight 1
+                                                                        <br />
+                                                                        YYZ > AHU
+                                                                    </th>
+                                                                    <th>
+                                                                        Flight 2
+                                                                        <br />
+                                                                        AHU > HYD
+                                                                    </th>
+                                                                    <th>
+                                                                        Flight 3
+                                                                        <br />
+                                                                        HYD > AHU
+                                                                    </th>
+                                                                    <th>
+                                                                        Flight 4
+                                                                        <br />
+                                                                        AHU > YYZ
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="pax">
+                                                                        Passenger 1
+                                                                    </td>
+                                                                    <td>
+                                                                        22A(Window)
+                                                                    </td>
+                                                                    <td>
+                                                                        38A(Window)
+                                                                    </td>
+                                                                    <td>
+                                                                        62A(Window)
+                                                                    </td>
+                                                                    <td>
+                                                                        12A(window)
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="pax">
+                                                                        Passenger 2
+                                                                    </td>
+                                                                    <td>
+                                                                        23B(Window)
+                                                                    </td>
+                                                                    <td>
+                                                                        39B(Window)
+                                                                    </td>
+                                                                    <td>
+                                                                        63B(Window)
+                                                                    </td>
+                                                                    <td>
+                                                                        13B(window)
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="pax">
+                                                                        Passenger 3
+                                                                    </td>
+                                                                    <td>
+                                                                        24C(Aisle)
+                                                                    </td>
+                                                                    <td>
+                                                                        40C(Aisle)
+                                                                    </td>
+                                                                    <td>
+                                                                        64C(Aisle)
+                                                                    </td>
+                                                                    <td>
+                                                                        14c(Aisle)
+                                                                    </td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                                <div class="selection-conform">
+                                                    <button class="btn btn-primary pull-left"> Confirm Selections </button>
+                                                    <div class="pull-right">
+                                                        <p>Subtotal Price : $222.00</p>
+                                                        <p>
+                                                            Seating Assignment Fee
+                                                            <a href="#" rel="tooltip" style="white-space: nowrap;" title="
+                The seat assignment fee is a service that allows you to choose quickly and easily the seat that you desire through an interactive seat map. This fee also gives you access to the department of Special Requests for assistance for all other in-flight requests such as meal and special requests. This fee allows you a response time of eight (8) hours or less and is an agency fee (not airline)."<i class="fa fa-info-circle pd-prms-btn"></i></a>
+                                                            : $222.00
+                                                        </p>
+                                                        <p>Subtotal Price : $222.00</p>
+                                                        <p><strong>Total Seat Selection Price: $272.85</strong></p>
+                                                    </div>
+                                                    <div style="clear:both;"></div>
+                                                </div>
+                                                <div class="seatprivacy" style="border-top: 1px dashed #ccc;">
+                                                    We will share your seating requests with the airlines but cannot guarantee your request will be honored.
+                                                </div>
+                                                <!--copy from seatMap-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!--End of New seatMap Accordion-->
+                    <!-- tab 3-->
+
+                    <div class="accordian">
+                        <section class="booking-dtl-section traveler-info-section" style="margin-bottom:0px;">
+                            <div class="book-payment-box">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="booking-dtl-info">
+                                            <div class="row booking-dtl-info-header panel-btn-acc">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                                                    <div class="fm-head-fromto">
+                                                        Payment
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row padding-10 panel-board-acc">
+                                                <div class="tab">
+                                                    <button class="tablinks" onclick="openCity(event, 'Credit')" id="defaultOpen">Credit Card</button>
+                                                    <button class="tablinks" onclick="openCity(event, 'Debit')">Debit Card</button>
+                                                    <button class="tablinks" onclick="openCity(event, 'Online')">Online Banking</button>
+                                                </div>
+
+                                                <div id="Credit" class="tabcontent">
+                                                    <h3>Credit Card Details</h3>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                            <label>Card No</label>
+                                                            <input type="text" placeholder="Card No" class="form-control" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div style="width:100%; padding:0px 15px;">Expiry Date</div>
+                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+
+                                                                    <input type="text" placeholder="MM" class="form-control" name="">
+                                                                </div>
+                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                                                    <input type="text" placeholder="YYYY" class="form-control" name="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                            <label>Card Holder</label>
+                                                            <input type="text" placeholder="cardholder name" class="form-control" name="">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                            <label>Card CVV</label>
+                                                            <input type="text" placeholder="CVV" class="form-control" name="">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                            <div class="fm-departure-dtl-code"> <strong>$3,225</strong> </div>
+                                                            <div class="policywrite">(Total Inclusive all taxes)</div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <button class="btn btn-primary">Make Payment</button>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div id="Debit" class="tabcontent">
+                                                    <h3>Debit Card Details</h3>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                            <label>Card No</label>
+                                                            <input type="text" placeholder="Card No" class="form-control" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div style="width:100%; padding:0px 15px;">Expiry Date</div>
+                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                                            <div class="row">
+                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+
+                                                                    <input type="text" placeholder="MM" class="form-control" name="">
+                                                                </div>
+                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                                                    <input type="text" placeholder="YYYY" class="form-control" name="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                            <label>Card Holder</label>
+                                                            <input type="text" placeholder="cardholder name" class="form-control" name="">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                            <label>Card CVV</label>
+                                                            <input type="text" placeholder="CVV" class="form-control" name="">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                                            <div class="fm-departure-dtl-code"> <strong>$3,225</strong> </div>
+                                                            <div class="policywrite">(Total Inclusive all taxes)</div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <button class="btn btn-primary">Make Payment</button>
+
+                                                    </div>
+                                                </div>
+
+                                                <div id="Online" class="tabcontent">
+                                                    <h3>Online Payment</h3>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <br />
+                    <!--end of tab-3-->
+                    <!-- tab4-->
+                    <div class="accordian">
+                        <section class="booking-dtl-section traveler-info-section payment-info-section">
+                            <div class="book-payment-box">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="booking-dtl-info">
+                                            <div class="row booking-dtl-info-header panel-btn-acc">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                                                    <div class="fm-head-fromto">
+                                                        Billing & Contact Information
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row padding-10 panel-board-acc">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 devider-grey">
+                                                            <label class="payments-label">Credit Card Billing Address</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                                                            <label class="payments-label">Country</label>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                                                            <select class="form-control">
+                                                                <option selected="selected">Select Country</option>
+                                                                <option>India</option>
+                                                                <option>USA</option>
+                                                                <option>Australia</option>
+                                                                <option>Canada</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                                                            <label class="payments-label">Street</label>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                                                            <input type="text" class="form-control" placeholder="Street Address" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                                                            <label class="payments-label">City</label>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                                                            <input type="text" class="form-control" placeholder="City" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                                                            <label class="payments-label">State</label>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                                                            <input type="text" class="form-control" placeholder="State" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                                                            <label class="payments-label">Zip</label>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                                                            <input type="text" class="form-control" placeholder="Zip" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 devider-grey">
+                                                            <label class="payments-label">Contact Information</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                                                            <label class="payments-label">Phone Number</label>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                                                            <input type="text" class="form-control" placeholder="Phone no. (in case we need to reach you)" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                                                            <label class="payments-label">Email</label>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                                                            <input type="text" class="form-control" placeholder="Email" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-5 col-12">
+                                                            <label class="payments-label">Retype Email</label>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-7 col-12">
+                                                            <input type="text" class="form-control" placeholder="Retype Email" name="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                                                            <button class="btn btn-primary" style="float:right;">Submit</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="booking-single-box panel-board-acc">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+                                    <button type="button" class="btn btn-search-form">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End of tab4-->
+
+                </div>
+                <!-- Start of Sidebar-->
+                <div class="col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="right-sidebar">
+                        <div class="right-sidebar-box">
+                            <div class="right-sidebar-box-title colorcode-red">Fare Breakup</div>
+                            <div class="right-sidebar-content">
+                                <div class="tab-side-title">Base Fare</div>
+
+                                <table width="100%" style=" margin:10px 0px 0px 0px;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align:left;">
+                                                Adult(s)(1 x $500)
+                                            </td>
+                                            <td style="text-align:right;">
+                                                $500.00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left;">
+                                                Infants(s)(1 x $200)
+                                            </td>
+                                            <td style="text-align:right;">
+                                                $200.00
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="tab-side-title" style="margin:10px 0px; padding-top:10px; border-top: 1px solid #ccc; ">Taxes and other charges</div>
+                                <table width="100%" style="padding:0px, 5px; margin:10px 0px 0px 0px;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align:left;">
+                                                Adult(s)(1 x $650)
+                                            </td>
+                                            <td style="text-align:right;">
+                                                $650.00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left;">
+                                                Infants(s)(1 x $350)
+                                            </td>
+                                            <td style="text-align:right;">
+                                                $350.00
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="tab-side-title" style="margin:10px 0px; padding-top:10px; border-top: 1px solid #ccc; "></div>
+                                <table width="100%" style="padding:0px, 5px; margin:10px 0px 0px 0px;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align:left;">
+                                                <div class="fm-departure-dtl-code colorcode-red">Total Amount</div>
+                                            </td>
+                                            <td style="text-align:right;">
+                                                <div class="fm-departure-dtl-code" style="color:#0478BE; font-weight:600;">$1,800.00</div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="right-sidebar-box">
+                            <div class="right-sidebar-box-title colorcode-red">Apply Discount</div>
+                            <div class="right-sidebar-content" style="margin-top:10px;">
+                                <div sty>Have a discount / promo code to redeem</div>
+                                <input id="promocode" placeholder="Enter Coupon Code" style="width:210px; margin-top:10px;" />
+                                <button style="background-color: #595959; color: #fff; border: 2px solid #595959; padding: 1px 7px; position: relative; right: 4px;">Apply</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end of Sidebar-->
+            </div>
+            <!-- end of row-->
+        </div>
+        <!-- end of container-fluid -->
+
+    </section>
+    <div style="padding-top:20px;"></div>
+    <!-- End of Checkout Page Body -->
+    <iframe src="footer.html" style="min-height:180px; width:100%;    background-color: #0478BE;" frameborder="0" scrolling="no" class="pd-iframe-header-height slide-height-bar-bottom"></iframe>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="js/slimscroll.js"></script>
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $(".loader").addClass("unload");
+            setTimeout(lodertimeout, 3000);
+        });
+        function lodertimeout() {
+
+        }
+
+        $(window).scroll(function () {
+            var Afterheader = $('.slide-height-bar-top');
+            var Afterfooter = $('.slide-height-bar-bottom');
+            // if ($(this).scrollTop() >= $(window).height() - menu.height()) {
+            //alert($(this).scrollTop()+" "+$(window).height() + " " + Afterheader.height() + " " + Afterfooter.height());
+            if (($(this).scrollTop() >= $(window).height() - Afterheader.height() - Afterfooter.height()) && ($(this).scrollTop() <= Afterfooter.height())) {
+                $(".right-sidebar").addClass('right-sidebar-activescroll');
+                $(".right-sidebar").removeClass('right-sidebar-activebottom');
+            }
+            else {
+                $(".right-sidebar").addClass('right-sidebar-activebottom');
+                $(".right-sidebar").removeClass('right-sidebar-activescroll');
+            }
+
+        });
+    </script>
+
+    <!-- Vertical tabs for payment-->
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+    <!-- End of vertical tab for payment-->
+
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 50) {
+                $(".search-form-strip").addClass("form-fix");
+            } else {
+                $(".search-form-strip").removeClass("form-fix");
+            }
+        });
+    </script>
+    <script>
+
+        var acc = document.getElementsByClassName("panel-btn-acc");
+        var i;
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+
+
+        $('#addtionalReq').click(function () {
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    </script>
+
+    <!--SeatMap-->
+    <script>
+        function openSeat(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("Seattabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tabseatlink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    <!--End of seatMap-->
+    <!--Validation Script-->
+
+    <script>
+        //type="text/javascript"
+        $('#bookings-info').click(function () {
+            $('.bookings-logs').toggle();
+        });
+
+        $('#guestcontinue').click(function () {
+            var email = $('#custemail').val();
+            $(".error").remove();
+            if (document.getElementById("checkbox").checked == true) {
+                if (email.length < 1) {
+                    $('#custemail').after('<span class="error" style="color:red;">This field is required</span>');
+                } else {
+                    var regEx = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/ // /^[A-Z0-9][A-Z0-9._%+-]{0,63}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/;
+                    var validEmail = regEx.test(email);
+                    if (!validEmail) {
+                        $('#custemail').after('<span class="error" style="color:red;">Enter a valid email</span>');
+                    }
+                    else {
+                        $('section').find('.accordian').addClass('accordian-active')
+                    }
+                }
+            }
+            else {
+                alert("Please agree to terms and conditions");
+            }
+        });
+
+    </script>
+    <!--end of validation script-->
+
+
+
+</body>
+</html>

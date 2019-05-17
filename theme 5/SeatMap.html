@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Seat Map</title>
+
+    <!-- Index /////////////////-->
+    <title>Flight</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.css">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slimscroll.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">-->
+    <link rel="stylesheet" href="css/style-default.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/ngProgress.css" rel="stylesheet" />
+    <link href="css/style-nz.css" rel="stylesheet" />
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/rzslider.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>-->
+    <link href="search.css" rel="stylesheet" />
+    <link href="book.css" rel="stylesheet" />
+    <link href="css/icons.css" rel="stylesheet" />
+    <!-- Index /////////////////-->
+
+    <link href="css/seatMap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-8 col-lg-8 col-8 col-sm-8">
+            <div class="Seatmap-tabs">
+
+                <div class="Seattab">
+                    <button class="tabseatlink" onclick="openSeat(event, 'depStop1')" id="defaultOpen">YYZ to AUH</button>
+                    <button class="tabseatlink" onclick="openSeat(event, 'depStop2')">AUH to HYD</button>
+                    <button class="tabseatlink" onclick="openSeat(event, 'retStop1')">HYD to AUH</button>
+                    <button class="tabseatlink" onclick="openSeat(event, 'retStop2')">AUH to YYZ</button>
+                </div>
+
+                <div id="depStop1" class="Seattabcontent">
+
+                    <div class="view-seatmap">
+                        <img src="img/seatpng.png" />
+                    </div>
+                </div>
+
+                <div id="depStop2" class="Seattabcontent">
+                    <div class="view-seatmap">
+                        <img src="img/seatpng.png" />
+                    </div>
+                </div>
+
+                <div id="retStop1" class="Seattabcontent">
+                    <div class="view-seatmap">
+                        <img src="img/seatpng.png" />
+                    </div>
+                </div>
+                <div id="retStop2" class="Seattabcontent">
+                    <div class="view-seatmap">
+                        <img src="img/seatpng.png" />
+                    </div>
+                </div>
+                <div class="seating">
+                    <div class="row">
+                        <div class="col-md-3 col-3 col-lg-3">
+                            <span><img src="img/seatgold.png" /><lable>Premium Seat</lable></span>
+                        </div>
+                        <div class="col-md-3 col-3 col-lg-3">
+                            <span><img src="img/seatblue.png" /><lable>Available Seat</lable></span>
+                        </div>
+                        <div class="col-md-3 col-3 col-lg-3">
+                            <span><img src="img/seatplane.png" /><lable>Taken Seat</lable></span>
+                        </div>
+                        <div class="col-md-3 col-3 col-lg-3 " style="text-align:right;">
+                            <a href="">Clear Selection</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="seating-details">
+                    <table class="pax-details">
+                        <thead>
+                            <tr>
+                                <th style="min-width:25%">
+
+                                </th>
+                                <th>
+                                    Flight 1
+                                    <br />
+                                    YYZ > AHU
+                                </th>
+                                <th>
+                                    Flight 2
+                                    <br />
+                                    AHU > HYD
+                                </th>
+                                <th>
+                                    Flight 3
+                                    <br />
+                                    HYD > AHU
+                                </th>
+                                <th>
+                                    Flight 4
+                                    <br />
+                                    AHU > YYZ
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pax">
+                                    Passenger 1
+                                </td>
+                                <td>
+                                    22A(Window)
+                                </td>
+                                <td>
+                                    38A(Window)
+                                </td>
+                                <td>
+                                    62A(Window)
+                                </td>
+                                <td>
+                                    12A(window)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pax">
+                                    Passenger 2
+                                </td>
+                                <td>
+                                    23B(Window)
+                                </td>
+                                <td>
+                                    39B(Window)
+                                </td>
+                                <td>
+                                    63B(Window)
+                                </td>
+                                <td>
+                                    13B(window)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pax">
+                                    Passenger 3
+                                </td>
+                                <td>
+                                    24C(Aisle)
+                                </td>
+                                <td>
+                                    40C(Aisle)
+                                </td>
+                                <td>
+                                    64C(Aisle)
+                                </td>
+                                <td>
+                                    14c(Aisle)
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="selection-conform">
+                <button class="btn btn-primary pull-left"> Confirm Selections </button>
+                <div class="pull-right">
+                    <p>Subtotal Price : $222.00</p>
+                    <p>
+                        Seating Assignment Fee
+                        <a href="#" rel="tooltip" style="white-space: nowrap;" title="
+                The seat assignment fee is a service that allows you to choose quickly and easily the seat that you desire through an interactive seat map. This fee also gives you access to the department of Special Requests for assistance for all other in-flight requests such as meal and special requests. This fee allows you a response time of eight (8) hours or less and is an agency fee (not airline)."<i class="fa fa-info-circle pd-prms-btn"></i></a>
+                        : $222.00
+                    </p>
+                    <p>Subtotal Price : $222.00</p>
+                    <p><strong>Total Seat Selection Price: $272.85</strong></p>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="seatprivacy" style="border-top: 1px dashed #ccc;">
+                We will share your seating requests with the airlines but cannot guarantee your request will be honored.
+            </div>
+        </div>
+    </div>
+    <script>
+        function openSeat(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("Seattabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tabseatlink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+</body>
+</html>

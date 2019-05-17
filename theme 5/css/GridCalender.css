@@ -1,0 +1,102 @@
+/*!
+ * Calender Grid Css.
+ *
+ 
+ */
+.tab-middle
+{
+
+}
+.grid-views {
+    border: 2px solid #0073ae;
+}
+.table-headers {
+    padding: 10px;
+    background: #0073ae;
+    color: #fff;
+}
+.table-col {
+    padding: 10px 0px;
+    background-color: #f9f9f9;
+    background: linear-gradient(to bottom, #f9f9f9, #f9f9f9 25%, #f9f9f9 50%, #f9f9f9 75%);
+}
+
+.table-row-col1 {
+    background-color: #f1f1f1;
+    /*background: linear-gradient(to bottom, #f1f1f1, #f1f1f1 25%, #f1f1f1 50%, #f1f1f1 75%);*/
+}
+.table-row-col1 div{
+    padding: 0px 10px;
+}
+.grid-table
+{
+    width:100%;
+}
+.grid-table th, .grid-table td {
+    text-align: left;
+    padding: 10px 0px;
+
+    font-weight: normal;
+    border: 1px solid #ccc;
+}
+    .grid-table th {
+        background: #f9f9f9;
+    }
+.grid-table td {
+    color: #007ec4;
+}
+.td1 {
+    border: none !important;
+    background-color: #f1f1f1;
+    color:#000 !important;
+}
+.tab-middle {
+    font-weight: bold !important;
+    color: #006699;
+    background: #e3f7ff;
+}
+.cheap {
+    color: #449304 !important;
+}
+/*.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}*/
+
+td .tooltipimg {
+    visibility: hidden;
+    width: 120px;
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    }
+
+td:hover .tooltipimg {
+    visibility: visible;
+    margin-left: -10px;
+    margin-top: -20px;
+}
+
+.cheap span, .expense span {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+}
+.expense {
+    color: #df2626 !important;
+}
+.selected
+{
+    font-weight:600 !important;
+}
+.toddleimg
+{
+    padding : 0px !important;
+    position:absolute;
+    border: none !important ;
+}

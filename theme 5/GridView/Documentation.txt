@@ -1,0 +1,7 @@
+Hello Sir,
+
+please add Gridcalender.css to theme5/Globaltour css file.
+
+place grid-views div in desired location.
+
+make sure you have link tags of GridView.html in you template.

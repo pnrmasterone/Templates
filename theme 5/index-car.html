@@ -1,0 +1,1524 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flight</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css">
+    <link rel="stylesheet" href="css/slimscroll.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
+    <link rel="stylesheet" href="css/style-default.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/ngProgress.css" rel="stylesheet" />
+    <link href="css/style-nz.css" rel="stylesheet" />
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/rzslider.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+    <link href="search.css" rel="stylesheet" />
+    <link href="book.css" rel="stylesheet" />
+    <script src="js/xml2json.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/ngprogress.js"></script>
+    <script src="js/ngprogress.min.js"></script>
+    <script src="js/angucomplete-alt.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="2.2.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.2.0.js"></script>
+    <script src="js/slider-custom.js"></script>
+  </head>
+  <body id="pd-theme" ng-app="MyApp">
+    <section class="popup-modals">
+      <div class="modal fade" id="flight-detail-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="fa fa-close"></i>
+              </button>
+              <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                  <div class="fm-modal-title">Flight details</div>
+                  <div class="fm-head-fromto">
+                    Delhi <i class="fa fa-angle-right"></i> New York <span class="fm-head-fromto-date">(11 Oct 2018)</span>
+                  </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-right">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                      <div class="fm-total-price"><span class="fm-modal-title-sm">Total Price : </span>INR 64858.09</div>
+                      <div class="fm-modal-title-sm">Non Refundable</div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                      <a href="#" class="btn btn-search-form">Book Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                  <nav>
+                    <div class="nav nav-tabs fm-nav-tabs" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link active" id="nav-itinerary-tab" data-toggle="tab" href="#nav-itinerary" role="tab" aria-controls="nav-itinerary" aria-selected="true">Itinerary</a>
+                      <a class="nav-item nav-link" id="nav-fare-tab" data-toggle="tab" href="#nav-farerule" role="tab" aria-controls="nav-farerule" aria-selected="false">Fare Rules</a>
+                      <a class="nav-item nav-link" id="nav-baggage-tab" data-toggle="tab" href="#nav-baggage-info" role="tab" aria-controls="nav-baggage-info" aria-selected="false">Baggage Information</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-itinerary" role="tabpanel" aria-labelledby="nav-itinerary-tab">
+                      <div class="row fm-heading-bar margin-t-b-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-modal-title"><strong>Airline Detail</strong></div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div class="fm-modal-title"><strong>Departure</strong></div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-modal-title"><strong>Time & Class</strong></div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div class="fm-modal-title"><strong>Arrival</strong></div>
+                        </div>
+                      </div>
+                      <div class="row padding-lr-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-airline-dtl">
+                            <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                            <span class="span-50">
+                            <span class="fm-text-sm">Delta Air Lines</span>
+                            <span class="fm-text-sm">DL - 7533</span>
+                            <span class="fm-text-sm">Operated by:</span>
+                            <span class="fm-text-sm">Jet Airways</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-departure-dtl">
+                            <span class="fm-text-l">Delhi (DEL)</span>
+                            <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                            <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                            <span class="fm-text-l">Terminal:3</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-time-class">
+                            <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                            <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-arrival-dtl">
+                            <span class="fm-text-l">Mumbai (BOM)</span>
+                            <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                            <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                            <span class="fm-text-l">Terminal:2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fm-layover-sperator">
+                        <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                      </div>
+                      <div class="row padding-lr-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-airline-dtl">
+                            <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                            <span class="span-50">
+                            <span class="fm-text-sm">Delta Air Lines</span>
+                            <span class="fm-text-sm">DL - 7533</span>
+                            <span class="fm-text-sm">Operated by:</span>
+                            <span class="fm-text-sm">Jet Airways</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-departure-dtl">
+                            <span class="fm-text-l">Delhi (DEL)</span>
+                            <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                            <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                            <span class="fm-text-l">Terminal:3</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-time-class">
+                            <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                            <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-arrival-dtl">
+                            <span class="fm-text-l">Mumbai (BOM)</span>
+                            <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                            <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                            <span class="fm-text-l">Terminal:2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fm-layover-sperator">
+                        <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                      </div>
+                      <div class="row padding-lr-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-airline-dtl">
+                            <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                            <span class="span-50">
+                            <span class="fm-text-sm">Delta Air Lines</span>
+                            <span class="fm-text-sm">DL - 7533</span>
+                            <span class="fm-text-sm">Operated by:</span>
+                            <span class="fm-text-sm">Jet Airways</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-departure-dtl">
+                            <span class="fm-text-l">Delhi (DEL)</span>
+                            <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                            <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                            <span class="fm-text-l">Terminal:3</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-time-class">
+                            <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                            <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-arrival-dtl">
+                            <span class="fm-text-l">Mumbai (BOM)</span>
+                            <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                            <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                            <span class="fm-text-l">Terminal:2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fm-layover-sperator">
+                        <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                      </div>
+                      <div class="row padding-lr-10">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-airline-dtl">
+                            <span class="span-50"><img src="images/us-air.png" class="fm-air-img"></span>
+                            <span class="span-50">
+                            <span class="fm-text-sm">Delta Air Lines</span>
+                            <span class="fm-text-sm">DL - 7533</span>
+                            <span class="fm-text-sm">Operated by:</span>
+                            <span class="fm-text-sm">Jet Airways</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-departure-dtl">
+                            <span class="fm-text-l">Delhi (DEL)</span>
+                            <span class="fm-text-l">Thu 11 Oct, 21:55</span>
+                            <span class="fm-text-l">Delhi Indira Gandhi Intl (DEL)</span>
+                            <span class="fm-text-l">Terminal:3</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                          <div class="fm-time-class">
+                            <span class="fm-text-l"><strong>Time</strong>: 02h 25m</span>
+                            <span class="fm-text-l"><strong>Class</strong>: Economy</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div  class="fm-arrival-dtl">
+                            <span class="fm-text-l">Mumbai (BOM)</span>
+                            <span class="fm-text-l">Fri 12 Oct, 00:20</span>
+                            <span class="fm-text-l">Chhatrapati Shivaji (BOM)</span>
+                            <span class="fm-text-l">Terminal:2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fm-layover-sperator">
+                        <span class="fm-text-sm">Layover at Mumbai | Connection Time : 09h 35m</span>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-farerule" role="tabpanel" aria-labelledby="nav-fare-tab">
+                      <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                          <div class="fm-fare-breakup">
+                            <div class="fm-modal-title margin-t-b-10"><strong>Fare Breakup</strong></div>
+                            <table class="table table-bordered table-fm">
+                              <thead>
+                                <tr>
+                                  <th colspan="2" class="fm-text-l">Base fare</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>2 Adult (2 X 21024.51)</td>
+                                  <td>INR 21024.51</td>
+                                </tr>
+                                <tr>
+                                  <td>2 Children (2 X 21024.51)</td>
+                                  <td>INR 21024.51</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Taxes & Fees</strong></td>
+                                  <td>INR 23456.00</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Total Price</strong></td>
+                                  <td><strong>INR 23456.00</strong></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-7">
+                          <div class="fm-fare-rules">
+                            <div class="fm-modal-title margin-t-b-10"><strong>Fare Rules</strong></div>
+                            <div class="fm-text-l margin-b-10">Cancellation Fee:</div>
+                            <table class="table table-bordered table-fm">
+                              <thead>
+                                <tr>
+                                  <th>Sector</th>
+                                  <th>Airline Fee</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>DEL - JFK</td>
+                                  <td>INR 17357.450  for cancellations done before the departure of the first flight.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <p class="fm-sml-text">All charges are prior to scheduled departure of the first flight. Does not include additional no-show charges.</p>
+                            <div class="fm-text-l margin-b-10">Date change Fee:</div>
+                            <table class="table table-bordered table-fm">
+                              <thead>
+                                <tr>
+                                  <th>Sector</th>
+                                  <th>Airline Fee</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>DEL - JFK</td>
+                                  <td>INR 6356.250  + fare difference (if applicable).</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <p class="fm-sml-text">*Airlines stop accepting cancellation/change requests 4 - 72 hours before departure of the flight, depending on the airline. The airline fee is indicative based on an automated interpretation of airline fare rules. Rehlat.com doesn't guarantee the accuracy of this information. The change/cancellation fee may also vary based on fluctuations in currency conversion rates. For exact cancellation/change fee, please call us at our customer care number.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-baggage-info" role="tabpanel" aria-labelledby="nav-baggage-tab">
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                          <div class="fm-fare-breakup">
+                            <div class="fm-modal-title margin-t-b-10"><strong>Check in Baggage:</strong></div>
+                            <table class="table table-bordered table-fm">
+                              <thead>
+                                <tr>
+                                  <th>Sector</th>
+                                  <th>Adults</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>DEL - BOM DL 7553</td>
+                                  <td>2PC</td>
+                                </tr>
+                                <tr>
+                                  <td>BOM - LHR DL 7526</td>
+                                  <td>2PC</td>
+                                </tr>
+                                <tr>
+                                  <td>LHR - JFK DL 2</td>
+                                  <td>2PC</td>
+                                </tr>
+                                <tr>
+                                  <td>JFK - CDG AF 7</td>
+                                  <td>2PC</td>
+                                </tr>
+                                <tr>
+                                  <td>CDG - DEL AF 226</td>
+                                  <td>2PC</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                          <p class="fm-sml-text">The information presented above is as obtained from the airline reservation system .Rehlat.com does not guarantee the accuracy of this information. The baggage allowance may vary according to stop-overs, connecting flights and changes in airline rules.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <section class="search-form">
+      <div class="search-form-strip">
+        <div class="container">
+          <div class="search-form-inner">
+            <div class="row">
+              <div class="col-lg-12">
+                <ul class="trip-types">
+                  <li>
+                    <label class="trip-oneway rdcontainer">
+                    <input type="radio" name="radio"> One Way
+                    <span class="rdcheckmark"></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="trip-round rdcontainer">
+                    <input type="radio" checked="checked"  name="radio"> Round Trip
+                    <span class="rdcheckmark"></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="trip-multi rdcontainer">
+                    <input type="radio"  name="radio"> Multi City
+                    <span class="rdcheckmark"></span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                  <li class="form-field-box field-box-arrival">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datereturn form-control" placeholder="To Date">
+                  </li>
+                  <li class="form-field-box field-box-travelers">
+                    <div class="dropdown-travler">
+                      <input type="text" name="" class="form-control btn-opn-trvlrs" placeholder="Travelers">
+                      <div class="dropdown-menu travelers-d-menu" tabindex="-1">
+                        <span class="dropdown-item" href="#">
+                          <div class="pm-control adults-control">
+                            <ul>
+                              <li>Adults</li>
+                              <li>
+                                <span class="plus-minus">-</span>
+                                <span class="passenger-counts">1</span>
+                                <span class="plus-minus">+</span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="pm-control childrens-control">
+                            <ul>
+                              <li>Childrens</li>
+                              <li>
+                                <span class="plus-minus">-</span>
+                                <span class="passenger-counts">1</span>
+                                <span class="plus-minus">+</span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="pm-control infant-control">
+                            <ul>
+                              <li>Infants</li>
+                              <li>
+                                <span class="plus-minus">-</span>
+                                <span class="passenger-counts">1</span>
+                                <span class="plus-minus">+</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </span>
+                        <span class="dropdown-item" href="#">
+                        <label class="dropdown-form-label rdcontainer">
+                        <input type="radio" checked="checked"  name="new"> Economy Class
+                        <span class="rdcheckmark"></span>
+                        </label>
+                        <label class="dropdown-form-label rdcontainer">
+                        <input type="radio"  name="new"> Business Class
+                        <span class="rdcheckmark"></span>
+                        </label>
+                        <label class="dropdown-form-label rdcontainer">
+                        <input type="radio"  name="new"> First Class
+                        <span class="rdcheckmark"></span>
+                        </label>
+                        </span>
+                        <span class="dropdown-item" href="#">
+                        <label class="ccontainer dropdown-form-label">
+                        <input type="checkbox" name="" checked="checked">Nonstop
+                        <span class="ccheckmark"></span>
+                        </label>
+                        <label class="ccontainer dropdown-form-label">
+                        <input type="checkbox" name="">Refundable
+                        <span class="ccheckmark"></span>
+                        </label>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="form-field-box field-box-button">
+                    <button type="button" class="btn btn-search-form">Search</button>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row-fix d-none" >
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row d-none">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row d-none">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row d-none">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="From City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="To City Or Airport">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="From Date">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-12 multi-hide-row-fix d-none">
+                <button type="button" class="btn btn-sm add-multi-row">+ Add Another Flight</button>
+                <button type="button" class="btn btn-sm delete-multi-row">- Delete Flight</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section> -->
+    <section class="search-form search-form-car">
+      <div class="search-form-strip">
+        <div class="container-fluid">
+          <div class="search-form-inner">
+            <div class="row">
+              <div class="col-lg-12">
+                <ul class="form-field-container">
+                  <li class="form-field-box field-box-from">
+                    <input type="text" name="" class="clearable form-control" placeholder="Pick Up Point">
+                  </li>
+                  <li class="form-field-box field-box-to">
+                    <input type="text" name="" class="clearable form-control" placeholder="Drop Off Point">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datedepart form-control" placeholder="Pick Up Date">
+                  </li>
+                  <li class="form-field-box field-box-arrival">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="" class="datereturn form-control" placeholder="Drop Off Date">
+                  </li>
+                  <li class="form-field-box field-box-depart">
+                    <i class="fa fa-clock-o"></i>
+                    <input type="text" name="" id="timepicker1" class="form-control" placeholder="Pick Up Time">
+                  </li>
+                  <li class="form-field-box field-box-arrival">
+                    <i class="fa fa-clock-o"></i>
+                    <input type="text" name="" id="timepicker2" class="form-control" placeholder="Drop Off Time">
+                  </li>
+                  <li class="form-field-box field-box-button">
+                    <a href="index.html" type="button" class="btn btn-search-form">Search</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="flight-name-slider">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="swiper-button-next"><i class="fa chevron-double-right"></i></div>
+            <div class="swiper-button-prev"><i class="fa chevron-double-right"></i></div>
+            <div class="swiper-container flight-slider">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+                <div class="swiper-slide">
+                  <ul>
+                    <li>
+                      <img src="images\us-air.png" class="flight-slider-img">
+                    </li>
+                    <li>
+                      <span class="flight-slider-fname">Us Airways</span>
+                      <span class="flight-slider-fair">INR 298567.54</span> 
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Add Pagination -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="filter-results">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+            <div class="filter-section">
+              <div class="filter-single-section reset-filters">
+                <span class="itnry-rslt-count">30 of 94 results</span>
+                <a href="#" class="reset-flt">Reset all</a>
+              </div>
+              <div class="filter-single-section cartype_filter">
+                <div class="filter-title">Car Type</div>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Economy
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(8)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Compact
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(8)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Mini
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(1)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Standard
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(2)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Fullsize
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(6)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Intermidiate
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(4)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Medium suv
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(2)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Special
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(1)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Large suv
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(1)</span>
+                </label>
+              </div>
+              <div class="filter-single-section carcompany_filter">
+                <div class="filter-title">Car Company</div>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Avis
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(5)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Alamo
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(5)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Budget
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(5)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Standard
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(6)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">National
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(6)</span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Acee
+                <span class="ccheckmark"></span>
+                <span class="car-count-number">(6)</span>
+                </label>
+              </div>
+              <!-- <div class="filter-single-section airport_filter">
+                <div class="filter-title">Airport</div>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">All
+                <span class="ccheckmark"></span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Airport 1
+                <span class="ccheckmark"></span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Airport 2
+                <span class="ccheckmark"></span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Airport 3
+                <span class="ccheckmark"></span>
+                </label>
+                <label class="ccontainer dropdown-form-label">
+                <input type="checkbox" name="" checked="checked">Airport 4
+                <span class="ccheckmark"></span>
+                </label>
+                <div class="filter-title a-more">Show More</div>
+                <div class="a-complete" style="display: none;">
+                  <label class="ccontainer dropdown-form-label">
+                  <input type="checkbox" name="" checked="checked">Airport 5
+                  <span class="ccheckmark"></span>
+                  </label>
+                  <label class="ccontainer dropdown-form-label">
+                  <input type="checkbox" name="" checked="checked">Airport 6
+                  <span class="ccheckmark"></span>
+                  </label>
+                  <label class="ccontainer dropdown-form-label">
+                  <input type="checkbox" name="" checked="checked">Airport 7
+                  <span class="ccheckmark"></span>
+                  </label>
+                  <label class="ccontainer dropdown-form-label">
+                  <input type="checkbox" name="" checked="checked">Airport 8
+                  <span class="ccheckmark"></span>
+                  </label>
+                  <label class="ccontainer dropdown-form-label">
+                  <input type="checkbox" name="" checked="checked">Airport 9
+                  <span class="ccheckmark"></span>
+                  </label>
+                  <div class="filter-title a-less">Less More</div>
+                </div>
+              </div> -->
+              <div class="filter-single-section price_filter">
+                <div class="filter-title">Price</div>
+                <div class="extra-controls form-inline">
+                  <div class="form-group">
+                    <input type="text" class="js-input-from form-control" value="0"/>
+                    <input type="text" class="js-input-to form-control" value="0"/>
+                  </div>
+                </div>
+                <div class="wrapper">
+                  <div class="range-slider">
+                    <input type="text" class="js-range-slider" value=""/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-12 col-12 padding-left-none">
+                        <div class="results-section car-result-section">
+              <div class="sort-by-bar">
+                <div class="row text-center">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                    <div class="car-result-bar-label">
+                      Choose Your Car
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                    <div class="car-result-bar-label">
+                      Car Type
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                    <div class="car-result-bar-label">
+                      Details
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                    <div class="car-result-bar-label">
+                      Price
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                <div class="single-result-bar car-result-bar plus-row">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-center padding-righ-none">
+                          <div class="result-bar-a-img"><img src="images\car.png" class="result-car-image img-fluid"></div>
+                          <div class="result-bar-a-name">Toyata Yaris</div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center padding-right-none">
+                          <div class="car-company-logo">
+                            <img src="images/car-company-logo.png" class="car-company-image">
+                          </div>
+                          <div class="car-ride-type">Economy</div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-center padding-righ-none">
+                          <ul class="car-services-list">
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="car-services-name">X4</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                <span class="car-services-name">X2</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                                <span class="car-services-name">17km/hr</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">A</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">M</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center">
+                      <div class="result-bar-price-box">
+                        <div class="result-bar-price"><strong>INR 648733.87</strong>Per day</div>
+                        <div class="result-bar-car-tinr">TOTAL INR 141.16 WITH TAXES</div>
+                        <a href="booking.html" class="btn result-bar-btn btn-slct-car">Select</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="single-result-bar car-result-bar plus-row">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-center padding-righ-none">
+                          <div class="result-bar-a-img"><img src="images\car.png" class="result-car-image img-fluid"></div>
+                          <div class="result-bar-a-name">Toyata Yaris</div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center padding-right-none">
+                          <div class="car-company-logo">
+                            <img src="images/car-company-logo.png" class="car-company-image">
+                          </div>
+                          <div class="car-ride-type">Economy</div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-center padding-righ-none">
+                          <ul class="car-services-list">
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="car-services-name">X4</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                <span class="car-services-name">X2</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                                <span class="car-services-name">17km/hr</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">A</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">M</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center">
+                      <div class="result-bar-price-box">
+                        <div class="result-bar-price"><strong>INR 648733.87</strong>Per day</div>
+                        <div class="result-bar-car-tinr">TOTAL INR 141.16 WITH TAXES</div>
+                        <a href="booking.html" class="btn result-bar-btn btn-slct-car">Select</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="single-result-bar car-result-bar plus-row">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-center padding-righ-none">
+                          <div class="result-bar-a-img"><img src="images\car.png" class="result-car-image img-fluid"></div>
+                          <div class="result-bar-a-name">Toyata Yaris</div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center padding-right-none">
+                          <div class="car-company-logo">
+                            <img src="images/car-company-logo.png" class="car-company-image">
+                          </div>
+                          <div class="car-ride-type">Economy</div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-center padding-righ-none">
+                          <ul class="car-services-list">
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="car-services-name">X4</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                <span class="car-services-name">X2</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                                <span class="car-services-name">17km/hr</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">A</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">M</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center">
+                      <div class="result-bar-price-box">
+                        <div class="result-bar-price"><strong>INR 648733.87</strong>Per day</div>
+                        <div class="result-bar-car-tinr">TOTAL INR 141.16 WITH TAXES</div>
+                        <a href="booking.html" class="btn result-bar-btn btn-slct-car">Select</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="single-result-bar car-result-bar plus-row">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-center padding-righ-none">
+                          <div class="result-bar-a-img"><img src="images\car.png" class="result-car-image img-fluid"></div>
+                          <div class="result-bar-a-name">Toyata Yaris</div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center padding-right-none">
+                          <div class="car-company-logo">
+                            <img src="images/car-company-logo.png" class="car-company-image">
+                          </div>
+                          <div class="car-ride-type">Economy</div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-center padding-righ-none">
+                          <ul class="car-services-list">
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="car-services-name">X4</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                <span class="car-services-name">X2</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                                <span class="car-services-name">17km/hr</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">A</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">M</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center">
+                      <div class="result-bar-price-box">
+                        <div class="result-bar-price"><strong>INR 648733.87</strong>Per day</div>
+                        <div class="result-bar-car-tinr">TOTAL INR 141.16 WITH TAXES</div>
+                        <a href="booking.html" class="btn result-bar-btn btn-slct-car">Select</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="single-result-bar car-result-bar plus-row">
+                  <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-center padding-righ-none">
+                          <div class="result-bar-a-img"><img src="images\car.png" class="result-car-image img-fluid"></div>
+                          <div class="result-bar-a-name">Toyata Yaris</div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center padding-right-none">
+                          <div class="car-company-logo">
+                            <img src="images/car-company-logo.png" class="car-company-image">
+                          </div>
+                          <div class="car-ride-type">Economy</div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-5 text-center padding-righ-none">
+                          <ul class="car-services-list">
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="car-services-name">X4</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                <span class="car-services-name">X2</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                                <span class="car-services-name">17km/hr</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">A</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-letter">M</i>
+                                <span class="car-services-name">&nbsp;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center">
+                      <div class="result-bar-price-box">
+                        <div class="result-bar-price"><strong>INR 648733.87</strong>Per day</div>
+                        <div class="result-bar-car-tinr">TOTAL INR 141.16 WITH TAXES</div>
+                        <a href="booking.html" class="btn result-bar-btn btn-slct-car">Select</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/slimscroll.js"></script>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 8,
+        spaceBetween: 5,
+        // init: false,
+         navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        /*autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },*/
+        breakpoints: {
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          }
+        }
+      });
+    </script>
+    <script>
+      jQuery(function ($) {
+          // /////
+          // CLEARABLE INPUT
+          function tog(v) { return v ? 'addClass' : 'removeClass'; }
+          $(document).on('input', '.clearable', function () {
+              $(this)[tog(this.value)]('x');
+          }).on('mousemove', '.x', function (e) {
+              $(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]('onX');
+          }).on('touchstart click', '.onX', function (ev) {
+              ev.preventDefault();
+              $(this).removeClass('x onX').val('').change();
+          });
+      
+      
+      });
+      $(document).ready(function () {
+          $('.rz-pointer').click();
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".datepicker2 datepicker3").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+          });
+          $(".datedepart").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+              onSelect: function (selected) {
+                  $(".datereturn").datepicker("option", "minDate", selected)
+              }
+          });
+          $(".datereturn").datepicker({
+              numberOfMonths: 1,
+              showOtherMonths: true,
+              dateFormat: 'M-dd-yy',
+              minDate: 0,
+              onSelect: function (selected) {
+                  $(".datedepart").datepicker("option", "maxDate", selected)
+              }
+          });
+      
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $('.trip-oneway').click(function(){
+              $('.field-box-arrival').addClass('layover-black');
+              $('.field-box-arrival').removeClass('d-none');
+              $('.field-box-arrival').addClass('d-i-block');
+              $('.multi-hide-row-first').removeClass('d-block');
+              $('.multi-hide-row-first').addClass('d-none');
+              $('.multi-hide-row-fix').removeClass('d-block');
+              $('.multi-hide-row-fix').addClass('d-none');
+          });
+          $('.trip-round').click(function(){
+              $('.field-box-arrival').removeClass('layover-black');
+              $('.field-box-arrival').removeClass('d-none');
+              $('.field-box-arrival').addClass('d-i-block');
+              $('.multi-hide-row-first').removeClass('d-block');
+              $('.multi-hide-row-first').addClass('d-none');
+              $('.multi-hide-row-fix').removeClass('d-block');
+              $('.multi-hide-row-fix').addClass('d-none');
+          });
+          $('.trip-multi').click(function(){
+              $('.field-box-arrival').addClass('d-none');
+              $('.multi-hide-row-first').removeClass('d-none');
+              $('.multi-hide-row-first').addClass('d-block');
+              $('.multi-hide-row-fix').addClass('d-block');
+              $('.multi-hide-row-fix').removeClass('d-none');
+      
+      
+          });
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+          $('.add-multi-row').click(function () {
+              var rowsitem = $('.multi-hide-row.d-none');
+              var rowsitemb = $('.multi-hide-row.d-block');
+              if (rowsitem.length > 0) {
+                  rowsitem.first().addClass('d-block');
+                  rowsitem.first().removeClass('d-none');
+              }
+              $('.delete-multi-row').show();
+              if (rowsitemb.length == 2) {
+                  $('.add-multi-row').hide();
+              }
+          });
+      
+          $('.delete-multi-row').click(function () {
+              var rowsitem = $('.multi-hide-row.d-block');
+              var rowsitemb = $('.multi-hide-row.d-none');
+              if (rowsitem.length > 0) {
+                  rowsitem.first().addClass('d-none');
+                  rowsitem.first().removeClass('d-block');
+              }
+              $('.add-multi-row').show();
+              if (rowsitemb.length == 2) {
+                  $('.delete-multi-row').hide();
+              }
+          });
+      
+          });
+    </script>
+    <script>
+      $(".btn-opn-trvlrs").click(function(e){
+      e.preventDefault();
+      $(".travelers-d-menu").fadeIn(300,function(){$(this).focus();});
+      });
+      
+      $('.close-trvlr').click(function() {
+      $(".travelers-d-menu").fadeOut(300);
+      });
+      $(".travelers-d-menu").on('blur',function(){
+      $(this).fadeOut(300);
+      });
+      
+      $('.more').click(function(){
+        $('.complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.less').addClass('d-block');
+      });
+      $('.less').click(function(){
+        $('.complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.more').addClass('d-block');
+      });
+      
+      $('.a-more').click(function(){
+        $('.a-complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.a-less').addClass('d-block');
+      });
+      $('.a-less').click(function(){
+        $('.a-complete').toggleClass('more-show');
+        $(this).addClass('d-none');
+        $(this).removeClass('d-block');
+        $('.a-more').addClass('d-block');
+      });
+      $('.plus-one-option').click(function(){
+        $('.minus-row').show();
+      })
+      $('.minus-one-option').click(function(){
+        $('.minus-row').hide();
+      })
+      
+    </script>
+     <script type="text/javascript">
+            $('#timepicker1').timepicker();
+            $('#timepicker2').timepicker();
+        </script>
+  </body>
+</html>

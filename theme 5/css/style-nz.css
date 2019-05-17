@@ -1,0 +1,426 @@
+
+
+#pd-pricerange {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    margin: 30px 0 15px 0;
+    vertical-align: middle;
+}
+
+    #pd-pricerange span {
+        position: absolute;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+        #pd-pricerange span.base {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        #pd-pricerange span.bar {
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: #035594;
+        }
+
+            #pd-pricerange span.bar.selection {
+                z-index: 1;
+                width: 0;
+                background: #64aada;
+            }
+
+        #pd-pricerange span.pointer {
+            top: -10px;
+            z-index: 2;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            background-color: #559cd3;
+            -webkit-border-radius: 16px;
+            -moz-border-radius: 16px;
+            border-radius: 16px;
+        }
+
+            #pd-pricerange span.pointer:after {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 8px;
+                height: 8px;
+                background: #fff;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                content: '';
+            }
+
+            #pd-pricerange span.pointer:hover:after {
+                background-color: #fff;
+            }
+
+            #pd-pricerange span.pointer.active:after {
+                background-color: #fff;
+            }
+
+        #pd-pricerange span.bubble {
+            top: -32px;
+            padding: 1px 3px 1px 3px;
+            color: #333;
+            cursor: default;
+        }
+
+            #pd-pricerange span.bubble.selection {
+                top: 15px;
+            }
+
+            #pd-pricerange span.bubble.limit {
+                color: #fff;
+                background-color: #4d95cf;
+                border-radius: 5px;
+            }
+
+
+
+
+#pd-goingrange {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    margin: 30px 0 15px 0;
+    vertical-align: middle;
+}
+
+    #pd-goingrange span {
+        position: absolute;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+        #pd-goingrange span.base {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        #pd-goingrange span.bar {
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: #035594;
+        }
+
+            #pd-goingrange span.bar.selection {
+                z-index: 1;
+                width: 0;
+                background: #64aada;
+            }
+
+        #pd-goingrange span.pointer {
+            top: -10px;
+            z-index: 2;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            background-color: #559cd3;
+            -webkit-border-radius: 16px;
+            -moz-border-radius: 16px;
+            border-radius: 16px;
+        }
+
+            #pd-goingrange span.pointer:after {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 8px;
+                height: 8px;
+                background: #fff;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                content: '';
+            }
+
+            #pd-goingrange span.pointer:hover:after {
+                background-color: #fff;
+            }
+
+            #pd-goingrange span.pointer.active:after {
+                background-color: #fff;
+            }
+
+        #pd-goingrange span.bubble {
+            top: -32px;
+            padding: 1px 3px 1px 3px;
+            color: #333;
+            cursor: default;
+        }
+
+            #pd-goingrange span.bubble.selection {
+                top: 15px;
+            }
+
+            #pd-goingrange span.bubble.limit {
+                color: #fff;
+                background-color: #4d95cf;
+                border-radius: 5px;
+            }
+
+#pd-goingArrivalrange {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    margin: 30px 0 15px 0;
+    vertical-align: middle;
+}
+
+    #pd-goingArrivalrange span {
+        position: absolute;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+        #pd-goingArrivalrange span.base {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        #pd-goingArrivalrange span.bar {
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: #035594;
+        }
+
+            #pd-goingArrivalrange span.bar.selection {
+                z-index: 1;
+                width: 0;
+                background: #64aada;
+            }
+
+        #pd-goingArrivalrange span.pointer {
+            top: -10px;
+            z-index: 2;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            background-color: #559cd3;
+            -webkit-border-radius: 16px;
+            -moz-border-radius: 16px;
+            border-radius: 16px;
+        }
+
+            #pd-goingArrivalrange span.pointer:after {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 8px;
+                height: 8px;
+                background: #fff;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                content: '';
+            }
+
+            #pd-goingArrivalrange span.pointer:hover:after {
+                background-color: #fff;
+            }
+
+            #pd-goingArrivalrange span.pointer.active:after {
+                background-color: #fff;
+            }
+
+        #pd-goingArrivalrange span.bubble {
+            top: -32px;
+            padding: 1px 3px 1px 3px;
+            color: #333;
+            cursor: default;
+        }
+
+            #pd-goingArrivalrange span.bubble.selection {
+                top: 15px;
+            }
+
+            #pd-goingArrivalrange span.bubble.limit {
+                color: #fff;
+                background-color: #4d95cf;
+                border-radius: 5px;
+            }
+
+#pd-returnrange {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    margin: 30px 0 15px 0;
+    vertical-align: middle;
+}
+
+    #pd-returnrange span {
+        position: absolute;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+        #pd-returnrange span.base {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        #pd-returnrange span.bar {
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: #035594;
+        }
+
+            #pd-returnrange span.bar.selection {
+                z-index: 1;
+                width: 0;
+                background: #64aada;
+            }
+
+        #pd-returnrange span.pointer {
+            top: -10px;
+            z-index: 2;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            background-color: #559cd3;
+            -webkit-border-radius: 16px;
+            -moz-border-radius: 16px;
+            border-radius: 16px;
+        }
+
+            #pd-returnrange span.pointer:after {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 8px;
+                height: 8px;
+                background: #fff;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                content: '';
+            }
+
+            #pd-returnrange span.pointer:hover:after {
+                background-color: #fff;
+            }
+
+            #pd-returnrange span.pointer.active:after {
+                background-color: #fff;
+            }
+
+        #pd-returnrange span.bubble {
+            top: -32px;
+            padding: 1px 3px 1px 3px;
+            color: #333;
+            cursor: default;
+        }
+
+            #pd-returnrange span.bubble.selection {
+                top: 15px;
+            }
+
+            #pd-returnrange span.bubble.limit {
+                color: #fff;
+                background-color: #4d95cf;
+                border-radius: 5px;
+            }
+
+
+
+#pd-returnArrivalrange {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    margin: 30px 0 15px 0;
+    vertical-align: middle;
+}
+
+    #pd-returnArrivalrange span {
+        position: absolute;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+        #pd-returnArrivalrange span.base {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        #pd-returnArrivalrange span.bar {
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: #035594;
+        }
+
+            #pd-returnArrivalrange span.bar.selection {
+                z-index: 1;
+                width: 0;
+                background: #64aada;
+            }
+
+        #pd-returnArrivalrange span.pointer {
+            top: -10px;
+            z-index: 2;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            background-color: #559cd3;
+            -webkit-border-radius: 16px;
+            -moz-border-radius: 16px;
+            border-radius: 16px;
+        }
+
+            #pd-returnArrivalrange span.pointer:after {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 8px;
+                height: 8px;
+                background: #fff;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                content: '';
+            }
+
+            #pd-returnArrivalrange span.pointer:hover:after {
+                background-color: #fff;
+            }
+
+            #pd-returnArrivalrange span.pointer.active:after {
+                background-color: #fff;
+            }
+
+        #pd-returnArrivalrange span.bubble {
+            top: -32px;
+            padding: 1px 3px 1px 3px;
+            color: #333;
+            cursor: default;
+        }
+
+            #pd-returnArrivalrange span.bubble.selection {
+                top: 15px;
+            }
+
+            #pd-returnArrivalrange span.bubble.limit {
+                color: #fff;
+                background-color: #4d95cf;
+                border-radius: 5px;
+            }

@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+  <!--<![endif]-->
+<head>
+    <link href="header-footer.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript">
+        var Mv = Mv || {};
+        Mv.env = {
+            "app": {
+                "baseUrl": "http:\/\/127.0.0.1:63326\/",
+                "cdnUrl": "http:\/\/127.0.0.1:63326\/",
+                "dataBaseUrl": "https:\/\/127.0.0.1:63326\/",
+                "language": "en",
+                "exp": {},
+                "time": {
+                    "now": 1539157636,
+                    "maxSearchDate": 1570693636
+                },
+                "currency": "CAD"
+            },
+            "user": {
+                "isMobile": false,
+                "isLoggedIn": false
+            }
+        };
+        Mv['env']['user']['isTouchDevice'] = (function () {
+            return !!(('ontouchstart' in window) || (window.DocumentTouch && document instanceof DocumentTouch));
+        })();
+
+        Mv['env']['user']['deviceMeta'] = {
+            availWidth: window.screen.availWidth,
+            availHeight: window.screen.availHeight
+        };
+    </script>
+    <script src="https://bookings.travisky.com/header/js/indexNew.1539118753.js" type="text/javascript"></script>
+    <script src="https://bookings.travisky.com/header/js/indexSearchNew.1539118753.js" type="text/javascript"></script>
+</head>
+<body style="margin:0px;">
+    <div id="datepicker" class="datepicker-round-trip" style="display:none;"></div>
+    <div id="datepicker-hotels" class="datepicker-hotels" style="display:none;"></div>
+    <div id="datepicker-cruises" class="datepicker-cruises" style="display:none;"></div>
+    <!-- Start Header -->
+    <header id="header" class="hf-trvsky header-area wl" style="background: #0478BE;padding: 0px 6px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="logo" class="logo">
+                        <a href="#" title="GlobalTours">
+                            <img src="images/globatourlogo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="phone-number">
+                        <a href="#" title="phone" class="fo2">1-234-567-8910</a>
+                    </div>
+                    <div class="navigation">
+                        <div class="mobile-menu">
+                            <i class="icon-align-justify"></i>
+                        </div>
+                        <div id="main-menu" class="main-menu">
+                            <ul class="menu-responsive">
+                                <li><a href="#" title="">FLIGHTS</a></li>
+                                <li><a href="#" title="">Home</a></li>
+                                <li><a href="#" title="">About Us</a></li>
+                                <li><a href="#" title="">Contact US</a></li>
+                                <li style="display:none;">
+                                    <a href="#" title=""><img src="https://bookings.travisky.com/header/images/flag-ca.png"> CAD (EN)</a>
+                                    <ul class="dropdown">
+                                        <li>
+                                            <div class="lngChng_wrap">
+                                                <div class="lngChng_profile">Change Language</div>
+                                                <ul class="lng_btn">
+                                                    <li><a class="btn_lang_sel btn_lang btn_lang_outline active" onclick="changeLayoutLang('en')"><span class="sp_active">English</span></a></li>
+                                                    <li><a class="btn_lang_sel btn_lang btn_lang_outline" onclick="changeLayoutLang('en')"><span class="sp_active">French</span></a></li>
+                                                    <li><a class="btn_lang_sel btn_lang btn_lang_outline" onclick="changeLayoutLang('en')"><span class="sp_active">Spanish</span></a></li>
+                                                    <li><a class="btn_lang_sel btn_lang btn_lang_outline" onclick="changeLayoutLang('en')"><span class="sp_active">Arabic</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li style="display:none;">
+                                            <div class="lngChng_wrap h_domain_sel">
+                                                <div class="lngChng_profile">Change Country</div>
+                                                <div class="">
+                                                    <div class="box"><img src="flags/4x3/ca.svg">Canada</div>
+                                                    <ul class="ropdowncity">
+                                                        <li><img src="http://www.travisky.com/flags/4x3/ca.svg">CANADA</li>
+                                                        <li><img src="http://www.travisky.com/flags/4x3/us.svg">USA</li>
+                                                        <li><img src="http://www.travisky.com/flags/4x3/ae.svg">UAE</li>
+                                                        <li><img src="http://www.travisky.com/flags/4x3/ar.svg">SAUDI ARABIA</li>
+                                                        <li><img src="http://www.travisky.com/flags/4x3/bh.svg">BAHRAIN</li>
+                                                        <li><img src="http://www.travisky.com/flags/4x3/kw.svg">KUWAIT</li>
+                                                        <li><img src="http://www.travisky.com/flags/4x3/om.svg">OMAN</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="lngChng_wrap h_domain_sel">
+                                                <div class="lngChng_profile">Change Currency</div>
+                                                <div class="">
+                                                    <div>
+                                                        <div class="box1"><img src="http://www.travisky.com/flags/4x3/us.svg">Dollar</div>
+                                                        <ul class="ros__currency">
+                                                            <li style="cursor:pointer" onclick="changeLayoutCurr('CAD')"><img src="http://www.travisky.com/flags/4x3/ca.svg">Canadian dollar</li>
+                                                            <li style="cursor:pointer" onclick="changeLayoutCurr('USD')"><img src="http://www.travisky.com/flags/4x3/us.svg">Dollar</li>
+                                                            <li style="cursor:pointer" onclick="changeLayoutCurr('AED')"><img src="http://www.travisky.com/flags/4x3/ae.svg">Dirham</li>
+                                                            <li style="cursor:pointer" onclick="changeLayoutCurr('SAR')"><img src="http://www.travisky.com/flags/4x3/ar.svg">Saudi Riyal</li>
+                                                            <li style="cursor:pointer" onclick="changeLayoutCurr('BHD')"><img src="http://www.travisky.com/flags/4x3/bh.svg">Bahraini Dinar</li>
+                                                            <li style="cursor:pointer" onclick="changeLayoutCurr('QAR')"><img src="http://www.travisky.com/flags/4x3/qa.svg">Qatari Riyal</li>
+                                                            <li style="cursor:pointer" onclick="changeLayoutCurr('OMR')"><img src="http://www.travisky.com/flags/4x3/om.svg">Omani Rial</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header -->
+    <!-- Javascript -->
+    <!--<script type="text/javascript" src="https://bookings.travisky.com/header/js/tether.min.js"></script>
+    <script type="text/javascript" src="https://bookings.travisky.com/header/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://bookings.travisky.com/header/js/owl.carousel.js"></script>
+    <script type="text/javascript" src="https://bookings.travisky.com/header/js/template.js"></script>
+    <script type="text/javascript" src="https://bookings.travisky.com/header/js/main12.js"></script>-->
+    <!-- End Javascript -->
+    <script>
+        $(document).ready(function () {
+            $(".box1").click(function () {
+                $(".ros__currency").toggle();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".box").click(function () {
+                $(".ropdowncity").toggle();
+            });
+            $('#segments-wrap .fos').focus(function () {
+                $('.fox').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos1').focus(function () {
+                $('.fox1').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox1').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos2').focus(function () {
+                $('.fox2').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox2').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos3').focus(function () {
+                $('.fox3').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox3').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos4').focus(function () {
+                $('.fox4').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox4').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos5').focus(function () {
+                $('.fox5').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox15').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos6').focus(function () {
+                $('.fox6').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox6').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos7').focus(function () {
+                $('.fox7').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox7').css('background', '#005f90');
+            });
+            $('#segments-wrap .fos8').focus(function () {
+                $('.fox8').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox8').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos9').focus(function () {
+                $('.fox9').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox9').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos10').focus(function () {
+                $('.fox10').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox10').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos11').focus(function () {
+                $('.fox11').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox11').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos12').focus(function () {
+                $('.fox12').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox12').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos13').focus(function () {
+                $('.fox13').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox13').css('background', '#005f90');
+            });
+
+            $('#segments-wrap .fos14').focus(function () {
+                $('.fox14').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox14').css('background', '#005f90');
+            });
+            $('#segments-wrap .fos15').focus(function () {
+                $('.fox15').css('background', '#00afff');
+            }).blur(function () {
+                $('.fox15').css('background', '#005f90');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".box1").click(function () {
+                $(".ros__currency").toggle();
+            });
+        });
+    </script>
+</body>
+</html>

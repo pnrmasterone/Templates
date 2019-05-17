@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Calender Price</title>
+  
+    <link href="css/dycalendar.min.css" rel="stylesheet" />
+    <link href="css/dycalendar.css" rel="stylesheet" />
+    <link href="css/changes.css" rel="stylesheet" />
+</head>
+<body id="pd-theme">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+                <div class="some-class " >
+                    <div id="dycalendar" class="dycalendar-container skin-purple shadow-default dycalendarDetails" style="width: 800px;"></div>
+                    
+                </div>
+                </div>
+           
+            </div>
+    </div>
+    <script src="js/dycalendar.min.js"></script>
+    <script >
+        dycalendar.draw({
+            target: '#dycalendar',
+            type: 'month',
+            prevnextbutton: "show",
+            highlighttoday: true
+        });
+    </script>
+
+</body>
+</html>
